@@ -35,3 +35,11 @@ is replaced with replacement"
   "Подготавливает строку, введенную пользователем, для участия в запросе
 Подготовка заключется в отсечении начальных и конечных пробелов и замене оставшихся пробелов на знаки %"
   (substitute #\% #\Space (concatenate 'string "%" (string-mpattern-to-spattern " " (string-trim " " str)) "%")))
+
+(defun read-number-from-string (str &optional (default 0.0))
+"Выполняет чтение из строки вещественного числа.
+Если число не удалось считать - возвращается default."
+  (let ((val (scan-to-strings "(([+-]?\\d+)[.,]?)\\d*([ed][+-]?\\d+)?" str))) 
+    (cond
+      ((stringp val) (read-from-string (string-replace-all val "," "."))) 
+      (t default))))
