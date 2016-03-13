@@ -7,5 +7,7 @@
   :serial t
   :depends-on (#:cl-ppcre)
   :components ((:file "package")
-               (:file "mnas-string")))
+               (:file "mnas-string")
+	       (:file "mnas-string-sort-designation")
+	       ))
 

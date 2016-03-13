@@ -6,6 +6,7 @@
 	   string-mpattern-to-spattern
 	   string-prepare-to-query
            read-number-from-string
+	   sort-designation-zm
 	   )
   )
 
