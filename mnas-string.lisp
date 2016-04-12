@@ -45,8 +45,6 @@ is replaced with replacement"
       (t default))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(split )
-
 (cl-ppcre:split "(\\(*\\))" "(1+2(3+4) ) ")
 
 (cl-ppcre:scan-to-strings "(abcd|abef)" "abf")
