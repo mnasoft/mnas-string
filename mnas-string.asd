@@ -9,5 +9,6 @@
   :components ((:file "package")
                (:file "mnas-string")
 	       (:file "mnas-string-sort-designation")
+	       (:file "mnas-string-quote")
 	       ))
 
