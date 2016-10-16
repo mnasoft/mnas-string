@@ -7,6 +7,8 @@
 	   string-prepare-to-query
            read-number-from-string
 	   sort-designation-zm
+	   read-from-string-number
+	   string-quote
 	   )
   )
 
