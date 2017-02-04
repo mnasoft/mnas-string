@@ -49,4 +49,12 @@ is replaced with replacement"
     (cond
       ((numberp val) val)
       (t default))))
+
+
+(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
+  "Пример использования
+;;;;(string-add-prefix \"45\" :overal-length 10 :prefix \"-\" )
+"
+  (dotimes (i (- overal-length (length str)) str)
+    (setf str (concatenate 'string prefix str))))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
