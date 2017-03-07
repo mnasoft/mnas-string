@@ -63,7 +63,7 @@ is replaced with replacement"
 (defun print-universal-time (u-time &optional (stream t))
       (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
 	(decode-universal-time u-time)
-	(format stream "~S-~S-~S_~S:~S:~S"  date-year date-month date-day time-hour time-minute time-second)))
+	(format stream "~S-~S-~S_~D:~D:~D" date-year date-month date-day time-hour time-minute time-second)))
 
 
 
