@@ -60,13 +60,27 @@ is replaced with replacement"
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun print-universal-time (u-time &optional (stream t))
-      (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
-	(decode-universal-time u-time)
-	(format stream "~S-~S-~S_~D:~D:~D" date-year date-month date-day time-hour time-minute time-second)))
+(defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
+  (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
+      (decode-universal-time u-time)
+    (cond
+      ((and year ss)        (format stream "~d-~2,'0d-~2,'0d_~2,'0d:~2,'0d:~2,'0d" date-year date-month date-day time-hour time-minute time-second))
+      ((and (null year) ss) (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d:~2,'0d"              date-month date-day time-hour time-minute time-second))
+      ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d:~2,'0d"        date-year date-month date-day time-hour time-minute))
+      (t                    (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d"                     date-month date-day time-hour time-minute)))))
 
+(defun print-universal-time (u-time &key (stream t) (ss t) )
+  (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
+      (decode-universal-time u-time)
+    (list date-year date-month date-day time-hour time-minute time-second)
+    (cond
+      (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
+      (t  (format stream "~2,'0d:~2,'0d" time-hour time-minute)))))
 
-
-
-
-
+(defun print-universal-date (u-time &key (stream t) (year t))
+  (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
+      (decode-universal-time u-time)
+    (list date-year date-month date-day time-hour time-minute time-second)
+    (cond
+      (year (format stream "~d-~2,'0d-~2,'0d" date-year date-month date-day))
+      (t    (format stream "~2,'0d-~2,'0d"              date-month date-day)))))

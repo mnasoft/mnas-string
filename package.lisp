@@ -10,6 +10,8 @@
 	   read-from-string-number
 	   string-quote
 	   string-add-prefix
+	   print-universal-date-time
+	   print-universal-date
 	   print-universal-time
 	   )
   )
