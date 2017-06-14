@@ -84,3 +84,15 @@ is replaced with replacement"
     (cond
       (year (format stream "~d-~2,'0d-~2,'0d" date-year date-month date-day))
       (t    (format stream "~2,'0d-~2,'0d"              date-month date-day)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun print-universal-date-time-fname (u-time &key (stream t) (year t) (ss t))
+  "Выводит дату и время в пригодном для формирования имени файла формате"
+  (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
+      (decode-universal-time u-time)
+    (cond
+      ((and year ss)        (format stream "~d-~2,'0d-~2,'0d_~2,'0d-~2,'0d-~2,'0d" date-year date-month date-day time-hour time-minute time-second))
+      ((and (null year) ss) (format stream "~2,'0d-~2,'0d_~2,'0d-~2,'0d-~2,'0d"              date-month date-day time-hour time-minute time-second))
+      ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d-~2,'0d"        date-year date-month date-day time-hour time-minute))
+      (t                    (format stream "~2,'0d-~2,'0d_~2,'0d-~2,'0d"                     date-month date-day time-hour time-minute)))))
