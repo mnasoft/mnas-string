@@ -19,7 +19,7 @@ is replaced with replacement"
        when pos do (write-string replacement out)
        while pos))) 
 
-(defun string-mpattern-to-spattern(pattern str)
+(defun string-mpattern-to-spattern (pattern str)
   "Исключает из строки str повторяющиеся подстроки pattern сводя их количество до одного включения
 Пример использования:
 ;;;;(string-mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\")
