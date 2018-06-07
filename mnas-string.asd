@@ -7,6 +7,7 @@
   :serial t
   :depends-on (#:cl-ppcre)
   :components ((:file "package")
+       	       (:file "mnas-string-month")
                (:file "mnas-string")
 	       (:file "mnas-string-sort-designation")
 	       (:file "mnas-string-quote")

@@ -77,13 +77,15 @@ is replaced with replacement"
       (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
       (t  (format stream "~2,'0d:~2,'0d" time-hour time-minute)))))
 
-(defun print-universal-date (u-time &key (stream t) (year t))
+(defun print-universal-date (u-time &key (stream t) (year t) (day t))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
     (cond
-      (year (format stream "~d-~2,'0d-~2,'0d" date-year date-month date-day))
-      (t    (format stream "~2,'0d-~2,'0d"              date-month date-day)))))
+      ((and year           day ) (format stream "~d-~2,'0d-~2,'0d" date-year date-month date-day))
+      ((and year      (not day)) (format stream "~A ~A"           (gethash date-month *mon-ru*) date-year))
+      ((and (not year)     day ) (format stream "~2,'0d-~2,'0d"    date-month date-day))
+      ((and (not year)(not day)) (format stream "~A" (gethash date-month *mon-ru*))))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
