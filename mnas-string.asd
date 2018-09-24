@@ -1,15 +1,21 @@
 ;;;; mnas-string.asd
 
-(asdf:defsystem #:mnas-string
+(defsystem #:mnas-string
   :description "Describe mnas-string here"
-  :author "Your Name <your.name@example.com>"
-  :license "Specify license here"
-  :serial t
+  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
+  :serial nil
   :depends-on (#:cl-ppcre)
-  :components ((:file "mnas-string")
-	       (:file "mnas-string-month")
-	       (:file "mnas-string-sort-designation")
-	       (:file "mnas-string-quote")
-	       (:file "mnas-string-translit")
+  :components ((:file "package")
+	       (:file "mnas-string-month"
+		      :depends-on ("package"))
+	       (:file "mnas-string"
+		      :depends-on ("package" "mnas-string-month"))
+	       (:file "mnas-string-sort-designation"
+		      :depends-on ("package" "mnas-string"))
+	       (:file "mnas-string-quote" 
+		      :depends-on ("package" "mnas-string"))
+	       (:file "mnas-string-translit"
+		      :depends-on ("package" "mnas-string"))
 	       ))
 

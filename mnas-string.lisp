@@ -1,13 +1,8 @@
 ;;;; mnas-string.lisp
 
-(in-package #:cl-user)
-
-(defpackage #:mnas-string
-  (:use #:cl #:cl-ppcre))
+(in-package #:mnas-string)
 
 ;;;;(declaim (optimize (space 0) (compilation-speed 0)  (speed 0) (safety 3) (debug 3)))
-
-(in-package #:mnas-string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
