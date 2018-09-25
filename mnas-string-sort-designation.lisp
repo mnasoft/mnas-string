@@ -45,7 +45,7 @@
 
 (defun zm-engine-opyt (str) (list (subseq str 3 5) (subseq str 2 3 )))
 
-(defun zm-engine-ac (str) (list "АС" "I"))
+(defun zm-engine-ac () (list "АС" "I"))
 
 (defun zm-engine (str)
     (let ((str-main (zm-ob-main str)))
@@ -55,23 +55,23 @@
       ((string= (zm-is-type str) "OPYT")
        (zm-engine-opyt str-main))
       ((string= (zm-is-type str) "AC")
-       (zm-engine-ac str-main)))))
+       (zm-engine-ac)))))
 
-(defun zm-master-serija (str) "M00")
+(defun zm-master-serija () "M00")
 
 (defun zm-master-opyt (str) (concatenate 'string "M0" (subseq str 1 2)))
 
-(defun zm-master-ac (str) "M50")
+(defun zm-master-ac () "M50")
 
 (defun zm-master (str)
   (let ((str-main (zm-ob-main str)))
     (cond
       ((string= (zm-is-type str) "SERIYA")
-       (zm-master-serija str-main))
+       (zm-master-serija))
       ((string= (zm-is-type str) "OPYT")
        (zm-master-opyt str-main))
       ((string= (zm-is-type str) "AC")
-       (zm-master-ac str-main)))))
+       (zm-master-ac)))))
 
 (defun zm-unit-serija (str)
   (let ((unt (subseq str 5 6)))
@@ -85,7 +85,7 @@
 	t
 	nil)))
 
-(defun zm-unit-ac (str) nil)
+(defun zm-unit-ac () nil)
 
 (defun zm-unit-p (str)
   (let ((str-main (zm-ob-main str)))
@@ -95,7 +95,7 @@
       ((string= (zm-is-type str) "OPYT")
        (zm-unit-opyt str-main))
       ((string= (zm-is-type str) "AC")
-       (zm-unit-ac str-main)))))
+       (zm-unit-ac )))))
 
 (defun zm-part-p (str) (null (zm-unit-p str)))
 
@@ -131,7 +131,8 @@
 
 (defun zm-number (str)
   (let ((str-spl  (zm-ob-split str))
-	(str-main (zm-ob-main str)))
+;;;;	(str-main (zm-ob-main str))
+	)
     (cond
       ((string= (zm-is-type str) "SERIYA")
        (zm-number-serija str))
@@ -160,7 +161,3 @@
 (sort-designation-zm *ob*)
 "
   (sort seq #'string< :key #'zm-key))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;(sort-designation-zm *ob*) 

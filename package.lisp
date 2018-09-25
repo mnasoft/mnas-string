@@ -1,24 +1,25 @@
 ;;;; package.lisp
 
+(defpackage #:mnas-string)
 
 (defpackage #:mnas-string
   (:use #:cl #:cl-ppcre)
 ;;;; mnas-string.lisp  
-  (:export string-replace-all)
-  (:export string-mpattern-to-spattern)
-  (:export string-prepare-to-query)
-  (:export read-from-string-number)
-  (:export read-number-from-string)
-  (:export string-add-prefix)
-  (:export print-universal-date-time)
-  (:export print-universal-time)
-  (:export print-universal-date)
-  (:export print-universal-date-time-fname)
+  (:export mnas-string::string-replace-all)
+  (:export mnas-string::string-mpattern-to-spattern)
+  (:export mnas-string::string-prepare-to-query)
+  (:export mnas-string::read-from-string-number)
+  (:export mnas-string::read-number-from-string)
+  (:export mnas-string::string-add-prefix)
+  (:export mnas-string::print-universal-date-time)
+  (:export mnas-string::print-universal-time)
+  (:export mnas-string::print-universal-date)
+  (:export mnas-string::print-universal-date-time-fname)
 ;;;;mnas-string-translit.lisp  
-  (:export translit)
+  (:export mnas-string::translit)
 
-  (:export sort-designation-zm)
-  (:export demo-translit demo-zm-sort)
+  (:export mnas-string::sort-designation-zm)
+  (:export mnas-string::demo-translit mnas-string::demo-zm-sort)
   )
 
 ;;;;(declaim (optimize (space 0) (compilation-speed 0)  (speed 0) (safety 3) (debug 3)))
