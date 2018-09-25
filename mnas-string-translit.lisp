@@ -38,5 +38,3 @@
 	       (push el rez))))
      (coerce str 'list))
     (concatenate 'string (nreverse rez))))
-
-(export 'translit)

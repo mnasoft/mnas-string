@@ -7,15 +7,11 @@
   :serial nil
   :depends-on (#:cl-ppcre)
   :components ((:file "package")
-	       (:file "mnas-string-month"
-		      :depends-on ("package"))
-	       (:file "mnas-string"
-		      :depends-on ("package" "mnas-string-month"))
-	       (:file "mnas-string-sort-designation"
-		      :depends-on ("package" "mnas-string"))
-	       (:file "mnas-string-quote" 
-		      :depends-on ("package" "mnas-string"))
-	       (:file "mnas-string-translit"
-		      :depends-on ("package" "mnas-string"))
+	       (:file "mnas-string-month"            :depends-on ("package"))
+	       (:file "mnas-string"                  :depends-on ("package" "mnas-string-month"))
+	       (:file "mnas-string-sort-designation" :depends-on ("package" "mnas-string"))
+	       (:file "mnas-string-quote"            :depends-on ("package" "mnas-string"))
+	       (:file "mnas-string-translit"         :depends-on ("package" "mnas-string"))
+	       (:file "demo"                         :depends-on ("package" "mnas-string-sort-designation"))
 	       ))
 
