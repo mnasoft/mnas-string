@@ -72,15 +72,15 @@ is replaced with replacement"
       (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
       (t  (format stream "~2,'0d:~2,'0d" time-hour time-minute)))))
 
-(defun print-universal-date (u-time &key (stream t) (year t) (day t))
+(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *mon-ru*))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
     (cond
       ((and year           day ) (format stream "~d-~2,'0d-~2,'0d" date-year date-month date-day))
-      ((and year      (not day)) (format stream "~A ~A"           (gethash date-month *mon-ru*) date-year))
+      ((and year      (not day)) (format stream "~A ~A"           (gethash date-month month-language) date-year))
       ((and (not year)     day ) (format stream "~2,'0d-~2,'0d"    date-month date-day))
-      ((and (not year)(not day)) (format stream "~A" (gethash date-month *mon-ru*))))))
+      ((and (not year)(not day)) (format stream "~A" (gethash date-month month-language))))))
 
 (defun print-universal-date-time-fname (u-time &key (stream t) (year t) (ss t))
   "Выводит дату и время в пригодном для формирования имени файла формате"

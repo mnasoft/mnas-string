@@ -20,6 +20,10 @@
 
   (:export mnas-string::sort-designation-zm)
   (:export mnas-string::demo-translit mnas-string::demo-zm-sort)
+  (:export mnas-string::*mon-ru*
+	   mnas-string::*mon-ua*
+	   mnas-string::*mon-en*)
   )
 
 ;;;;(declaim (optimize (space 0) (compilation-speed 0)  (speed 0) (safety 3) (debug 3)))
+
