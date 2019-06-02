@@ -2,7 +2,7 @@
 ** Добавлние удаленных репозиториев
 #+BEGIN_SRC bash :results none
 git remote remove github.com
-git remote add git@github.com:mnasoft/mnas-string.git
+git remote add github.com git@github.com:mnasoft/mnas-string.git
 
 git remote remove common-lisp.net
 git remote add common-lisp.net git@common-lisp.net:nmatvyeyev/mnas-string.git
