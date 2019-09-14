@@ -2,8 +2,12 @@
 
 (in-package #:mnas-string)
 
+(export 'demo-translit)
+
 (defun demo-translit ()
   (translit "Съешь же ещё этих мягких французских булочек да выпей чаю!"))
+
+(export 'demo-zm-sort)
 
 (defun demo-zm-sort ()
   (let ((ob   '("090038045-04"    "090038045"    "090038044-01"    "090038045-02"    "Г90006545"    "В7110011856"    

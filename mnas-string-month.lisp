@@ -2,6 +2,10 @@
 
 (in-package #:mnas-string)
 
+(export '*mon-ru*)
+(export '*mon-ua*)
+(export '*mon-en*)
+
 (progn 
   (defparameter  *mon-ru* (make-hash-table))
   (defparameter  *mon-ua* (make-hash-table))

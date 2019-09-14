@@ -20,7 +20,9 @@
       (mapc #'add-to-ht
 	    (concatenate 'list *greek-capital-letter* *greek-small-letter*)
 	    (concatenate 'list *greek->english-capital-letter*  *greek->english-small-letter*)))))
-  
+
+(export 'translit)
+
 (defun translit (str &key (ht *cir-gr->en*))
   (declare (type string str) )
   (let ((rez nil))

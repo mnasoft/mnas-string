@@ -151,6 +151,8 @@
 	       (zm-number str)))
 
 
+(export 'string-prepare-to-query)
+
 (defun sort-designation-zm (seq)
   "Выполняет сортировку обозначений деталей и сборочных единиц для формирования спецификации.
 Пример использования:
