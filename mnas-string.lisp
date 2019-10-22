@@ -111,3 +111,56 @@ is replaced with replacement"
       ((and (null year) ss) (format stream "~2,'0d-~2,'0d_~2,'0d-~2,'0d-~2,'0d"              date-month date-day time-hour time-minute time-second))
       ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d-~2,'0d"        date-year date-month date-day time-hour time-minute))
       (t                    (format stream "~2,'0d-~2,'0d_~2,'0d-~2,'0d"                     date-month date-day time-hour time-minute)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(export 'map-to-list)
+(defun map-to-list (sequence)
+  (map 'list #'(lambda (el) el) sequence))
+
+(export 'make-populated-hash-table)
+(defun make-populated-hash-table (sequence &key
+					     (key-function    #'(lambda (el) el))
+					     (value-function  #'(lambda (el) el))
+					     (test #'equal))
+  (reduce
+   #'(lambda (ht el)
+       (setf (gethash (funcall key-function el) ht) (funcall value-function el))
+       ht)
+   sequence
+   :initial-value (make-hash-table :test test)))
+
+(export '*omit-nulls*)
+(defparameter *omit-nulls* t)
+
+(export 'split)
+(defun split (char-bag string &key (omit-nulls *omit-nulls*))
+  "Разделяет строку string на подстроки.
+@begin(list)
+ @item(в качестве разделителей используются символы из строки char-bag;)
+ @item(возвращает список подстрок;)
+ @item(если omit-nulls не равно nil пустые подстроки из результирующего списока исключаются.)
+@end(list)
+
+Пример использования:
+@begin[lang=lisp](code)
+ (split \"; \" \" 1111 ; +5550650456540; 55\" )
+@end(code)
+"
+  (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
+	(rez nil)
+	(rezult))
+    (loop :for i :from 0 :below (length string) :do
+	 (if (gethash (char string i) char-bag-hash)
+	     (push i rez)))
+    (setf rez (nreverse (push (length string) rez)))
+    (setf rezult
+	  (mapcar
+	   #'(lambda (el)
+	       (subseq string (first el) (second el)))
+	   (mapcar #'(lambda (el1 el2) (list (1+ el1) el2)) (push -1 rez) (cdr rez))))
+    (if omit-nulls 
+	(mapcan  #'(lambda (x)
+		     (if (= (length x) 0) nil (list x)))
+		 rezult)
+	rezult)))
