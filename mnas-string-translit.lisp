@@ -6,8 +6,8 @@
 (export '*space-cir-gr->en*)
 
 (progn
-  (defparameter *space* " .")
-  (defparameter *minus* "-+")
+  (defparameter *space* " .()")
+  (defparameter *minus* "-+!!")
   (defparameter *greek-capital-letter*  "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ")
   (defparameter *greek-small-letter*    "αβγδεζηθικλμνξοπρστυφχψω")
   (defparameter *greek->english-capital-letter*  "ABGDEFHQIKLMNZOPRSTYUXVW") ; "CJ"
