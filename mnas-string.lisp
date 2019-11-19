@@ -144,7 +144,7 @@ is replaced with replacement"
 
 Пример использования:
 @begin[lang=lisp](code)
- (split \"; \" \" 1111 ; +5550650456540; 55\" )
+ (split-m \"; \" \" 1111 ; +5550650456540; 55\" )
 @end(code)
 "
   (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
@@ -164,3 +164,5 @@ is replaced with replacement"
 		     (if (= (length x) 0) nil (list x)))
 		 rezult)
 	rezult)))
+
+(split "123" "asd1sdf2;lk;ldsf3")
