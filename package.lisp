@@ -3,7 +3,7 @@
 ;;(defpackage #:mnas-string)
 
 (defpackage #:mnas-string
-  (:use #:cl ;;;;#:cl-ppcre
+  (:use #:cl 
 	)
 ;;;; mnas-string.lisp  
   (:export string-replace-all)

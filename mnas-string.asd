@@ -5,7 +5,7 @@
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
-;;  :depends-on (#:cl-ppcre)
+  :depends-on (#:cl-ppcre)
   :components ((:file "package")
 	       (:file "mnas-string-month"            :depends-on ("package"))
 	       (:file "mnas-string"                  :depends-on ("package" "mnas-string-month"));
