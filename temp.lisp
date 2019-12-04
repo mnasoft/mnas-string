@@ -6,16 +6,6 @@
   (uiop:directory-files
    (concatenate 'string (getenv "MSYS2_HOME" "") "/home/namatv/org/knil-2/trd/DG80/") #P"*.trd"))
 
-(export 'getenv)
-(defun getenv (x &optional (default ""))
-  "Пример использования:
- (getenv \"SBCL_HOME\")
- (getenv \"PATH\")
-"
-  (cond
-    ((uiop:getenv x))
-    (t default)))
-
 (file-namestring (first *trd-files*))
 (directory-namestring (first *trd-files*))
 

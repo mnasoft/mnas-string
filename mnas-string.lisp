@@ -215,14 +215,21 @@ make-populated-hash-table создает хеш-таблицу и наполня
 
 (export 'split)
 (defun split (char-bag string &key (omit-nulls *omit-nulls*))
-  "Разделяет строку string на подстроки.
+  "@b(Описание:)
+
+ @b(split) разделяет строку @b(string) на подстроки.
+
+ @b(Возвращает:) список подстрок.
+
+ @b(Переменые:)
+
 @begin(list)
- @item(в качестве разделителей используются символы из строки char-bag;)
- @item(возвращает список подстрок;)
+ @item(@b(char-bag) - символы из этой строки используются в качестве разделителей;)
+ @item(@b(string) - строка, подлежащая разделению на подтсроки;)
  @item(если omit-nulls не равно nil пустые подстроки из результирующего списока исключаются.)
 @end(list)
 
-Пример использования:
+@b(Пример использования:)
 @begin[lang=lisp](code)
  (split \"; \" \" 1111 ; +5550650456540; 55\" ) => (\"1111\" \"+5550650456540\" \"55\")
 @end(code)
@@ -271,12 +278,12 @@ make-populated-hash-table создает хеш-таблицу и наполня
 
 (export 'getenv)
 (defun getenv (x &optional (default ""))
-  "Пример использования:
- (getenv \"SBCL_HOME\")
+  "@b(Пример использования:)
+@begin[lang=lisp](code) 
+ (getenv \"SBCL_HOME\") 
  (getenv \"PATH\")
+@end(code)
 "
   (cond
     ((uiop:getenv x))
     (t default)))
-
-
