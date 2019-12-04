@@ -165,11 +165,12 @@ is replaced with replacement"
 		 rezult)
 	rezult)))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-
-(defun trd_rename (f-name)
+(export 'trd-rename)
+(defun trd-rename (f-name)
   "Пример использования:
- (trd_rename \"150819_082056\")
+ (trd-rename \"150819_082056\")
 "
   (let* ((ddmmyy_hhmmss_ext (split "_" f-name)) dd mon yy hh mm ss)
     (assert (= 2 (length ddmmyy_hhmmss_ext)))
@@ -186,31 +187,14 @@ is replaced with replacement"
     (values dd mon yy hh mm ss ddmmyy_hhmmss_ext)
     (format nil "~4d-~2,'0d-~2,'0d_~2,'0d~2,'0d~2,'0d" (+ 2000 yy) mon dd  hh mm ss)))
 
-(defparameter *trd-files*
-  (uiop:directory-files #P"D:/PRG/msys32/home/namatv/org/knil-2/trd/" #P"*.trd"))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(file-namestring (first *trd-files*))
-(directory-namestring (first *trd-files*))
-
-(host-namestring (first *trd-files*))
-(native-namestring (first *trd-files*))
-(parse-namestring (first *trd-files*))
-(enough-namestring (first *trd-files*))
-
-(pathname-device (first *trd-files*))
-(pathname-directory (first *trd-files*))
-(pathname-name (first *trd-files*))
-(pathname-type (first *trd-files*))
-
-(rename-file #P"D:/PRG/msys32/home/namatv/org/knil-2/trd/2019-09-20_084109.trd"
-	     #P"D:/PRG/msys32/home/namatv/org/knil-2/trd/200919_084109.trd"
-	     )
-
-(map
- 'nil
- #'(lambda (el)
-     )
- (uiop:directory-files #P"D:/PRG/msys32/home/namatv/org/knil-2/trd/" #P"*.trd")
- )
-
-(make-pathname 
+(export 'getenv)
+(defun getenv (x &optional (default ""))
+  "Пример использования:
+ (getenv \"SBCL_HOME\")
+ (getenv \"PATH\")
+"
+  (cond
+    ((uiop:getenv x))
+    (t default)))
