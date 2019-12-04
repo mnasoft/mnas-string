@@ -40,4 +40,11 @@
  (uiop:directory-files #P"D:/PRG/msys32/home/namatv/org/knil-2/trd/" #P"*.trd")
  )
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(let ((lst ()))                                                     
+  (do-all-symbols (s lst)
+    (when (eq (find-package *package*) (symbol-package s)) (push (string-downcase (symbol-name s)) lst)))
+  (sort lst #'string> ))
+
+(mnas-package:doc-template)

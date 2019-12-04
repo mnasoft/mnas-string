@@ -23,8 +23,12 @@ is replaced with replacement"
 
 (defun string-mpattern-to-spattern (pattern str)
   "Исключает из строки str повторяющиеся подстроки pattern сводя их количество до одного включения
-Пример использования:
-;;;;(string-mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\")
+@b(Пример использования:)
+@begin[lang=lisp](code)
+ (string-mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\") 
+ => \"Наш самолет осуществит посадку в городе Baden.\"
+@end(code)
+
 "
   (do
    ((str1
@@ -43,6 +47,11 @@ is replaced with replacement"
 (export 'read-from-string-number)
 
 (defun read-from-string-number (str &optional (default 0.0))
+  "@b(Описание:)
+
+ read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
+При считываии используется стандартный считыватель Common Lisp.
+"
   (let ((val (read-from-string str)))
     (cond
       ((numberp val) val)
@@ -51,8 +60,16 @@ is replaced with replacement"
 (export 'read-number-from-string)
 
 (defun read-number-from-string (str &optional (default 0.0))
-"Выполняет чтение из строки вещественного числа.
-Если число не удалось считать - возвращается default."
+"@b(Описание:)
+
+read-number-from-string выполняет чтение из строки @b(str) вещественного числа.
+Если число не удалось считать - возвращается default.
+Примеры использования:
+@begin[lang=lisp](code)
+ (read-number-from-string \"3.14\")
+ (read-number-from-string \"3,14\")
+@end(code)
+"
   (let ((val (cl-ppcre:scan-to-strings "(([+-]?\\d+)[.,]?)\\d*([ed][+-]?\\d+)?" str))) 
     (cond
       ((stringp val) (read-from-string (string-replace-all val "," "."))) 
@@ -70,6 +87,25 @@ is replaced with replacement"
 (export 'print-universal-date-time)
 
 (defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
+    "@b(Описание:)
+
+print-universal-date-time выводит в поток @b(stream) строковое представление времени. 
+
+@b(Параметры:)
+@begin(list)
+ @item(@b(u-time) - время, заданное в универсальном формате;)
+ @item(@b(stream) - поток, в который выводится время.
+Если @b(nil) - вывод осуществляется в строку.
+Если @b(t)   - вывод на стандартный вывод;)
+ @item(@b(year) - отвечает за отображение года.) 
+ @item(@b(ss)   - отвечает за отображение секунд.)
+@end(list)
+
+Пример использования:
+@begin[lang=lisp](code)
+ (print-universal-date-time (get-universal-time) :stream nil) => \"2019-12-04_17:16:58\"
+@end(code)
+"
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (cond
@@ -81,16 +117,53 @@ is replaced with replacement"
 (export 'print-universal-time)
 
 (defun print-universal-time (u-time &key (stream t) (ss t) )
+  "@b(Описание:)
+
+print-universal-time выводит в поток @b(stream) строковое представление времени. 
+
+@b(Параметры:)
+@begin(list)
+ @item(@b(u-time) - время, заданное в универсальном формате;)
+ @item(@b(stream) - поток, в который выводится время.
+Если @b(nil) - вывод осуществляется в строку.
+Если @b(t)   - вывод на стандартный вывод;)
+ @item(@b(ss) - отвечает за отображение секунд.)
+@end(list)
+
+Пример использования:
+@begin[lang=lisp](code)
+ (print-universal-time (get-universal-time) :stream nil) => \"17:07:03\"
+@end(code)
+"
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
     (cond
       (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
-      (t  (format stream "~2,'0d:~2,'0d" time-hour time-minute)))))
+      (t  (format stream "~2,'0d:~2,'0d"        time-hour time-minute)))))
 
 (export 'print-universal-date)
 
-(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *mon-ru*))
+(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *default-month-language*))
+  "@b(Описание:)
+
+print-universal-time выводит в поток @b(stream) строковое представление времени. 
+
+@b(Параметры:)
+@begin(list)
+ @item(@b(u-time) - время, заданное в универсальном формате;)
+ @item(@b(stream) - поток, в который выводится время.
+Если @b(nil) - вывод осуществляется в строку.
+Если @b(t)   - вывод на стандартный вывод;)
+ @item(@b(ss) - отвечает за отображение секунд.)
+@end(list)
+
+Пример использования:
+@begin[lang=lisp](code)
+ (print-universal-date (get-universal-time) :stream nil) => \"2019-12-04\"
+ (print-universal-date (get-universal-time) :stream nil :year nil :day nil) 
+@end(code)
+"
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
@@ -116,6 +189,8 @@ is replaced with replacement"
 
 (export 'map-to-list)
 (defun map-to-list (sequence)
+  "@b(Описание:)
+map-to-list выполняет преобразование последовательности @b(sequence) в список."
   (map 'list #'(lambda (el) el) sequence))
 
 (export 'make-populated-hash-table)
@@ -123,6 +198,9 @@ is replaced with replacement"
 					     (key-function    #'(lambda (el) el))
 					     (value-function  #'(lambda (el) el))
 					     (test #'equal))
+  "@b(Описание:)
+make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
+  
   (reduce
    #'(lambda (ht el)
        (setf (gethash (funcall key-function el) ht) (funcall value-function el))
@@ -131,7 +209,9 @@ is replaced with replacement"
    :initial-value (make-hash-table :test test)))
 
 (export '*omit-nulls*)
-(defparameter *omit-nulls* t)
+(defparameter *omit-nulls* t
+  "Используется в функции @b(split) для определеия характера исключения|неисключения
+пустых подстрок при разделенни строки на подстроки.")
 
 (export 'split)
 (defun split (char-bag string &key (omit-nulls *omit-nulls*))
@@ -144,7 +224,7 @@ is replaced with replacement"
 
 Пример использования:
 @begin[lang=lisp](code)
- (split-m \"; \" \" 1111 ; +5550650456540; 55\" )
+ (split \"; \" \" 1111 ; +5550650456540; 55\" ) => (\"1111\" \"+5550650456540\" \"55\")
 @end(code)
 "
   (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
@@ -198,3 +278,5 @@ is replaced with replacement"
   (cond
     ((uiop:getenv x))
     (t default)))
+
+
