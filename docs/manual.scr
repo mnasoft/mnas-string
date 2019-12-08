@@ -11,6 +11,12 @@ MNAS-string содержит в своем составе функции
 @end(section)
 
 @begin(section)
+@title(Примеры использования Scribe)
+
+@end(section)
+
+
+@begin(section)
 @title(Функции)
 @cl:with-package[name="mnas-string"](
 	@cl:doc(function getenv)
@@ -34,7 +40,7 @@ MNAS-string содержит в своем составе функции
 @end(section)
 
 @begin(section)
-@title(Функции вывода даты и времени)
+@title(Функции печати даты и времени)
 @cl:with-package[name="mnas-string"](
 	@cl:doc(function print-universal-date)
 	@cl:doc(function print-universal-date-time)
