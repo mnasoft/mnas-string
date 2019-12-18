@@ -1,5 +1,15 @@
 This is the stub README.txt for the "mnas-string" project.
 
+#+BEGIN_SRC sh
+git remote -v
+#+END_SRC
+
+#+RESULTS:
+| n132866 | //n132866/home/_git/mnas-string.git (fetch) |
+| n132866 | //n132866/home/_git/mnas-string.git (push)  |
+| pi      | git@pi:/opt/git/mnas-string.git (fetch)     |
+| pi      | git@pi:/opt/git/mnas-string.git (push)      |
+
 * Codex
 http://commondoc.github.io/codex/docs/tutorial.html
 
