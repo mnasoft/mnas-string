@@ -65,22 +65,23 @@
 
 (progn (init-cir-gr->en) (init-space-cir-gr->en))
 
-(export 'translit)
-(defun translit (str &key (ht *cir-gr->en*))
-  "Выполняет транслитерацию (замену) символов, находящихся в строке str
-используя для преобразования хеш-таблицу ht.
+@export
+@annot.doc:doc
+"@b(Описание:) translit выполняет транслитерацию (замену) символов, 
+находящихся в строке str используя для преобразования хеш-таблицу ht.
 
 В качестве таблиц перобразования (хеш-таблицы ht) рекомендуется использовать:
 @begin(list)
  @item(*cir-gr->en* - с пробельными символами;)
  @item(*space-cir-gr->en* - с исключением пробельных символов;)
 @end(list)
-Пример использования:
+@b(Пример использования:)
 @begin[lang=lisp](code)
  (translit \"Что это?\" :ht *cir-gr->en*)       => \"CHto eto?\"
  (translit \"Что это?\" :ht *space-cir-gr->en*) => \"CHto-eto?\"
 @end(code)
 "
+(defun translit (str &key (ht *cir-gr->en*))
   (declare (type string str) )
   (let ((rez nil))
     (mapc

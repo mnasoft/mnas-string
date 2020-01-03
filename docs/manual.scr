@@ -57,7 +57,7 @@ MNAS-string содержит в своем составе функции
 @end(section)
 
 @begin(section)
-@title(Variables)
+@title(Глобальные переменные)
 
 @cl:with-package[name="mnas-string"](
 @cl:doc(variable *cir-gr->en*)

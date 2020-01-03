@@ -2,11 +2,13 @@
 
 (in-package #:mnas-string)
 
-(export 'string-replace-all)
+(annot:enable-annot-syntax)
 
-(defun string-replace-all (string part replacement &key (test #'char=))
-  "Returns a new string in which all the occurences of the part 
+@export
+@annot.doc:doc
+"Returns a new string in which all the occurences of the part 
 is replaced with replacement"
+(defun string-replace-all (string part replacement &key (test #'char=))
   (with-output-to-string (out)
     (loop with part-length = (length part)
        for old-pos = 0 then (+ pos part-length)
@@ -19,17 +21,18 @@ is replaced with replacement"
        when pos do (write-string replacement out)
        while pos)))
 
-(export 'string-mpattern-to-spattern)
+@export
+@annot.doc:doc
+"@b(Описание:) @b(string-mpattern-to-spattern) исключает из строки 
+str повторяющиеся подстроки pattern сводя их количество до одного включения.
 
-(defun string-mpattern-to-spattern (pattern str)
-  "Исключает из строки str повторяющиеся подстроки pattern сводя их количество до одного включения
 @b(Пример использования:)
 @begin[lang=lisp](code)
  (string-mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\") 
  => \"Наш самолет осуществит посадку в городе Baden.\"
 @end(code)
-
 "
+(defun string-mpattern-to-spattern (pattern str)
   (do
    ((str1
      (string-replace-all str (concatenate 'string pattern pattern) pattern)
@@ -37,75 +40,81 @@ is replaced with replacement"
    ((= (length str1) (length str)) str1)
     (setf str str1)))
 
-(export 'string-prepare-to-query)
+@export
+@annot.doc:doc
+"@b(Описание:) string-prepare-to-query подготавливает строку, 
+введенную пользователем, для участия в запросе.
 
-(defun string-prepare-to-query(str)
-  "Подготавливает строку, введенную пользователем, для участия в запросе
-Подготовка заключется в отсечении начальных и конечных пробелов и замене оставшихся пробелов на знаки %"
+Подготовка заключется в отсечении начальных и конечных пробелов и
+ замене оставшихся пробелов на знаки %"
+(defun string-prepare-to-query (str)
   (substitute #\% #\Space (concatenate 'string "%" (string-mpattern-to-spattern " " (string-trim " " str)) "%")))
 
-(export 'read-from-string-number)
+@export
+@annot.doc:doc
+"@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
 
-(defun read-from-string-number (str &optional (default 0.0))
-  "@b(Описание:)
-
- read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
 При считываии используется стандартный считыватель Common Lisp.
 "
+(defun read-from-string-number (str &optional (default 0.0))
   (let ((val (read-from-string str)))
     (cond
       ((numberp val) val)
       (t default))))
 
-(export 'read-number-from-string)
+@export
+@annot.doc:doc
+" @b(Описание:) read-number-from-string выполняет чтение из строки @b(str) вещественного числа. 
 
-(defun read-number-from-string (str &optional (default 0.0))
-"@b(Описание:)
+Если число не удалось считать - возвращается default. 
 
-read-number-from-string выполняет чтение из строки @b(str) вещественного числа.
-Если число не удалось считать - возвращается default.
-Примеры использования:
+ @b(Пример использования:)
+
 @begin[lang=lisp](code)
  (read-number-from-string \"3.14\")
  (read-number-from-string \"3,14\")
 @end(code)
 "
+(defun read-number-from-string (str &optional (default 0.0))
   (let ((val (cl-ppcre:scan-to-strings "(([+-]?\\d+)[.,]?)\\d*([ed][+-]?\\d+)?" str))) 
     (cond
       ((stringp val) (read-from-string (string-replace-all val "," "."))) 
       (t default))))
 
-(export 'string-add-prefix)
+@export
+@annot.doc:doc
+" @b(Описание:) string-add-prefix 
 
-(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
-  "Пример использования
-;;;;(string-add-prefix \"45\" :overal-length 10 :prefix \"-\" )
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ (string-add-prefix \"45\" :overal-length 10 :prefix \"-\" )
+@end(code)
 "
+(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
   (dotimes (i (- overal-length (length str)) str)
     (setf str (concatenate 'string prefix str))))
 
-(export 'print-universal-date-time)
+@export
+@annot.doc:doc
+"@b(Описание:) print-universal-date-time выводит в поток @b(stream) 
+строковое представление времени. 
 
-(defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
-    "@b(Описание:)
-
-print-universal-date-time выводит в поток @b(stream) строковое представление времени. 
-
-@b(Параметры:)
+ @b(Параметры:)
 @begin(list)
  @item(@b(u-time) - время, заданное в универсальном формате;)
  @item(@b(stream) - поток, в который выводится время.
 Если @b(nil) - вывод осуществляется в строку.
-Если @b(t)   - вывод на стандартный вывод;)
+Если @b(t)   - вывод на стандартный вывод.)
  @item(@b(year) - отвечает за отображение года.) 
  @item(@b(ss)   - отвечает за отображение секунд.)
 @end(list)
+ @b(Пример использования:)
 
-Пример использования:
 @begin[lang=lisp](code)
  (print-universal-date-time (get-universal-time) :stream nil) => \"2019-12-04_17:16:58\"
 @end(code)
 "
+(defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (cond
@@ -114,12 +123,10 @@ print-universal-date-time выводит в поток @b(stream) строков
       ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d:~2,'0d"        date-year date-month date-day time-hour time-minute))
       (t                    (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d"                     date-month date-day time-hour time-minute)))))
 
-(export 'print-universal-time)
-
-(defun print-universal-time (u-time &key (stream t) (ss t) )
-  "@b(Описание:)
-
-print-universal-time выводит в поток @b(stream) строковое представление времени. 
+@export
+@annot.doc:doc
+"@b(Описание:) print-universal-time выводит в поток @b(stream) строковое
+представление времени. 
 
 @b(Параметры:)
 @begin(list)
@@ -130,11 +137,12 @@ print-universal-time выводит в поток @b(stream) строковое 
  @item(@b(ss) - отвечает за отображение секунд.)
 @end(list)
 
-Пример использования:
+ @b(Пример использования:)
 @begin[lang=lisp](code)
  (print-universal-time (get-universal-time) :stream nil) => \"17:07:03\"
 @end(code)
 "
+(defun print-universal-time (u-time &key (stream t) (ss t) )
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
@@ -142,12 +150,10 @@ print-universal-time выводит в поток @b(stream) строковое 
       (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
       (t  (format stream "~2,'0d:~2,'0d"        time-hour time-minute)))))
 
-(export 'print-universal-date)
-
-(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *default-month-language*))
-  "@b(Описание:)
-
-print-universal-time выводит в поток @b(stream) строковое представление времени. 
+@export
+@annot.doc:doc
+"@b(Описание:) print-universal-date выводит в поток @b(stream) 
+строковое представление даты. 
 
 @b(Параметры:)
 @begin(list)
@@ -161,9 +167,10 @@ print-universal-time выводит в поток @b(stream) строковое 
 Пример использования:
 @begin[lang=lisp](code)
  (print-universal-date (get-universal-time) :stream nil) => \"2019-12-04\"
- (print-universal-date (get-universal-time) :stream nil :year nil :day nil) 
+ (print-universal-date (get-universal-time) :stream nil :year nil :day nil) => \"Январь\"
 @end(code)
 "
+(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *default-month-language*))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
@@ -173,10 +180,11 @@ print-universal-time выводит в поток @b(stream) строковое 
       ((and (not year)     day ) (format stream "~2,'0d-~2,'0d"    date-month date-day))
       ((and (not year)(not day)) (format stream "~A" (gethash date-month month-language))))))
 
-(export 'print-universal-date-time-fname)
-
+@export
+@annot.doc:doc
+"Выводит дату и время в пригодном для формирования имени файла формате"
 (defun print-universal-date-time-fname (u-time &key (stream t) (year t) (ss t))
-  "Выводит дату и время в пригодном для формирования имени файла формате"
+
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (cond
@@ -187,10 +195,17 @@ print-universal-time выводит в поток @b(stream) строковое 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'map-to-list)
+@export
+@annot.doc:doc
+"@b(Описание:) map-to-list выполняет преобразование последовательности @b(sequence)
+в список.
+
+@b(Равнозначно следующему:)
+@begin[lang=lisp](code)
+ (map 'list #'(lambda (el) el) sequence)
+@end(code)
+"
 (defun map-to-list (sequence)
-  "@b(Описание:)
-map-to-list выполняет преобразование последовательности @b(sequence) в список."
   (map 'list #'(lambda (el) el) sequence))
 
 (export 'make-populated-hash-table)

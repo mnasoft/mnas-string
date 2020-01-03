@@ -2,19 +2,21 @@
 
 (in-package #:mnas-string)
 
-(export '*mon-ru*)
+(annot:enable-annot-syntax)
+
+@export
 (defparameter  *mon-ru* (make-hash-table)
   "Хеш-таблица, содержащая наименования месяцев на русском языке.
 Пример использования:
  (gethash 12 *mon-ru*)")
 
-(export '*mon-ua*)
+@export
 (defparameter  *mon-ua* (make-hash-table)
   "Хеш-таблица, содержащая наименования месяцев на украинском языке.
 Пример использования:
  (gethash 12 *mon-ua*)")
 
-(export '*mon-en*)
+@export
 (defparameter  *mon-en* (make-hash-table)
   "Хеш-таблица, содержащая наименования месяцев на английском языке.
 Пример использования:
@@ -34,6 +36,6 @@
 
 (init-month-names)
 
-(export '*default-month-language*)
+@export
 (defparameter *default-month-language* *mon-ru*
   "Язык по-умолчанию для вывода наименования месяца.")
