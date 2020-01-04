@@ -2,6 +2,8 @@
 
 (in-package #:mnas-string)
 
+(annot:enable-annot-syntax)
+
 (export '*cir-gr->en*)
 (export '*space-cir-gr->en*)
 
