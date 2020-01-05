@@ -2,6 +2,20 @@
 
 (in-package #:mnas-string)
 
+(require :mnas-graph)
+(require :mnas-package)
+
+(defparameter *docs-path* "~/quicklisp/local-projects/mnas/mnas-string/docs/")
+(defparameter *pkg*       :mnas-string)
+
+(progn
+  (mnas-package:package-system-graph *pkg* :fname "package-system-graph" :fpath *docs-path* :out-type "png" :viewer nil) 
+  (mnas-package:package-call-graph   *pkg* :fname "package-call-graph"   :fpath *docs-path* :out-type "png" :viewer nil)
+  (mnas-package:package-class-graph  *pkg* :fname "package-class-graph"  :fpath *docs-path* :out-type "png" :viewer nil)
+  (mnas-package:package-symbol-graph *pkg* :fname "package-symbol-graph" :fpath *docs-path* :out-type "png" :viewer nil))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defparameter *trd-files*
   (uiop:directory-files
    (concatenate 'string (getenv "MSYS2_HOME" "") "/home/namatv/org/knil-2/trd/DG80/") #P"*.trd"))

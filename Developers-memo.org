@@ -51,3 +51,32 @@ git remote add gitlab.com git@gitlab.com:mnas/mnas-string.git
  done
  #+END_SRC
 
+* Генерирование документации при помощи Codex
+
+ http://commondoc.github.io/codex/docs/tutorial.html
+
+** Пример генерирования документации
+#+BEGIN_SRC lisp
+ (require :codex)
+ (codex:document :mnas-string)
+#+END_SRC
+
+** Codex
+
+** Belows is the full list of API documentation types:
+
+ - function;
+ - macro;
+ - generic;
+ - method;
+ - variable;
+ - struct;
+ - class;
+ - condition;
+ - type;
+ - cfunction;
+ - ctype;
+ - cstruct;
+ - cunion;
+ - cenum;
+ - cbitfield

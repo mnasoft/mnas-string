@@ -9,33 +9,3 @@ git remote -v
 | n132866 | //n132866/home/_git/mnas-string.git (push)  |
 | pi      | git@pi:/opt/git/mnas-string.git (fetch)     |
 | pi      | git@pi:/opt/git/mnas-string.git (push)      |
-
-* Codex
-http://commondoc.github.io/codex/docs/tutorial.html
-
-** Пример генерирования документации
-
-#+BEGIN_SRC lisp
-(codex:document :mnas-string)
-#+END_SRC
-
-#+RESULTS:
-: NIL
-
-** Belows is the full list of API documentation types:
-
-- function;
-- macro;
-- generic;
-- method;
-- variable;
-- struct;
-- class;
-- condition;
-- type;
-- cfunction;
-- ctype;
-- cstruct;
-- cunion;
-- cenum;
-- cbitfield
