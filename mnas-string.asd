@@ -5,7 +5,7 @@
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
-  :depends-on (#:cl-ppcre #:codex #:cl-annot)
+  :depends-on (#:cl-ppcre  #:cl-annot) ; #:codex
   :components ((:file "package")
 	       (:file "mnas-string-month"            :depends-on ("package"))
 	       (:file "mnas-string"                  :depends-on ("package" "mnas-string-month"))
@@ -15,4 +15,4 @@
 	       (:file "demo"                         :depends-on ("package" "mnas-string-sort-designation" "mnas-string-translit"))
 	       ))
 
-(setf sb-impl::*default-external-format* :utf8)
+
