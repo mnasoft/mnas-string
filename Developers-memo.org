@@ -12,10 +12,16 @@
 pwd
 #+END_SRC
 
+#+RESULTS: pwd
+: /home/namatv/quicklisp/local-projects/mnas/mnas-string
+
 #+name: basename-pwd
 #+BEGIN_SRC shell
 basename `pwd`
 #+END_SRC
+
+#+RESULTS: basename-pwd
+: mnas-string
 
 #+BEGIN_SRC lisp :var pwd=pwd :var basename-pwd=basename-pwd
   ;;;; (require :codex)
@@ -23,7 +29,11 @@ basename `pwd`
   ;;;;
   ;;;; (require :mnas-string)
   (let ((pkg :mnas-string)
-	(fpath (concatenate 'string pwd "/docs/build/" basename-pwd "/html/")))
+	(fpath (concatenate
+		'string
+		(cond ((uiop:getenv "MSYS_HOME")) (t ""))
+		pwd "/docs/build/"
+		basename-pwd "/html/")))
     (codex:document pkg)
     (mnas-package:package-call-graph   pkg :out-type "png" :viewer nil :fpath fpath :fname "call-graph")
     (mnas-package:package-system-graph pkg :out-type "png" :viewer nil :fpath fpath :fname "system-graph")
@@ -33,5 +43,5 @@ basename `pwd`
 
 #+RESULTS:
 : #GRAPH(VC=23 RC=26)
-: (T:"translit" T:"init-month-names" T:"split" T:"print-universal-date" T:"init-cir-gr->en" T:"init-space-cir-gr->en" T:"*cir-gr->en*" T:"*mon-ru*" T:"*space-cir-gr->en*" T:"*mon-en*" T:"*mon-ua*" T:"*omit-nulls*" T:"*default-month-language*" T:"*cyrillic->english-small-letter*" T:"*cyrillic-capital-letter*" T:"*cyrillic-small-letter*" T:"*greek->english-small-letter*" T:"*cyrillic->english-capital-letter*" T:"*greek-capital-letter*" T:"*space*" T:"*greek->english-capital-letter*" T:"*minus*" T:"*greek-small-letter*" )
-: ((T:"translit"->T:"*cir-gr->en*") (T:"init-cir-gr->en"->T:"*cir-gr->en*") (T:"init-month-names"->T:"*mon-ru*") (T:"init-space-cir-gr->en"->T:"*space-cir-gr->en*") (T:"init-month-names"->T:"*mon-en*") (T:"init-month-names"->T:"*mon-ua*") (T:"split"->T:"*omit-nulls*") (T:"print-universal-date"->T:"*default-month-language*") (T:"init-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-cir-gr->en"->T:"*cyrillic-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-capital-letter*") (T:"init-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-space-cir-gr->en"->T:"*space*") (T:"init-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*minus*") (T:"init-cir-gr->en"->T:"*greek-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek-small-letter*") ))
+: (T:"split" T:"init-month-names" T:"translit" T:"print-universal-date" T:"init-cir-gr->en" T:"init-space-cir-gr->en" T:"*mon-ru*" T:"*omit-nulls*" T:"*mon-en*" T:"*mon-ua*" T:"*space-cir-gr->en*" T:"*cir-gr->en*" T:"*default-month-language*" T:"*cyrillic->english-capital-letter*" T:"*greek->english-capital-letter*" T:"*greek-capital-letter*" T:"*cyrillic->english-small-letter*" T:"*greek-small-letter*" T:"*space*" T:"*cyrillic-small-letter*" T:"*greek->english-small-letter*" T:"*minus*" T:"*cyrillic-capital-letter*" )
+: ((T:"init-month-names"->T:"*mon-ru*") (T:"split"->T:"*omit-nulls*") (T:"init-month-names"->T:"*mon-en*") (T:"init-month-names"->T:"*mon-ua*") (T:"init-space-cir-gr->en"->T:"*space-cir-gr->en*") (T:"translit"->T:"*cir-gr->en*") (T:"init-cir-gr->en"->T:"*cir-gr->en*") (T:"print-universal-date"->T:"*default-month-language*") (T:"init-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-cir-gr->en"->T:"*greek-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek-small-letter*") (T:"init-space-cir-gr->en"->T:"*space*") (T:"init-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*minus*") (T:"init-cir-gr->en"->T:"*cyrillic-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-capital-letter*") ))
