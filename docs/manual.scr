@@ -39,6 +39,7 @@ MNAS-string содержит в своем составе функции
 	@cl:doc(function string-mpattern-to-spattern)
 	@cl:doc(function string-prepare-to-query)
 	@cl:doc(function string-replace-all)
+	@cl:doc(function replace-all)
 	@cl:doc(function translit)
 	@cl:doc(function trd-rename))
 @end(section)
