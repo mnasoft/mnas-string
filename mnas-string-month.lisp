@@ -31,18 +31,18 @@
 ")
 
 @export
-(defparameter  *mon-en* (make-hash-table)
-  "@b(Описание:) *mon-en* - хеш-таблица, которая содержит названия месяцев на английском языке. 
+@annot.doc:doc
+"@b(Описание:) *mon-en* - хеш-таблица, которая содержит названия месяцев на английском языке. 
 
-Ключами являются порядковые номера месяцев от 1 до 12.
+ Ключами являются порядковые номера месяцев от 1 до 12.
 
  @b(Пример использования:)
 @begin[lang=lisp](code)
- (gethash 1 *mon-en*)  => \"Січень\", T
- (gethash 12 *mon-en*) => \"Грудень\", T
+ (gethash 1 *mon-en*)  => \"January\" ,T
+ (gethash 12 *mon-en*) => \"December\" ,T
  @end(code)
 "
-  )
+(defparameter  *mon-en* (make-hash-table))
 
 @annot.doc:doc
 "init-month-names выполняет инициализацию хеш-таблиц, содержащих наименования месяцев."
@@ -60,5 +60,12 @@
 (init-month-names)
 
 @export
-(defparameter *default-month-language* *mon-ru*
-  "@b(Описание:) *default-month-language* язык по-умолчанию для наименования месяца.")
+@annot.doc:doc
+"@b(Описание:) *default-month-language* язык по-умолчанию для наименования месяца.
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ (gethash 1 *mon-en*)
+@end(code)
+"
+(defparameter *default-month-language* *mon-ru*)

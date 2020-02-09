@@ -1,3 +1,16 @@
+print-universal-date
+*default-month-language*
+replace-all
+*omit-nulls*
+*mon-ua*
+make-populated-hash-table
+string-add-prefix
+string-mpattern-to-spattern
+read-from-string-number
+map-to-list
+*mon-en*
+*space-cir-gr->en*
+
 @begin(section)
 @title(Обзор)
 

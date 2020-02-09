@@ -4,6 +4,7 @@
 
 (annot:enable-annot-syntax)
 
+@export
 @annot.doc:doc
 "Returns a new string in which all the occurences of the part 
 is replaced with replacement"
@@ -224,14 +225,14 @@ str повторяющиеся подстроки pattern сводя их кол
 (defun map-to-list (sequence)
   (map 'list #'(lambda (el) el) sequence))
 
-(export 'make-populated-hash-table)
+@export
+@annot.doc:doc
+"@b(Описание:)
+make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
 (defun make-populated-hash-table (sequence &key
 					     (key-function    #'(lambda (el) el))
 					     (value-function  #'(lambda (el) el))
 					     (test #'equal))
-  "@b(Описание:)
-make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
-  
   (reduce
    #'(lambda (ht el)
        (setf (gethash (funcall key-function el) ht) (funcall value-function el))
@@ -239,14 +240,15 @@ make-populated-hash-table создает хеш-таблицу и наполня
    sequence
    :initial-value (make-hash-table :test test)))
 
-(export '*omit-nulls*)
-(defparameter *omit-nulls* t
-  "Используется в функции @b(split) для определеия характера исключения|неисключения
-пустых подстрок при разделенни строки на подстроки.")
+@export
+@annot.doc:doc
+"Используется в функции @b(split) для определеия характера исключения|неисключения
+пустых подстрок при разделенни строки на подстроки."
+(defparameter *omit-nulls* t)
 
-(export 'split)
-(defun split (char-bag string &key (omit-nulls *omit-nulls*))
-  "@b(Описание:)
+@export
+@annot.doc:doc
+"@b(Описание:)
 
  @b(split) разделяет строку @b(string) на подстроки.
 
@@ -265,6 +267,7 @@ make-populated-hash-table создает хеш-таблицу и наполня
  (split \"; \" \" 1111 ; +5550650456540; 55\" ) => (\"1111\" \"+5550650456540\" \"55\")
 @end(code)
 "
+(defun split (char-bag string &key (omit-nulls *omit-nulls*))
   (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
 	(rez nil)
 	(rezult))
@@ -285,16 +288,22 @@ make-populated-hash-table создает хеш-таблицу и наполня
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'trd-rename)
-(defun trd-rename (f-name)
-  "Пример использования:
- (trd-rename \"150819_082056\")
+@export
+@annot.doc:doc
+"@b(Описание:) trd-rename выполняет преобразование имени файла, заданого в формате
+DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ (trd-rename \"150819_082056.trd\") => 2019-08-15_082056.trd
+@end(code)
 "
-  (let* ((ddmmyy_hhmmss_ext (split "_" f-name)) dd mon yy hh mm ss)
-    (assert (= 2 (length ddmmyy_hhmmss_ext)))
+(defun trd-rename (f-name &optional (ext "trd"))
+  (let* ((ddmmyy_hhmmss_ext (split "_." f-name)) dd mon yy hh mm ss)
+    (assert (= 3 (length ddmmyy_hhmmss_ext)))
     (assert (= 6 (length (first  ddmmyy_hhmmss_ext))))
     (assert (= 6 (length (second ddmmyy_hhmmss_ext))))
-    (assert (string= "trd" (third ddmmyy_hhmmss_ext)))
+    (assert (string= ext (third ddmmyy_hhmmss_ext)))
     (setf dd  (parse-integer (subseq (first  ddmmyy_hhmmss_ext) 0 2)))
     (setf mon (parse-integer (subseq (first  ddmmyy_hhmmss_ext) 2 4)))
     (setf yy  (parse-integer (subseq (first  ddmmyy_hhmmss_ext) 4 6)))
@@ -303,18 +312,19 @@ make-populated-hash-table создает хеш-таблицу и наполня
     (setf mm (parse-integer (subseq (second  ddmmyy_hhmmss_ext) 2 4)))
     (setf ss (parse-integer (subseq (second  ddmmyy_hhmmss_ext) 4 6)))   
     (values dd mon yy hh mm ss ddmmyy_hhmmss_ext)
-    (format nil "~4d-~2,'0d-~2,'0d_~2,'0d~2,'0d~2,'0d" (+ 2000 yy) mon dd  hh mm ss)))
+    (format nil "~4d-~2,'0d-~2,'0d_~2,'0d~2,'0d~2,'0d.~a" (+ 2000 yy) mon dd  hh mm ss ext)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'getenv)
-(defun getenv (x &optional (default ""))
-  "@b(Пример использования:)
+@export
+@annot.doc:doc
+"@b(Пример использования:)
 @begin[lang=lisp](code) 
  (getenv \"SBCL_HOME\") 
  (getenv \"PATH\")
 @end(code)
 "
+(defun getenv (x &optional (default ""))
   (cond
     ((uiop:getenv x))
     (t default)))
