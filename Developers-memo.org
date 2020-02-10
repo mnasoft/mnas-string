@@ -21,6 +21,7 @@ basename `pwd`
 #+RESULTS: basename-pwd
 : mnas-string
 
+#+name:make-graph
 #+BEGIN_SRC lisp :var pwd=pwd :var basename-pwd=basename-pwd
   ;;;; (require :codex)
   ;;;; (require :mnas-package)
@@ -43,3 +44,10 @@ basename `pwd`
 : #GRAPH(VC=23 RC=26)
 : (T:"translit" T:"init-month-names" T:"split" T:"print-universal-date" T:"init-cir-gr->en" T:"init-space-cir-gr->en" T:"*cir-gr->en*" T:"*mon-ru*" T:"*space-cir-gr->en*" T:"*mon-en*" T:"*mon-ua*" T:"*omit-nulls*" T:"*default-month-language*" T:"*cyrillic->english-small-letter*" T:"*cyrillic-capital-letter*" T:"*cyrillic-small-letter*" T:"*greek->english-small-letter*" T:"*cyrillic->english-capital-letter*" T:"*greek-capital-letter*" T:"*space*" T:"*greek->english-capital-letter*" T:"*minus*" T:"*greek-small-letter*" )
 : ((T:"translit"->T:"*cir-gr->en*") (T:"init-cir-gr->en"->T:"*cir-gr->en*") (T:"init-month-names"->T:"*mon-ru*") (T:"init-space-cir-gr->en"->T:"*space-cir-gr->en*") (T:"init-month-names"->T:"*mon-en*") (T:"init-month-names"->T:"*mon-ua*") (T:"split"->T:"*omit-nulls*") (T:"print-universal-date"->T:"*default-month-language*") (T:"init-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-small-letter*") (T:"init-cir-gr->en"->T:"*cyrillic-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-capital-letter*") (T:"init-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic-small-letter*") (T:"init-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-small-letter*") (T:"init-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*cyrillic->english-capital-letter*") (T:"init-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek-capital-letter*") (T:"init-space-cir-gr->en"->T:"*space*") (T:"init-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*greek->english-capital-letter*") (T:"init-space-cir-gr->en"->T:"*minus*") (T:"init-cir-gr->en"->T:"*greek-small-letter*") (T:"init-space-cir-gr->en"->T:"*greek-small-letter*") ))
+* Публикация
+#+name: copy-to-n133619
+#+BEGIN_SRC shell :var make-graph=make-graph
+cp -rf ./docs/build/* "\\\\n133619\\home\\_namatv\\public_html\\Site\\Development\\Common-Lisp-Programs\\"
+#+END_SRC
+
+#+RESULTS: copy-to-n133619
