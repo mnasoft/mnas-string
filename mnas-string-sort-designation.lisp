@@ -2,8 +2,6 @@
 
 (in-package #:mnas-string)
 
-(annot:enable-annot-syntax)
-
 ;;; "mnas-string" goes here. Hacks and glory await!
 
 (defun zm-ob-split (str) (split "-" str ))
@@ -153,9 +151,9 @@
 	       (zm-number str)))
 
 
-@export
-@annot.doc:doc
-" @b(Описание:) sort-designation-zm Выполняет сортировку обозначений деталей
+(export 'sort-designation-zm)
+(defun sort-designation-zm (seq)
+  " @b(Описание:) sort-designation-zm Выполняет сортировку обозначений деталей
  и сборочных единиц для формирования спецификации.
 
  @b(Пример использования:)
@@ -167,5 +165,4 @@
  (sort-designation-zm *ob*)
 @end(code)
 "
-(defun sort-designation-zm (seq)
   (sort seq #'string< :key #'zm-key))

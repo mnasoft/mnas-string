@@ -2,11 +2,6 @@
 
 (in-package #:mnas-string)
 
-(annot:enable-annot-syntax)
-
-(export '*cir-gr->en*)
-(export '*space-cir-gr->en*)
-
 (defparameter *space* " .()")
 
 (defparameter *minus* "-+!!")
@@ -26,13 +21,15 @@
 (defparameter *cyrillic->english-capital-letter* '("IO" "A" "B"  "V" "G" "D" "E"  "ZH" "Z" "I" "IY" "K" "L" "M" "N" "O" "P" "R" "S" "T" "U" "F" "H" "TS" "CH" "SH" "SHCH" "_" "Y" "-" "E" "YU" "YA"))
 
 (defparameter *cyrillic->english-small-letter*   '("io" "a" "b"  "v" "g" "d" "e"  "zh" "z" "i" "iy" "k" "l" "m" "n" "o" "p" "r" "s" "t" "u" "f" "h" "ts" "ch" "sh" "shch" "_" "y" "-" "e" "yu" "ya"))
-  
+
+(export '*cir-gr->en*)
 (defparameter *cir-gr->en* (make-hash-table)
   "Хеш-таблица. 
 
 Служит для преобразования кириллических и греческих символов
 в английские символы.")
 
+(export '*space-cir-gr->en*)
 (defparameter *space-cir-gr->en* (make-hash-table)
     "Хеш-таблица. 
 
@@ -67,8 +64,8 @@
 
 (progn (init-cir-gr->en) (init-space-cir-gr->en))
 
-@export
-@annot.doc:doc
+(export 'translit )
+(defun translit (str &key (ht *cir-gr->en*))
 "@b(Описание:) translit выполняет транслитерацию (замену) символов, 
 находящихся в строке str используя для преобразования хеш-таблицу ht.
 
@@ -83,7 +80,6 @@
  (translit \"Что это?\" :ht *space-cir-gr->en*) => \"CHto-eto?\"
 @end(code)
 "
-(defun translit (str &key (ht *cir-gr->en*))
   (declare (type string str) )
   (let ((rez nil))
     (mapc

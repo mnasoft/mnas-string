@@ -2,9 +2,7 @@
 
 (in-package #:mnas-string)
 
-(annot:enable-annot-syntax)
-
-@export
+(export '*mon-ru*)
 (defparameter  *mon-ru* (make-hash-table)
   "@b(Описание:) *mon-ru* - хеш-таблица, которая содержит названия месяцев на русском языке.
 
@@ -17,7 +15,7 @@
  @end(code)
 ")
 
-@export
+(export '*mon-ua*)
 (defparameter  *mon-ua* (make-hash-table)
   "@b(Описание:) *mon-ua* - хеш-таблица, которая содержит названия месяцев на украинском языке.
 
@@ -30,9 +28,9 @@
  @end(code)
 ")
 
-@export
-@annot.doc:doc
-"@b(Описание:) *mon-en* - хеш-таблица, которая содержит названия месяцев на английском языке. 
+(export '*mon-en*)
+(defparameter *mon-en* (make-hash-table)
+  "@b(Описание:) *mon-en* - хеш-таблица, которая содержит названия месяцев на английском языке. 
 
  Ключами являются порядковые номера месяцев от 1 до 12.
 
@@ -41,12 +39,10 @@
  (gethash 1 *mon-en*)  => \"January\" ,T
  (gethash 12 *mon-en*) => \"December\" ,T
  @end(code)
-"
-(defparameter  *mon-en* (make-hash-table))
+")
 
-@annot.doc:doc
-"init-month-names выполняет инициализацию хеш-таблиц, содержащих наименования месяцев."
 (defun init-month-names ()
+"init-month-names выполняет инициализацию хеш-таблиц, содержащих наименования месяцев."
   (loop
      :for i :from 1 :upto 12
      :for m-ru :in '("Январь"  "Февраль"   "Март"    "Апрель"  "Май"     "Июнь"    "Июль"   "Август"  "Сентябрь"  "Октябрь" "Ноябрь"   "Декабрь")
@@ -59,13 +55,13 @@
 
 (init-month-names)
 
-@export
-@annot.doc:doc
-"@b(Описание:) *default-month-language* язык по-умолчанию для наименования месяца.
+(export '*default-month-language*)
+
+(defparameter *default-month-language* *mon-ru*
+  "@b(Описание:) *default-month-language* язык по-умолчанию для наименования месяца.
 
  @b(Пример использования:)
 @begin[lang=lisp](code)
  (gethash 1 *mon-en*)
 @end(code)
-"
-(defparameter *default-month-language* *mon-ru*)
+")

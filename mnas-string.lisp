@@ -2,30 +2,10 @@
 
 (in-package #:mnas-string)
 
-(annot:enable-annot-syntax)
-
-@export
-@annot.doc:doc
-"Returns a new string in which all the occurences of the part 
-is replaced with replacement"
+(export 'string-replace-all )
 (defun string-replace-all (string part replacement &key (test #'char=))
-  (with-output-to-string (out)
-    (loop with part-length = (length part)
-       for old-pos = 0 then (+ pos part-length)
-       for pos = (search part string
-			 :start2 old-pos
-			 :test test)
-       do (write-string string out
-			:start old-pos
-			:end (or pos (length string)))
-       when pos do (write-string replacement out)
-       while pos)))
-
-@export
-@annot.doc:doc
 "Returns a new string in which all the occurences of the part 
 is replaced with replacement"
-(defun replace-all (string part replacement &key (test #'char=))
   (with-output-to-string (out)
     (loop with part-length = (length part)
        for old-pos = 0 then (+ pos part-length)
@@ -38,8 +18,24 @@ is replaced with replacement"
        when pos do (write-string replacement out)
        while pos)))
 
-@export
-@annot.doc:doc
+(export 'replace-all )
+(defun replace-all (string part replacement &key (test #'char=))
+"Returns a new string in which all the occurences of the part 
+is replaced with replacement"
+  (with-output-to-string (out)
+    (loop with part-length = (length part)
+       for old-pos = 0 then (+ pos part-length)
+       for pos = (search part string
+			 :start2 old-pos
+			 :test test)
+       do (write-string string out
+			:start old-pos
+			:end (or pos (length string)))
+       when pos do (write-string replacement out)
+       while pos)))
+
+(export 'string-mpattern-to-spattern )
+(defun string-mpattern-to-spattern (pattern str)
 "@b(Описание:) @b(string-mpattern-to-spattern) исключает из строки 
 str повторяющиеся подстроки pattern сводя их количество до одного включения.
 
@@ -49,7 +45,6 @@ str повторяющиеся подстроки pattern сводя их кол
  => \"Наш самолет осуществит посадку в городе Baden.\"
 @end(code)
 "
-(defun string-mpattern-to-spattern (pattern str)
   (do
    ((str1
      (string-replace-all str (concatenate 'string pattern pattern) pattern)
@@ -57,30 +52,27 @@ str повторяющиеся подстроки pattern сводя их кол
    ((= (length str1) (length str)) str1)
     (setf str str1)))
 
-@export
-@annot.doc:doc
+(export 'string-prepare-to-query )
+(defun string-prepare-to-query (str)
 "@b(Описание:) string-prepare-to-query подготавливает строку, 
 введенную пользователем, для участия в запросе.
 
 Подготовка заключется в отсечении начальных и конечных пробелов и
  замене оставшихся пробелов на знаки %"
-(defun string-prepare-to-query (str)
   (substitute #\% #\Space (concatenate 'string "%" (string-mpattern-to-spattern " " (string-trim " " str)) "%")))
-
-@export
-@annot.doc:doc
+(export 'read-from-string-number )
+(defun read-from-string-number (str &optional (default 0.0))
 "@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
 
 При считываии используется стандартный считыватель Common Lisp.
 "
-(defun read-from-string-number (str &optional (default 0.0))
   (let ((val (read-from-string str)))
     (cond
       ((numberp val) val)
       (t default))))
 
-@export
-@annot.doc:doc
+(export 'read-number-from-string )
+(defun read-number-from-string (str &optional (default 0.0))
 " @b(Описание:) read-number-from-string выполняет чтение из строки @b(str) вещественного числа. 
 
 Если число не удалось считать - возвращается default. 
@@ -92,14 +84,13 @@ str повторяющиеся подстроки pattern сводя их кол
  (read-number-from-string \"3,14\")
 @end(code)
 "
-(defun read-number-from-string (str &optional (default 0.0))
   (let ((val (cl-ppcre:scan-to-strings "(([+-]?\\d+)[.,]?)\\d*([ed][+-]?\\d+)?" str))) 
     (cond
       ((stringp val) (read-from-string (string-replace-all val "," "."))) 
       (t default))))
 
-@export
-@annot.doc:doc
+(export 'string-add-prefix )
+(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
 " @b(Описание:) string-add-prefix 
 
  @b(Пример использования:)
@@ -107,12 +98,11 @@ str повторяющиеся подстроки pattern сводя их кол
  (string-add-prefix \"45\" :overal-length 10 :prefix \"-\" )
 @end(code)
 "
-(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
   (dotimes (i (- overal-length (length str)) str)
     (setf str (concatenate 'string prefix str))))
 
-@export
-@annot.doc:doc
+(export 'print-universal-date-time )
+(defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
 "@b(Описание:) print-universal-date-time выводит в поток @b(stream) 
 строковое представление времени. 
 
@@ -131,7 +121,6 @@ str повторяющиеся подстроки pattern сводя их кол
  (print-universal-date-time (get-universal-time) :stream nil) => \"2019-12-04_17:16:58\"
 @end(code)
 "
-(defun print-universal-date-time (u-time &key (stream t) (year t) (ss t))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (cond
@@ -140,8 +129,8 @@ str повторяющиеся подстроки pattern сводя их кол
       ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d:~2,'0d"        date-year date-month date-day time-hour time-minute))
       (t                    (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d"                     date-month date-day time-hour time-minute)))))
 
-@export
-@annot.doc:doc
+(export 'print-universal-time )
+(defun print-universal-time (u-time &key (stream t) (ss t) )
 "@b(Описание:) print-universal-time выводит в поток @b(stream) строковое
 представление времени. 
 
@@ -159,7 +148,6 @@ str повторяющиеся подстроки pattern сводя их кол
  (print-universal-time (get-universal-time) :stream nil) => \"17:07:03\"
 @end(code)
 "
-(defun print-universal-time (u-time &key (stream t) (ss t) )
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
@@ -167,8 +155,8 @@ str повторяющиеся подстроки pattern сводя их кол
       (ss (format stream "~2,'0d:~2,'0d:~2,'0d" time-hour time-minute time-second))
       (t  (format stream "~2,'0d:~2,'0d"        time-hour time-minute)))))
 
-@export
-@annot.doc:doc
+(export 'print-universal-date )
+(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *default-month-language*))
 "@b(Описание:) print-universal-date выводит в поток @b(stream) 
 строковое представление даты. 
 
@@ -187,7 +175,6 @@ str повторяющиеся подстроки pattern сводя их кол
  (print-universal-date (get-universal-time) :stream nil :year nil :day nil) => \"Январь\"
 @end(code)
 "
-(defun print-universal-date (u-time &key (stream t) (year t) (day t) (month-language *default-month-language*))
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (list date-year date-month date-day time-hour time-minute time-second)
@@ -197,11 +184,9 @@ str повторяющиеся подстроки pattern сводя их кол
       ((and (not year)     day ) (format stream "~2,'0d-~2,'0d"    date-month date-day))
       ((and (not year)(not day)) (format stream "~A" (gethash date-month month-language))))))
 
-@export
-@annot.doc:doc
-"Выводит дату и время в пригодном для формирования имени файла формате"
+(export 'print-universal-date-time-fname )
 (defun print-universal-date-time-fname (u-time &key (stream t) (year t) (ss t))
-
+"Выводит дату и время в пригодном для формирования имени файла формате"
   (multiple-value-bind (time-second  time-minute time-hour date-day date-month date-year)
       (decode-universal-time u-time)
     (cond
@@ -212,8 +197,8 @@ str повторяющиеся подстроки pattern сводя их кол
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-@export
-@annot.doc:doc
+(export 'map-to-list )
+(defun map-to-list (sequence)
 "@b(Описание:) map-to-list выполняет преобразование последовательности @b(sequence)
 в список.
 
@@ -222,17 +207,15 @@ str повторяющиеся подстроки pattern сводя их кол
  (map 'list #'(lambda (el) el) sequence)
 @end(code)
 "
-(defun map-to-list (sequence)
   (map 'list #'(lambda (el) el) sequence))
 
-@export
-@annot.doc:doc
-"@b(Описание:)
-make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
+(export 'make-populated-hash-table )
 (defun make-populated-hash-table (sequence &key
 					     (key-function    #'(lambda (el) el))
 					     (value-function  #'(lambda (el) el))
 					     (test #'equal))
+"@b(Описание:)
+make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
   (reduce
    #'(lambda (ht el)
        (setf (gethash (funcall key-function el) ht) (funcall value-function el))
@@ -240,14 +223,13 @@ make-populated-hash-table создает хеш-таблицу и наполня
    sequence
    :initial-value (make-hash-table :test test)))
 
-@export
-@annot.doc:doc
-"Используется в функции @b(split) для определеия характера исключения|неисключения
-пустых подстрок при разделенни строки на подстроки."
-(defparameter *omit-nulls* t)
+(export '*omit-nulls*)
+(defparameter *omit-nulls* t
+  "Используется в функции @b(split) для определеия характера исключения|неисключения
+пустых подстрок при разделенни строки на подстроки.")
 
-@export
-@annot.doc:doc
+(export 'split )
+(defun split (char-bag string &key (omit-nulls *omit-nulls*))
 "@b(Описание:)
 
  @b(split) разделяет строку @b(string) на подстроки.
@@ -267,7 +249,6 @@ make-populated-hash-table создает хеш-таблицу и наполня
  (split \"; \" \" 1111 ; +5550650456540; 55\" ) => (\"1111\" \"+5550650456540\" \"55\")
 @end(code)
 "
-(defun split (char-bag string &key (omit-nulls *omit-nulls*))
   (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
 	(rez nil)
 	(rezult))
@@ -288,8 +269,8 @@ make-populated-hash-table создает хеш-таблицу и наполня
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-@export
-@annot.doc:doc
+(export 'trd-rename )
+(defun trd-rename (f-name &optional (ext "trd"))
 "@b(Описание:) trd-rename выполняет преобразование имени файла, заданого в формате
 DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
 
@@ -298,7 +279,6 @@ DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
  (trd-rename \"150819_082056.trd\") => 2019-08-15_082056.trd
 @end(code)
 "
-(defun trd-rename (f-name &optional (ext "trd"))
   (let* ((ddmmyy_hhmmss_ext (split "_." f-name)) dd mon yy hh mm ss)
     (assert (= 3 (length ddmmyy_hhmmss_ext)))
     (assert (= 6 (length (first  ddmmyy_hhmmss_ext))))
@@ -316,15 +296,14 @@ DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-@export
-@annot.doc:doc
-"@b(Пример использования:)
+(export 'getenv )
+(defun getenv (x &optional (default ""))
+  "@b(Пример использования:)
 @begin[lang=lisp](code) 
  (getenv \"SBCL_HOME\") 
  (getenv \"PATH\")
 @end(code)
 "
-(defun getenv (x &optional (default ""))
   (cond
     ((uiop:getenv x))
     (t default)))
