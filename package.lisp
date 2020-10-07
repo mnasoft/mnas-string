@@ -18,7 +18,11 @@
 	   demo-translit translit
 	   trd-rename getenv
 	   print-universal-date-time-fname)
-  (:export *cir-gr->en* *mon-ru* *space-cir-gr->en*
-	   *mon-en* *mon-ua* *omit-nulls*
+  (:export *cir-gr->en*
+	   *space-cir-gr->en*
+	   *mon-en*
+	   *mon-ru*
+	   *mon-ua*
+	   *omit-nulls*
 	   *default-month-language*))
 
