@@ -2,8 +2,6 @@
 
 (in-package #:mnas-string)
 
-
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (progn
   (defparameter *en-kbd-characters* "qwertyuiop[]asdfghjkl;'\zxcvbnm,./`QWERTYUIOP[]ASDFGHJKL;'\ZXCVBNM,./`" "Английские символы, при наборе с клавиатуры")

@@ -1,6 +1,18 @@
-;;;;mnas-string-translit.lisp
+;;;; ./src/translit/translit.lisp
 
-(in-package #:mnas-string)
+(defpackage #:mnas-string/translit
+  (:use #:cl)
+  (:export translit
+           demo-translit
+           )
+  (:documentation
+   " MNAS-string содержит в своем составе функции 
+@begin(list)
+ @item(вывода даты и времени)
+@end(list)
+"))
+
+(in-package #:mnas-string/translit)
 
 (defparameter *space* " .()")
 
@@ -22,14 +34,12 @@
 
 (defparameter *cyrillic->english-small-letter*   '("io" "a" "b"  "v" "g" "d" "e"  "zh" "z" "i" "iy" "k" "l" "m" "n" "o" "p" "r" "s" "t" "u" "f" "h" "ts" "ch" "sh" "shch" "_" "y" "-" "e" "yu" "ya"))
 
-(export '*cir-gr->en*)
 (defparameter *cir-gr->en* (make-hash-table)
   "Хеш-таблица. 
 
 Служит для преобразования кириллических и греческих символов
 в английские символы.")
 
-(export '*space-cir-gr->en*)
 (defparameter *space-cir-gr->en* (make-hash-table)
     "Хеш-таблица. 
 
@@ -64,7 +74,6 @@
 
 (progn (init-cir-gr->en) (init-space-cir-gr->en))
 
-(export 'translit )
 (defun translit (str &key (ht *cir-gr->en*))
 "@b(Описание:) translit выполняет транслитерацию (замену) символов, 
 находящихся в строке str используя для преобразования хеш-таблицу ht.
@@ -94,3 +103,14 @@
 	       (push el rez))))
      (coerce str 'list))
     (concatenate 'string (nreverse rez))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(export 'demo-translit )
+(defun demo-translit ()
+  "@b(Пример использования:)
+@begin[lang=lisp](code)
+ (demo-translit)
+@end(code)
+"
+  (translit "Съешь же ещё этих мягких французских булочек да выпей чаю!"))

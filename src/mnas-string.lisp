@@ -1,22 +1,32 @@
 ;;;; mnas-string.lisp
 
-(in-package #:mnas-string)
+(defpackage #:mnas-string
+  (:use #:cl #:mnas-string/print #:mnas-string/translit)
+  (:export read-from-string-number
+           read-number-from-string)
+  (:export split           
+	   replace-all)
+  (:export add-prefix
+	   mpattern-to-spattern
+	   prepare-to-query)
+  (:export trd-rename
+           getenv)
+  (:intern make-populated-hash-table
+           map-to-list)
+  (:export print-universal-time
+           print-universal-date-time
+           print-universal-date
+           print-universal-date-time-fname)
+  (:documentation
+   " MNAS-string содержит в своем составе функции 
+@begin(list)
+ @item(вывода даты и времени;)
+ @item(преобразования строк;)
+ @item(демонстрационные;) 
+@end(list)
+"))
 
-(export 'string-replace-all )
-(defun string-replace-all (string part replacement &key (test #'char=))
-"Returns a new string in which all the occurences of the part 
-is replaced with replacement"
-  (with-output-to-string (out)
-    (loop with part-length = (length part)
-       for old-pos = 0 then (+ pos part-length)
-       for pos = (search part string
-			 :start2 old-pos
-			 :test test)
-       do (write-string string out
-			:start old-pos
-			:end (or pos (length string)))
-       when pos do (write-string replacement out)
-       while pos)))
+(in-package #:mnas-string)
 
 (export 'replace-all )
 (defun replace-all (string part replacement &key (test #'char=))
@@ -34,14 +44,14 @@ is replaced with replacement"
        when pos do (write-string replacement out)
        while pos)))
 
-(export 'string-mpattern-to-spattern )
-(defun string-mpattern-to-spattern (pattern str)
-"@b(Описание:) @b(string-mpattern-to-spattern) исключает из строки 
+(export 'mpattern-to-spattern )
+(defun mpattern-to-spattern (pattern str)
+"@b(Описание:) @b(mpattern-to-spattern) исключает из строки 
 str повторяющиеся подстроки pattern сводя их количество до одного включения.
 
 @b(Пример использования:)
 @begin[lang=lisp](code)
- (string-mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\") 
+ (mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\") 
  => \"Наш самолет осуществит посадку в городе Baden.\"
 @end(code)
 "
@@ -52,14 +62,14 @@ str повторяющиеся подстроки pattern сводя их кол
    ((= (length str1) (length str)) str1)
     (setf str str1)))
 
-(export 'string-prepare-to-query )
-(defun string-prepare-to-query (str)
-"@b(Описание:) string-prepare-to-query подготавливает строку, 
+(export 'prepare-to-query )
+(defun prepare-to-query (str)
+"@b(Описание:) prepare-to-query подготавливает строку, 
 введенную пользователем, для участия в запросе.
 
 Подготовка заключется в отсечении начальных и конечных пробелов и
  замене оставшихся пробелов на знаки %"
-  (substitute #\% #\Space (concatenate 'string "%" (string-mpattern-to-spattern " " (string-trim " " str)) "%")))
+  (substitute #\% #\Space (concatenate 'string "%" (mpattern-to-spattern " " (string-trim " " str)) "%")))
 (export 'read-from-string-number )
 (defun read-from-string-number (str &optional (default 0.0))
 "@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
@@ -89,13 +99,13 @@ str повторяющиеся подстроки pattern сводя их кол
       ((stringp val) (read-from-string (string-replace-all val "," "."))) 
       (t default))))
 
-(export 'string-add-prefix )
-(defun string-add-prefix (str  &key (prefix " ") (overal-length (length str)))
-" @b(Описание:) string-add-prefix 
+(export 'add-prefix )
+(defun add-prefix (str  &key (prefix " ") (overal-length (length str)))
+" @b(Описание:) add-prefix 
 
  @b(Пример использования:)
 @begin[lang=lisp](code)
- (string-add-prefix \"45\" :overal-length 10 :prefix \"-\" )
+ (add-prefix \"45\" :overal-length 10 :prefix \"-\" )
 @end(code)
 "
   (dotimes (i (- overal-length (length str)) str)
@@ -129,13 +139,7 @@ make-populated-hash-table создает хеш-таблицу и наполня
    sequence
    :initial-value (make-hash-table :test test)))
 
-(export '*omit-nulls*)
-(defparameter *omit-nulls* t
-  "Используется в функции @b(split) для определеия характера исключения|неисключения
-пустых подстрок при разделенни строки на подстроки.")
-
-(export 'split )
-(defun split (char-bag string &key (omit-nulls *omit-nulls*))
+(defun split (char-bag string &key (omit-nulls t))
 "@b(Описание:)
 
  @b(split) разделяет строку @b(string) на подстроки.
@@ -213,3 +217,7 @@ DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
   (cond
     ((uiop:getenv x))
     (t default)))
+
+(defun string-quote (string &optional (pre-post-string "\"" ))
+  "Добавляет в начао и конец строки string строку pre-post-string"
+  (concatenate 'string pre-post-string string pre-post-string))

@@ -1,0 +1,76 @@
+print-universal-date
+*default-month-language*
+replace-all
+*omit-nulls*
+*mon-ua*
+make-populated-hash-table
+string-add-prefix
+string-mpattern-to-spattern
+read-from-string-number
+map-to-list
+*mon-en*
+*space-cir-gr->en*
+
+@begin(section)
+@title(Обзор)
+
+
+
+@end(section)
+
+@begin(section)
+@title(Функции)
+@cl:with-package[name="mnas-string"](
+	@cl:doc(function getenv)
+	@cl:doc(function make-populated-hash-table)
+	@cl:doc(function map-to-list)
+	@cl:doc(function read-from-string-number)
+	@cl:doc(function read-number-from-string)
+	@cl:doc(function sort-designation-zm))
+@end(section)
+
+@begin(section)
+@title(Функции преобразования строк)
+@cl:with-package[name="mnas-string"](
+	@cl:doc(function split)
+	@cl:doc(function string-add-prefix)
+	@cl:doc(function string-mpattern-to-spattern)
+	@cl:doc(function string-prepare-to-query)
+	@cl:doc(function string-replace-all)
+	@cl:doc(function replace-all)
+	@cl:doc(function translit)
+	@cl:doc(function trd-rename))
+@end(section)
+
+@begin(section)
+@title(Функции печати даты и времени)
+@cl:with-package[name="mnas-string"](
+	@cl:doc(function print-universal-date)
+	@cl:doc(function print-universal-date-time)
+	@cl:doc(function print-universal-date-time-fname)
+	@cl:doc(function print-universal-time))
+@end(section)
+
+@begin(section)
+@title(Функции демонстрационные)
+@cl:with-package[name="mnas-string"](
+@cl:doc(function demo-translit)
+@cl:doc(function demo-zm-sort)
+)
+@end(section)
+
+@begin(section)
+@title(Глобальные переменные)
+
+@cl:with-package[name="mnas-string"](
+@cl:doc(variable *cir-gr->en*)
+@cl:doc(variable *default-month-language*)
+@cl:doc(variable *mon-en*)
+@cl:doc(variable *mon-ru*)
+@cl:doc(variable *mon-ua*)
+@cl:doc(variable *omit-nulls*)
+@cl:doc(variable *space-cir-gr->en*)
+
+)
+@end(section)
+
