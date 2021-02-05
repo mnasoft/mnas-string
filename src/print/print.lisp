@@ -7,6 +7,9 @@
            print-universal-time
            print-universal-date-time
            )
+  (:export  *mon-ru*
+            *mon-ua*
+            *mon-en*)
   (:documentation
    " MNAS-string содержит в своем составе функции 
 @begin(list)
