@@ -1,4 +1,4 @@
-;;;; mnas-string.lisp
+;;;; ./src/mnas-string.lisp
 
 (defpackage #:mnas-string
   (:use #:cl #:mnas-string/print #:mnas-string/translit)
@@ -11,12 +11,13 @@
 	   prepare-to-query)
   (:export trd-rename
            getenv)
-  (:intern make-populated-hash-table
-           map-to-list)
   (:export print-universal-time
            print-universal-date-time
            print-universal-date
            print-universal-date-time-fname)
+  (:export make-populated-hash-table
+           map-to-list
+           )
   (:documentation
    " MNAS-string содержит в своем составе функции 
 @begin(list)
@@ -28,21 +29,20 @@
 
 (in-package #:mnas-string)
 
-(export 'replace-all )
 (defun replace-all (string part replacement &key (test #'char=))
-"Returns a new string in which all the occurences of the part 
+  "Returns a new string in which all the occurences of the part 
 is replaced with replacement"
   (with-output-to-string (out)
     (loop with part-length = (length part)
-       for old-pos = 0 then (+ pos part-length)
-       for pos = (search part string
-			 :start2 old-pos
-			 :test test)
-       do (write-string string out
-			:start old-pos
-			:end (or pos (length string)))
-       when pos do (write-string replacement out)
-       while pos)))
+          for old-pos = 0 then (+ pos part-length)
+          for pos = (search part string
+			    :start2 old-pos
+			    :test test)
+          do (write-string string out
+			   :start old-pos
+			   :end (or pos (length string)))
+          when pos do (write-string replacement out)
+            while pos)))
 
 (export 'mpattern-to-spattern )
 (defun mpattern-to-spattern (pattern str)
@@ -113,9 +113,8 @@ str повторяющиеся подстроки pattern сводя их кол
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'map-to-list )
 (defun map-to-list (sequence)
-"@b(Описание:) map-to-list выполняет преобразование последовательности @b(sequence)
+  "@b(Описание:) map-to-list выполняет преобразование последовательности @b(sequence)
 в список.
 
 @b(Равнозначно следующему:)
@@ -125,12 +124,11 @@ str повторяющиеся подстроки pattern сводя их кол
 "
   (map 'list #'(lambda (el) el) sequence))
 
-(export 'make-populated-hash-table )
 (defun make-populated-hash-table (sequence &key
 					     (key-function    #'(lambda (el) el))
 					     (value-function  #'(lambda (el) el))
 					     (test #'equal))
-"@b(Описание:)
+  "@b(Описание:)
 make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
   (reduce
    #'(lambda (ht el)
