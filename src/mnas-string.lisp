@@ -18,6 +18,7 @@
   (:export make-populated-hash-table
            map-to-list
            )
+  (:export string-quote)
   (:documentation
    " MNAS-string содержит в своем составе функции 
 @begin(list)
@@ -44,9 +45,8 @@ is replaced with replacement"
           when pos do (write-string replacement out)
             while pos)))
 
-(export 'mpattern-to-spattern )
 (defun mpattern-to-spattern (pattern str)
-"@b(Описание:) @b(mpattern-to-spattern) исключает из строки 
+  "@b(Описание:) @b(mpattern-to-spattern) исключает из строки 
 str повторяющиеся подстроки pattern сводя их количество до одного включения.
 
 @b(Пример использования:)
@@ -62,7 +62,6 @@ str повторяющиеся подстроки pattern сводя их кол
    ((= (length str1) (length str)) str1)
     (setf str str1)))
 
-(export 'prepare-to-query )
 (defun prepare-to-query (str)
 "@b(Описание:) prepare-to-query подготавливает строку, 
 введенную пользователем, для участия в запросе.
@@ -70,20 +69,19 @@ str повторяющиеся подстроки pattern сводя их кол
 Подготовка заключется в отсечении начальных и конечных пробелов и
  замене оставшихся пробелов на знаки %"
   (substitute #\% #\Space (concatenate 'string "%" (mpattern-to-spattern " " (string-trim " " str)) "%")))
-(export 'read-from-string-number )
-(defun read-from-string-number (str &optional (default 0.0))
-"@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
 
-При считываии используется стандартный считыватель Common Lisp.
+(defun read-from-string-number (str &optional (default 0.0))
+  "@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
+
+ При считываии используется стандартный считыватель Common Lisp.
 "
   (let ((val (read-from-string str)))
     (cond
       ((numberp val) val)
       (t default))))
 
-(export 'read-number-from-string )
 (defun read-number-from-string (str &optional (default 0.0))
-" @b(Описание:) read-number-from-string выполняет чтение из строки @b(str) вещественного числа. 
+  " @b(Описание:) read-number-from-string выполняет чтение из строки @b(str) вещественного числа. 
 
 Если число не удалось считать - возвращается default. 
 
@@ -99,9 +97,8 @@ str повторяющиеся подстроки pattern сводя их кол
       ((stringp val) (read-from-string (string-replace-all val "," "."))) 
       (t default))))
 
-(export 'add-prefix )
 (defun add-prefix (str  &key (prefix " ") (overal-length (length str)))
-" @b(Описание:) add-prefix 
+  " @b(Описание:) add-prefix 
 
  @b(Пример использования:)
 @begin[lang=lisp](code)
@@ -138,7 +135,7 @@ make-populated-hash-table создает хеш-таблицу и наполня
    :initial-value (make-hash-table :test test)))
 
 (defun split (char-bag string &key (omit-nulls t))
-"@b(Описание:)
+  "@b(Описание:)
 
  @b(split) разделяет строку @b(string) на подстроки.
 
@@ -161,8 +158,8 @@ make-populated-hash-table создает хеш-таблицу и наполня
 	(rez nil)
 	(rezult))
     (loop :for i :from 0 :below (length string) :do
-	 (if (gethash (char string i) char-bag-hash)
-	     (push i rez)))
+      (if (gethash (char string i) char-bag-hash)
+	  (push i rez)))
     (setf rez (nreverse (push (length string) rez)))
     (setf rezult
 	  (mapcar
@@ -177,9 +174,8 @@ make-populated-hash-table создает хеш-таблицу и наполня
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'trd-rename )
 (defun trd-rename (f-name &optional (ext "trd"))
-"@b(Описание:) trd-rename выполняет преобразование имени файла, заданого в формате
+  "@b(Описание:) trd-rename выполняет преобразование имени файла, заданого в формате
 DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
 
  @b(Пример использования:)
@@ -204,7 +200,6 @@ DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(export 'getenv )
 (defun getenv (x &optional (default ""))
   "@b(Пример использования:)
 @begin[lang=lisp](code) 
