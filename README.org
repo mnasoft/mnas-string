@@ -1,11 +1,14 @@
-* Перечень удаленых репозиториев
+* Description 
+The mnas-string system is intended for:
+- parsing a real number;
+- splitting a string into substrings;
+- replacing all occurrences of a substring in a string;
+- replacing multiple occurrences of a pattern with a single one;
+- preparing a string as an argument for a like SQL query;
+- framing a string with a prefix and a postfix;
+- outputting the date and time representation to a stream or string;
+- string tracing. 
 
-#+BEGIN_SRC sh
-git remote -v
-#+END_SRC
+* Documentation
+[[https://mnasoft.ddns.mksat.net/Common-Lisp-Programs/mnas-string/обзор.html]]
 
-#+RESULTS:
-| n132866 | //n132866/home/_git/mnas-string.git (fetch) |
-| n132866 | //n132866/home/_git/mnas-string.git (push)  |
-| pi      | git@pi:/opt/git/mnas-string.git (fetch)     |
-| pi      | git@pi:/opt/git/mnas-string.git (push)      |

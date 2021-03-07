@@ -11,4 +11,6 @@
                         "mnas-string-print-graph.scr"
                         "mnas-string-translit.scr"
                         "mnas-string-translit-graph.scr"
+                        "mnas-string-db.scr"
+                        "mnas-string-db-graph.scr"
 			))))

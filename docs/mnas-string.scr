@@ -14,29 +14,24 @@
 @end(section)
 @begin(section) @title(MNAS-STRING)
 
-@b(Описание:) пакет @b(mnas-string) содержит в своем составе
+Пакет @b(mnas-string) содержит в своем составе
  следующие основные функции:
  @begin(list) 
-  @item(@b(read-from-string-number), @b(read-number-from-string) - парсинг вещественного числа;)
   @item(@b(split) - разделение строки на подстроки;)
   @item(@b(replace-all) - замена всех вхождений подстроки в строке;)
   @item(@b(mpattern-to-spattern) - замена множественного вхождения паттерна единичным;)
-  @item(@b(prepare-to-query) - подготовка строки в качестве аргумента для like запроса SQL;)
   @item(@b(pre-post) - обрамление строки префиксом и постфиксом.)
  @end(list)
 @begin(section)
  @title(Функции)
  @cl:with-package[name="MNAS-STRING"](
-  @cl:doc(function getenv)
-  @cl:doc(function pre-post)
-  @cl:doc(function prepare-to-query)
   @cl:doc(function mpattern-to-spattern)
   @cl:doc(function make-populated-hash-table)
   @cl:doc(function map-to-list)
-  @cl:doc(function read-number-from-string)
-  @cl:doc(function trd-rename)
+  @cl:doc(function getenv)
   @cl:doc(function replace-all)
   @cl:doc(function split)
-  @cl:doc(function read-from-string-number))
+  @cl:doc(function pre-post)
+  @cl:doc(function trd-rename))
 @end(section)
 @end(section)

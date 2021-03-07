@@ -65,4 +65,81 @@
  
 (defun CalcExpr (expression) (EVAL (inf2pref (PARSE expression))))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defparameter *GPL* (uiop:read-file-string "~/quicklisp/local-projects/mnas/mnas-string/LICENSE"))
+
+(dotimes (i 500)
+ (setf *GPL*-500 (concatenate 'string *GPL*-500 *GPL*)
+    ))
+
+(require :sb-sprof)
+
+(declaim (optimize speed))
+
+(defun str-split-1 ()
+  (dotimes (i 500)
+    (str:split " " *GPL*  :omit-nulls t)
+    ))
+
+(defun str-split-2 ()
+  (dotimes (i 500)
+    (mnas-string:split " " *GPL*)
+    ))
+
+
+(sb-sprof:with-profiling (:max-samples 1000
+                          :report :flat
+                          :loop nil)
+  (str-split-1)
+  (str-split-2))
+
+
+
+(sb-sprof:reset)
+
+(defun test-split ()
+  (dotimes (i 5000)
+    (str:split " " *GPL*  :omit-nulls t)
+    (mnas-string:split " " *GPL*)))
+
+(progn
+  (sb-profile:profile test-split
+                      mnas-string:split
+                      str:split
+                      )
+  (str-splittt)
+  (sb-profile:report)
+  (sb-profile:reset)
+  (sb-profile:unprofile))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(sb-sprof:report)
+
+(declaim (optimize speed))
+
+(defun cpu-test-inner (a i)
+  (logxor a
+          (* i 5)
+          (+ a i)))
+
+(defun cpu-test (n)
+  (let ((a 0))
+    (dotimes (i (expt 2 n) a)
+      (setf a (cpu-test-inner a i)))))
+
+(sb-sprof:with-profiling (:max-samples 1000
+                          :report :flat
+                          :loop nil)
+  (cpu-test 26))
+
+
+(sb-sprof:profile-call-counts "CL-USER")
+
+(sb-sprof:with-profiling (:max-samples 1000
+                          :report :flat
+                          :loop t
+                          :show-progress t)
+  (cpu-test 24))
 
