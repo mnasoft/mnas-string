@@ -48,7 +48,7 @@
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/core/tests")))
-  :depends-on ("cl-ppcre")
+  :depends-on ("cl-ppcre" "mnas-string/core")
   :in-order-to ((test-op (test-op "mnas-string/parse/tests")))
   :components ((:module "src/parse"
 		:serial nil
