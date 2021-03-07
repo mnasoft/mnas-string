@@ -1,13 +1,13 @@
-* [6/16] Задачи
+* [9/16] Задачи
 1. [X] Отделить функции печати -> print.
 2. [X] Отделить функции печати -> translit.
 3. [X] Отделить функции сортировки наименований по принципу ZM -> zm.
-4. [-] Документирование.
+4. [X] Документирование.
    - [X] mnas-string;
    - [X] mnas-string/print;
    - [X] mnas-string/translit
-5. [ ] Отделить функции сортировки наименований по принципу ZM в
-   отдельный проект, который не подлежит публикации.
+5. [X] Отделить функции сортировки наименований по принципу ZM в
+   отдельный проект, который не подлежит публикации - zm/designation.
 6. [ ] Написать тесты.
 7. [ ] Переопределить read-from-string-number read-number-from-string
    при помощи проекта parse-number.
@@ -28,5 +28,5 @@
     - [X] print-universal-date-time-fname -> date-time-fname;
     - [X] print-universal-time            -> time;
     - [X] print-universal-date-time       -> date-time.
-15. [ ] Определить систему mnas-string/core.
+15. [X] Определить систему mnas-string/core.
 16. [ ] Определить систему mnas-string/parse.

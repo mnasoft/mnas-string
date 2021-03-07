@@ -4,7 +4,8 @@
               :authors ("Nick Matvyeyev")
               :output-format (:type :multi-html
                               :template :minima)
-              :sources ("mnas-string.scr"
+              :sources (
+                        "mnas-string.scr"
                         "mnas-string-graph.scr"
                         "mnas-string-print.scr"
                         "mnas-string-print-graph.scr"
