@@ -6,4 +6,8 @@
                               :template :minima)
               :sources ("mnas-string.scr"
                         "mnas-string-graph.scr"
+                        "mnas-string-print.scr"
+                        "mnas-string-print-graph.scr"
+                        "mnas-string-translit.scr"
+                        "mnas-string-translit-graph.scr"
 			))))

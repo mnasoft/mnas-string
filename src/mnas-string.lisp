@@ -1,38 +1,44 @@
 ;;;; ./src/mnas-string.lisp
 
 (defpackage #:mnas-string
-  (:use #:cl #:mnas-string/print #:mnas-string/translit)
+  (:use #:cl) ; #:mnas-string/print #:mnas-string/translit
   (:export read-from-string-number
            read-number-from-string)
   (:export split           
-	   replace-all)
-  (:export add-prefix
-	   mpattern-to-spattern
-	   prepare-to-query)
+	   replace-all
+           mpattern-to-spattern
+	   prepare-to-query
+           pre-post)
   (:export trd-rename
            getenv)
-  (:export print-universal-time
-           print-universal-date-time
-           print-universal-date
-           print-universal-date-time-fname)
   (:export make-populated-hash-table
            map-to-list
            )
-  (:export string-quote)
   (:documentation
-   " MNAS-string содержит в своем составе функции 
-@begin(list)
- @item(вывода даты и времени;)
- @item(преобразования строк;)
- @item(демонстрационные;) 
-@end(list)
+   "@b(Описание:) пакет @b(mnas-string) содержит в своем составе
+ следующие основные функции:
+ @begin(list) 
+  @item(@b(read-from-string-number), @b(read-number-from-string) - парсинг вещественного числа;)
+  @item(@b(split) - разделение строки на подстроки;)
+  @item(@b(replace-all) - замена всех вхождений подстроки в строке;)
+  @item(@b(mpattern-to-spattern) - замена множественного вхождения паттерна единичным;)
+  @item(@b(prepare-to-query) - подготовка строки в качестве аргумента для like запроса SQL;)
+  @item(@b(pre-post) - обрамление строки префиксом и постфиксом.)
+ @end(list)
 "))
 
 (in-package #:mnas-string)
 
 (defun replace-all (string part replacement &key (test #'char=))
-  "Returns a new string in which all the occurences of the part 
-is replaced with replacement"
+  "@b(Описание:) функция @b(replace-all) возвращает строку, в которой
+все вхождения @b(part) заменяется на @b(replacement).
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+  (replace-all \"Paris, Paris? Paris!\" \"Pa\" \"Bo\")
+   => \"Boris, Boris? Boris!\"
+@end(code)
+"
   (with-output-to-string (out)
     (loop with part-length = (length part)
           for old-pos = 0 then (+ pos part-length)
@@ -45,35 +51,48 @@ is replaced with replacement"
           when pos do (write-string replacement out)
             while pos)))
 
+
+
 (defun mpattern-to-spattern (pattern str)
-  "@b(Описание:) @b(mpattern-to-spattern) исключает из строки 
-str повторяющиеся подстроки pattern сводя их количество до одного включения.
+  "@b(Описание:) @b(mpattern-to-spattern) возвращает строку, у которой
+ повторяющиеся подряд подстроки @b(pattern) сведены до одного включения.
 
 @b(Пример использования:)
 @begin[lang=lisp](code)
- (mpattern-to-spattern  \"Baden\" \"Наш самолет осуществит посадку в городе BadenBaden.\") 
- => \"Наш самолет осуществит посадку в городе Baden.\"
+ (mpattern-to-spattern  \" \" \"Our    plane  will   land  in the city of    BadenBaden.\") 
+  => \"Our plane will land in the city of BadenBaden.\"
 @end(code)
 "
   (do
    ((str1
-     (string-replace-all str (concatenate 'string pattern pattern) pattern)
-     (string-replace-all str (concatenate 'string pattern pattern) pattern)))
+     (replace-all str (concatenate 'string pattern pattern) pattern)
+     (replace-all str (concatenate 'string pattern pattern) pattern)))
    ((= (length str1) (length str)) str1)
     (setf str str1)))
 
 (defun prepare-to-query (str)
-"@b(Описание:) prepare-to-query подготавливает строку, 
-введенную пользователем, для участия в запросе.
+  " @b(Описание:) функция @b(prepare-to-query) возвращает строку
+ подготовленную для участия в запросе к базе данных, основанную на
+ содержимом строки @b(str).
 
-Подготовка заключется в отсечении начальных и конечных пробелов и
- замене оставшихся пробелов на знаки %"
-  (substitute #\% #\Space (concatenate 'string "%" (mpattern-to-spattern " " (string-trim " " str)) "%")))
+ Подготовка заключется в исключении начальных и конечных пробелов и
+ замене оставшихся пробелов на знаки %.
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+  (prepare-to-query \"  гайки  с   квадр гол  \")
+   ; => \"%гайки%с%квадр%гол%\"
+@end(code)
+"
+  (substitute #\% #\Space
+              (concatenate 'string "%"
+                           (mpattern-to-spattern " " (string-trim " " str)) "%")))
 
 (defun read-from-string-number (str &optional (default 0.0))
-  "@b(Описание:) read-from-string-number выполняет чтение из строки @b(str) вещественного числа.
+  "@b(Описание:) функция @b(read-from-string-number) возвращает число
+ класса @b(number) при чтении из строки @b(str).
 
- При считываии используется стандартный считыватель Common Lisp.
+ При считывании используется стандартный считыватель Common Lisp.
 "
   (let ((val (read-from-string str)))
     (cond
@@ -81,52 +100,59 @@ str повторяющиеся подстроки pattern сводя их кол
       (t default))))
 
 (defun read-number-from-string (str &optional (default 0.0))
-  " @b(Описание:) read-number-from-string выполняет чтение из строки @b(str) вещественного числа. 
+  " @b(Описание:) read-number-from-string выполняет чтение из строки
+  @b(str) вещественного числа.
 
-Если число не удалось считать - возвращается default. 
+ Если число не удалось считать - возвращается default. 
 
  @b(Пример использования:)
-
 @begin[lang=lisp](code)
- (read-number-from-string \"3.14\")
- (read-number-from-string \"3,14\")
+ (read-number-from-string \"3.14\")     => 3.14, 4
+ (read-number-from-string \"3,14\")     => 3.14, 4
+ (read-number-from-string \"3,14e2\")   => 314.0, 6
+ (read-number-from-string \"-3,14e-2\") => -0.0314, 8
+ (read-number-from-string \"3,14d+2\")  => 314.0d0, 7
+ (read-number-from-string \"-3,14d-2\") => -0.0314d0, 8
 @end(code)
 "
   (let ((val (cl-ppcre:scan-to-strings "(([+-]?\\d+)[.,]?)\\d*([ed][+-]?\\d+)?" str))) 
     (cond
-      ((stringp val) (read-from-string (string-replace-all val "," "."))) 
+      ((stringp val) (read-from-string (replace-all val "," "."))) 
       (t default))))
-
-(defun add-prefix (str  &key (prefix " ") (overal-length (length str)))
-  " @b(Описание:) add-prefix 
-
- @b(Пример использования:)
-@begin[lang=lisp](code)
- (add-prefix \"45\" :overal-length 10 :prefix \"-\" )
-@end(code)
-"
-  (dotimes (i (- overal-length (length str)) str)
-    (setf str (concatenate 'string prefix str))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun map-to-list (sequence)
-  "@b(Описание:) map-to-list выполняет преобразование последовательности @b(sequence)
-в список.
+(defun map-to-list (sequence &key (key #'(lambda (el) el)))
+  "@b(Описание:) map-to-list выполняет преобразование
+ последовательности @b(sequence) в список.
 
-@b(Равнозначно следующему:)
+ @b(Пример использования:)
 @begin[lang=lisp](code)
- (map 'list #'(lambda (el) el) sequence)
+(map-to-list '((1 2 )(2 3)(3 4)(4 5)(5 6)(6 7)))
+ ; => ((1 2) (2 3) (3 4) (4 5) (5 6) (6 7))
+(map-to-list '((1 2 )(2 3)(3 4)(4 5)(5 6)(6 7)) :key #'first)
+  ; => (1 2 3 4 5 6)
+(map-to-list '((1 2 )(2 3)(3 4)(4 5)(5 6)(6 7)) :key #'second)
+ ; => (2 3 4 5 6 7)
+
 @end(code)
 "
-  (map 'list #'(lambda (el) el) sequence))
+  (map 'list key sequence))
 
 (defun make-populated-hash-table (sequence &key
 					     (key-function    #'(lambda (el) el))
 					     (value-function  #'(lambda (el) el))
 					     (test #'equal))
-  "@b(Описание:)
-make-populated-hash-table создает хеш-таблицу и наполняет ее элементами."
+  "@b(Описание:) функция @b(make-populated-hash-table) возвращает
+ наполненную элементами хеш-таблицу. Хеш-таблица формируется на
+ основании содержимого последовательности @b(sequence).
+
+ Для каждого элемента последовательности при добавлении в хеш-таблицу:
+@begin(list)
+ @item(ключи вычисляются при помощи функции, заданной аргументом @b(key-function);)
+ @item(значения вычисляются при помощи функции, заданной аргументом @b(value-function).)
+@end(list)
+"
   (reduce
    #'(lambda (ht el)
        (setf (gethash (funcall key-function el) ht) (funcall value-function el))
@@ -135,14 +161,11 @@ make-populated-hash-table создает хеш-таблицу и наполня
    :initial-value (make-hash-table :test test)))
 
 (defun split (char-bag string &key (omit-nulls t))
-  "@b(Описание:)
-
- @b(split) разделяет строку @b(string) на подстроки.
+  "@b(Описание:) функция: @b(split) разделяет строку @b(string) на подстроки.
 
  @b(Возвращает:) список подстрок.
 
  @b(Переменые:)
-
 @begin(list)
  @item(@b(char-bag) - символы из этой строки используются в качестве разделителей;)
  @item(@b(string) - строка, подлежащая разделению на подтсроки;)
@@ -175,12 +198,27 @@ make-populated-hash-table создает хеш-таблицу и наполня
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun trd-rename (f-name &optional (ext "trd"))
-  "@b(Описание:) trd-rename выполняет преобразование имени файла, заданого в формате
-DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
+  "@b(Описание:) функция @b(trd-rename) возвращает строку,
+ представляющую имя файла в формате \"YYYY-MM-DD_hhmmss.ext\".
+
+ Преобразуемая строка дожна удовлетворять формату
+ \"DDMMYY_hhmmss.ext\".
+
+ Здесь:
+ @begin(list)
+ @item(YYYY - год;)
+ @item(YY - год;)
+ @item(MM - месяца;)
+ @item(DD - день;)
+ @item(hh - час;)
+ @item(mm - минута;)
+ @item(ss - секунда;)
+ @item(ext - расширение файла.)
+@end(list)
 
  @b(Пример использования:)
 @begin[lang=lisp](code)
- (trd-rename \"150819_082056.trd\") => 2019-08-15_082056.trd
+ (trd-rename \"150819_082056.trd\") => \"2019-08-15_082056.trd\"
 @end(code)
 "
   (let* ((ddmmyy_hhmmss_ext (split "_." f-name)) dd mon yy hh mm ss)
@@ -200,17 +238,22 @@ DDMMYY_hhmmss.ext в формат YYYYMMDD_hhmmss.ext.
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(defun getenv (x &optional (default ""))
-  "@b(Пример использования:)
+(defun getenv (sys-var &optional (default ""))
+  "@b(Описание:) функция @b(getenv) возвращает строку, представляющую
+  значение системной переменной, заданное аргументом @b(sys-var).
+
+ @b(Пример использования:)
 @begin[lang=lisp](code) 
  (getenv \"SBCL_HOME\") 
  (getenv \"PATH\")
 @end(code)
 "
   (cond
-    ((uiop:getenv x))
+    ((uiop:getenv sys-var))
     (t default)))
 
-(defun string-quote (string &optional (pre-post-string "\"" ))
-  "Добавляет в начао и конец строки string строку pre-post-string"
-  (concatenate 'string pre-post-string string pre-post-string))
+(defun pre-post (string &optional (prefix "\"" ) (postfix prefix))
+  "@b(Описание:) функция @b(pre-post) возвращает строку,
+ основанную на @b(string) с добавлением перед и после нее префикса
+ @b(prefix) и постфикса @b(postfix) pre-post-string"
+  (concatenate 'string postfix string prefix))

@@ -3,28 +3,48 @@
 (defpackage #:mnas-string/translit
   (:use #:cl)
   (:export translit
-           demo-translit
+           )
+  (:export *cir-gr->en*
+           *space-cir-gr->en*
            )
   (:documentation
-   " MNAS-string содержит в своем составе функции 
+   "Пакет @b(mnas-string/translit) экспортирует следующие функции:
 @begin(list)
- @item(вывода даты и времени)
+ @item(@b(translit) - транслитерация строки.)
+@end(list)
+
+ Транслирерация производится с исползованием хеш-таблицы
+преобразования, в которой каждому заменяемому символу (ключ)
+соответствует строка (заначенине) на которую он заменяется.
+
+ Пакет @b(mnas-string/translit) экспортирует следующие хеш-таблицы
+преобразования:
+@begin(list)
+ @item(*cir-gr->en* - преобразование кирилических и греческих символов
+                      в лалинские;)
+ @item(*space-cir-gr->en* - преобразование кирилических и греческих
+                            символов в лалинские, такое что результат
+                            мог использоваться в качестве символа
+                            Commom Lisp.)
 @end(list)
 "))
 
 (in-package #:mnas-string/translit)
 
-(defparameter *space* " .()")
+(defparameter *forbidden-characters* " .()"
+  "Символы, запрещенные для использования в имени символа Common Lisp.")
 
-(defparameter *minus* "-+!!")
+(defparameter *allowed-characters*   "-+!!"
+  "Символы, разрешенные для использования в имени символа Common
+  Lisp. Знена для *forbidden-characters*.")
 
-(defparameter *greek-capital-letter*           "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ")
+(defparameter *greek-capital-letter*          "ΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ")
 
-(defparameter *greek-small-letter*             "αβγδεζηθικλμνξοπρστυφχψω")
+(defparameter *greek-small-letter*            "αβγδεζηθικλμνξοπρστυφχψω")
 
-(defparameter *greek->english-capital-letter*  "ABGDEFHQIKLMNZOPRSTYUXVW") ; "CJ"
+(defparameter *greek->english-capital-letter* "ABGDEFHQIKLMNZOPRSTYUXVW") ; "CJ"
 
-(defparameter *greek->english-small-letter*    "abgdefhqiklmnzoprstyuxvw") ; "cj"
+(defparameter *greek->english-small-letter*   "abgdefhqiklmnzoprstyuxvw") ; "cj"
 
 (defparameter *cyrillic-capital-letter*       "ЁАБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ")
 
@@ -35,20 +55,18 @@
 (defparameter *cyrillic->english-small-letter*   '("io" "a" "b"  "v" "g" "d" "e"  "zh" "z" "i" "iy" "k" "l" "m" "n" "o" "p" "r" "s" "t" "u" "f" "h" "ts" "ch" "sh" "shch" "_" "y" "-" "e" "yu" "ya"))
 
 (defparameter *cir-gr->en* (make-hash-table)
-  "Хеш-таблица. 
-
-Служит для преобразования кириллических и греческих символов
-в английские символы.")
+  "@b(Описание:) хеш-таблица @b(*cir-gr->en*) служит для
+                 преобразования кириллических и греческих символов в
+                 английские символы.")
 
 (defparameter *space-cir-gr->en* (make-hash-table)
-    "Хеш-таблица. 
+    "@b(Описание:) хеш-таблица @b(*space-cir-gr->en*) служит для
+ преобразования кириллических и греческих символов в английские
+ символы.
 
-Служит для преобразования кириллических и греческих символов
-в английские символы.
-
-При преобразовании с использованием функции translit пробельные и специальные символы заменяются такими,
-что преобразованная строка может стпользоваться в качестве имени (символа).
-")
+ При преобразовании с использованием функции @b(translit) пробельные и
+специальные символы заменяются такими, что преобразованная строка
+может использоваться в качестве имени (символа).")
 
 (defun init-cir-gr->en ()
   (let ((ht *cir-gr->en*))
@@ -70,23 +88,27 @@
       (mapc #'add-to-ht
 	    (concatenate 'list *greek-capital-letter* *greek-small-letter*)
 	    (concatenate 'list *greek->english-capital-letter*  *greek->english-small-letter*))
-      (mapc #'add-to-ht (concatenate 'list *space*) (concatenate 'list *minus*)))))
+      (mapc #'add-to-ht (concatenate 'list *forbidden-characters*) (concatenate 'list *allowed-characters*)))))
 
 (progn (init-cir-gr->en) (init-space-cir-gr->en))
 
 (defun translit (str &key (ht *cir-gr->en*))
-"@b(Описание:) translit выполняет транслитерацию (замену) символов, 
-находящихся в строке str используя для преобразования хеш-таблицу ht.
+  "@b(Описание:) функция @b(translit) возвращает транслитерированную
+ строку, символов находящихся в строке str. Для транслитерации
+ исползуется хеш-таблица ht.
 
-В качестве таблиц перобразования (хеш-таблицы ht) рекомендуется использовать:
+ В качестве таблиц перобразования (хеш-таблицы ht) рекомендуется использовать:
 @begin(list)
  @item(*cir-gr->en* - с пробельными символами;)
- @item(*space-cir-gr->en* - с исключением пробельных символов;)
+ @item(*space-cir-gr->en* - с исключением пробельных символов.)
 @end(list)
+
 @b(Пример использования:)
 @begin[lang=lisp](code)
  (translit \"Что это?\" :ht *cir-gr->en*)       => \"CHto eto?\"
  (translit \"Что это?\" :ht *space-cir-gr->en*) => \"CHto-eto?\"
+ (translit \"Съешь же ещё этих мягких французских булочек да выпей чаю!\")
+ ; => \"S_esh- zhe eshchio etih myagkih frantsuzskih bulochek da vypeiy chayu!\"
 @end(code)
 "
   (declare (type string str) )
@@ -99,18 +121,7 @@
 		 (character (push ch rez))
 		 (string    (mapc
 			     #'(lambda (el) (push el rez))
-			      (coerce ch 'list))))
+			     (coerce ch 'list))))
 	       (push el rez))))
      (coerce str 'list))
     (concatenate 'string (nreverse rez))))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(export 'demo-translit )
-(defun demo-translit ()
-  "@b(Пример использования:)
-@begin[lang=lisp](code)
- (demo-translit)
-@end(code)
-"
-  (translit "Съешь же ещё этих мягких французских булочек да выпей чаю!"))

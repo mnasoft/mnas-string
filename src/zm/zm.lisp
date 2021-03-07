@@ -1,5 +1,5 @@
 
-(defpackage #:mnas-string/zm
+(defpackage #:zm-designation-sort
   (:use #:cl #:mnas-string)
   (:export sort-designation-zm
            demo-zm-sort
