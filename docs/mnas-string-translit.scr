@@ -1,0 +1,33 @@
+@begin(section) @title(MNAS-STRING/TRANSLIT)
+
+Пакет @b(mnas-string/translit) экспортирует следующие функции:
+@begin(list)
+ @item(@b(translit) - транслитерация строки.)
+@end(list)
+
+ Транслирерация производится с исползованием хеш-таблицы
+преобразования, в которой каждому заменяемому символу (ключ)
+соответствует строка (заначенине) на которую он заменяется.
+
+ Пакет @b(mnas-string/translit) экспортирует следующие хеш-таблицы
+преобразования:
+@begin(list)
+ @item(*cir-gr->en* - преобразование кирилических и греческих символов
+                      в лалинские;)
+ @item(*space-cir-gr->en* - преобразование кирилических и греческих
+                            символов в лалинские, такое что результат
+                            мог использоваться в качестве символа
+                            Commom Lisp.)
+@end(list)
+@begin(section)
+ @title(Переменные)
+ @cl:with-package[name="MNAS-STRING/TRANSLIT"](
+  @cl:doc(variable *space-cir-gr->en*)
+  @cl:doc(variable *cir-gr->en*))
+@end(section)
+@begin(section)
+ @title(Функции)
+ @cl:with-package[name="MNAS-STRING/TRANSLIT"](
+  @cl:doc(function translit))
+@end(section)
+@end(section)
