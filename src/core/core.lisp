@@ -103,6 +103,25 @@
    sequence
    :initial-value (make-hash-table :test test)))
 
+(defun split-bak (char-bag string &key (omit-nulls t))
+  (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
+	(rez nil)
+	(rezult))
+    (loop :for i :from 0 :below (length string) :do
+      (if (gethash (char string i) char-bag-hash)
+	  (push i rez)))
+    (setf rez (nreverse (push (length string) rez)))
+    (setf rezult
+	  (mapcar
+	   #'(lambda (el)
+	       (subseq string (first el) (second el)))
+	   (mapcar #'(lambda (el1 el2) (list (1+ el1) el2)) (push -1 rez) (cdr rez))))
+    (if omit-nulls 
+	(mapcan  #'(lambda (x)
+		     (if (= (length x) 0) nil (list x)))
+		 rezult)
+	rezult)))
+
 (defun split (char-bag string &key (omit-nulls t))
   "@b(Описание:) функция: @b(split) разделяет строку @b(string) на подстроки.
 
@@ -120,20 +139,21 @@
  (split \"; \" \" 1111 ; +5550650456540; 55\" ) => (\"1111\" \"+5550650456540\" \"55\")
 @end(code)
 "
+  (check-type string string)
+  (check-type char-bag string)
   (let ((char-bag-hash (make-populated-hash-table (map-to-list char-bag)))
-	(rez nil)
+        (s-l (length string))
+	(rez '(-1))
 	(rezult))
-    (loop :for i :from 0 :below (length string) :do
-      (if (gethash (char string i) char-bag-hash)
-	  (push i rez)))
-    (setf rez (nreverse (push (length string) rez)))
-    (setf rezult
-	  (mapcar
-	   #'(lambda (el)
-	       (subseq string (first el) (second el)))
-	   (mapcar #'(lambda (el1 el2) (list (1+ el1) el2)) (push -1 rez) (cdr rez))))
+    (loop :for i :from 0 :below s-l :do
+      (when (nth-value 1 (gethash (char string i) char-bag-hash))
+	(push i rez)))
+    (loop :for i :in rez
+          :for j :in (push s-l rez)
+          :do (push (subseq string (1+ i) j) rezult))
     (if omit-nulls 
 	(mapcan  #'(lambda (x)
+                     (check-type x string)
 		     (if (= (length x) 0) nil (list x)))
 		 rezult)
 	rezult)))
