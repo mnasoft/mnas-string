@@ -96,13 +96,16 @@
   :description "Зависимости для сборки документации"
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
-  :depends-on ("mnas-string" "mnas-package" "codex"))
+  :depends-on ("mnas-string"
+               "codex"
+               ;; "mnas-package"
+               ))
 
 (defsystem "mnas-string/tests"
   :description "Тестирование систем, входящих  в проект mnas-package"
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
-  :depends-on ("mnas-string" "fiveam")
+  :depends-on ("mnas-string" "fiveam" "sb-posix")
   :perform (test-op (o s)
 		    (uiop:symbol-call :mnas-string/tests :run-tests))
   :components ((:module "src/tests"
