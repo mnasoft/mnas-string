@@ -22,8 +22,8 @@
 @begin(section)
  @title(Переменные)
  @cl:with-package[name="MNAS-STRING/TRANSLIT"](
-  @cl:doc(variable *space-cir-gr->en*)
-  @cl:doc(variable *cir-gr->en*))
+  @cl:doc(variable *cir-gr->en*)
+  @cl:doc(variable *space-cir-gr->en*))
 @end(section)
 @begin(section)
  @title(Функции)

@@ -4,7 +4,7 @@
   (:use #:cl) 
   (:export prepare-to-query)
   (:documentation
-   "Пакет @b(mnas-string) экспортирует следующие функции:
+   "Пакет @b(mnas-string/db) экспортирует следующие функции:
  @begin(list) 
   @item(@b(prepare-to-query) - подготовка строки в качестве аргумента для like запроса SQL.)
  @end(list)

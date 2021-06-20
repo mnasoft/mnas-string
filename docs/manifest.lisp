@@ -7,6 +7,8 @@
               :sources (
                         "mnas-string.scr"
                         "mnas-string-graph.scr"
+                        "mnas-string-parse.scr"
+                        "mnas-string-parse-graph.scr"
                         "mnas-string-print.scr"
                         "mnas-string-print-graph.scr"
                         "mnas-string-translit.scr"

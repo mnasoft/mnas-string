@@ -92,14 +92,15 @@
 		:serial nil
                 :components ((:file "translit")))))
 
-(defsystem "mnas-string/docs"
+(defsystem "mnas-package/docs"
   :description "Зависимости для сборки документации"
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
-  :depends-on ("mnas-string"
-               "codex"
-               ;; "mnas-package"
-               ))
+  :depends-on ("mnas-string" "mnas-package" "codex")
+  :components ((:module "src/docs"
+		:serial nil
+                :components ((:file "docs")))))
+
 
 (defsystem "mnas-string/tests"
   :description "Тестирование систем, входящих  в проект mnas-package"
