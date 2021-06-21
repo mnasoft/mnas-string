@@ -37,9 +37,14 @@
  Пакет документации формируется в каталоге
 ~/public_html/Common-Lisp-Programs/mnas-string.
 "
-    (make-document)
-    (make-graphs)
-    (codex:document :mnas-string)
-    (make-graphs))
+  (make-document)
+  (make-graphs)
+  (mnas-package:make-mainfest-lisp
+   '(:mnas-string :mnas-string/docs)
+   "Mnas-String"
+   '("Nick Matvyeyev")
+   (mnas-package:find-sources "mnas-string"))
+  (codex:document :mnas-string)
+  (make-graphs))
 
 ;;;; (make-all)
