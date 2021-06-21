@@ -29,231 +29,271 @@
 #+END_SRC
 
 #+RESULTS: publish
-| sending                                              | incremental |  file | list        |         |       |           |           |             |         |          |                 |
-| ./                                                   |             |       |             |         |       |           |           |             |         |          |                 |
-| call-graph-mnas-string-db.gv                         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          63 |  100% | 0.00kB/s    | 0:00:00 |     |        63 |      100% | 0.00kB/s    | 0:00:00 | (xfr#1,  | to-chk=54/56)   |
-| call-graph-mnas-string-db.gv.png                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       8.63K |  100% | 8.23MB/s    | 0:00:00 |     |     8.63K |      100% | 8.23MB/s    | 0:00:00 | (xfr#2,  | to-chk=53/56)   |
-| call-graph-mnas-string-parse.gv                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          73 |  100% | 71.29kB/s   | 0:00:00 |     |        73 |      100% | 71.29kB/s   | 0:00:00 | (xfr#3,  | to-chk=52/56)   |
-| call-graph-mnas-string-parse.gv.png                  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      15.66K |  100% | 14.94MB/s   | 0:00:00 |     |    15.66K |      100% | 14.94MB/s   | 0:00:00 | (xfr#4,  | to-chk=51/56)   |
-| call-graph-mnas-string-print.gv                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         108 |  100% | 105.47kB/s  | 0:00:00 |     |       108 |      100% | 105.47kB/s  | 0:00:00 | (xfr#5,  | to-chk=50/56)   |
-| call-graph-mnas-string-print.gv.png                  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      30.32K |  100% | 28.91MB/s   | 0:00:00 |     |    30.32K |      100% | 28.91MB/s   | 0:00:00 | (xfr#6,  | to-chk=49/56)   |
-| call-graph-mnas-string-translit.gv                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          97 |  100% | 94.73kB/s   | 0:00:00 |     |        97 |      100% | 94.73kB/s   | 0:00:00 | (xfr#7,  | to-chk=48/56)   |
-| call-graph-mnas-string-translit.gv.png               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      21.98K |  100% | 20.97MB/s   | 0:00:00 |     |    21.98K |      100% | 20.97MB/s   | 0:00:00 | (xfr#8,  | to-chk=47/56)   |
-| call-graph-mnas-string.gv                            |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         638 |  100% | 623.05kB/s  | 0:00:00 |     |       638 |      100% | 623.05kB/s  | 0:00:00 | (xfr#9,  | to-chk=46/56)   |
-| call-graph-mnas-string.gv.png                        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      32.77K |   17% | 31.25MB/s   | 0:00:00 |     |   186.65K |      100% | 59.34MB/s   | 0:00:00 | (xfr#10, | to-chk=45/56)   |
-| class-graph-mnas-string-db.gv                        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#11, | to-chk=44/56)   |
-| class-graph-mnas-string-db.gv.png                    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#12, | to-chk=43/56)   |
-| class-graph-mnas-string-parse.gv                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#13, | to-chk=42/56)   |
-| class-graph-mnas-string-parse.gv.png                 |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#14, | to-chk=41/56)   |
-| class-graph-mnas-string-print.gv                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#15, | to-chk=40/56)   |
-| class-graph-mnas-string-print.gv.png                 |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#16, | to-chk=39/56)   |
-| class-graph-mnas-string-translit.gv                  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#17, | to-chk=38/56)   |
-| class-graph-mnas-string-translit.gv.png              |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#18, | to-chk=37/56)   |
-| class-graph-mnas-string.gv                           |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#19, | to-chk=36/56)   |
-| class-graph-mnas-string.gv.png                       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#20, | to-chk=35/56)   |
-| mnas-string-db.html                                  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       4.55K |  100% | 1.45MB/s    | 0:00:00 |     |     4.55K |      100% | 1.45MB/s    | 0:00:00 | (xfr#21, | to-chk=34/56)   |
-| mnas-string-parse.html                               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       5.10K |  100% | 1.62MB/s    | 0:00:00 |     |     5.10K |      100% | 1.62MB/s    | 0:00:00 | (xfr#22, | to-chk=33/56)   |
-| mnas-string-print.html                               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      10.57K |  100% | 3.36MB/s    | 0:00:00 |     |    10.57K |      100% | 3.36MB/s    | 0:00:00 | (xfr#23, | to-chk=32/56)   |
-| mnas-string-translit.html                            |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       7.13K |  100% | 2.27MB/s    | 0:00:00 |     |     7.13K |      100% | 2.27MB/s    | 0:00:00 | (xfr#24, | to-chk=31/56)   |
-| mnas-string.html                                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      10.25K |  100% | 3.26MB/s    | 0:00:00 |     |    10.25K |      100% | 3.26MB/s    | 0:00:00 | (xfr#25, | to-chk=30/56)   |
-| symbol-graph-mnas-string-db.gv                       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#26, | to-chk=29/56)   |
-| symbol-graph-mnas-string-db.gv.png                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#27, | to-chk=28/56)   |
-| symbol-graph-mnas-string-parse.gv                    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 14.32kB/s   | 0:00:00 |     |        44 |      100% | 14.32kB/s   | 0:00:00 | (xfr#28, | to-chk=27/56)   |
-| symbol-graph-mnas-string-parse.gv.png                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 37.76kB/s   | 0:00:00 |     |       116 |      100% | 37.76kB/s   | 0:00:00 | (xfr#29, | to-chk=26/56)   |
-| symbol-graph-mnas-string-print.gv                    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         254 |  100% | 82.68kB/s   | 0:00:00 |     |       254 |      100% | 82.68kB/s   | 0:00:00 | (xfr#30, | to-chk=25/56)   |
-| symbol-graph-mnas-string-print.gv.png                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      32.77K |   68% | 10.42MB/s   | 0:00:00 |     |    48.09K |      100% | 11.47MB/s   | 0:00:00 | (xfr#31, | to-chk=24/56)   |
-| symbol-graph-mnas-string-translit.gv                 |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       1.50K |  100% | 366.21kB/s  | 0:00:00 |     |     1.50K |      100% | 366.21kB/s  | 0:00:00 | (xfr#32, | to-chk=23/56)   |
-| symbol-graph-mnas-string-translit.gv.png             |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      32.77K |    9% | 7.81MB/s    | 0:00:00 |     |   351.46K |      100% | 18.62MB/s   | 0:00:00 | (xfr#33, | to-chk=22/56)   |
-| symbol-graph-mnas-string.gv                          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.39kB/s    | 0:00:00 |     |        44 |      100% | 2.39kB/s    | 0:00:00 | (xfr#34, | to-chk=21/56)   |
-| symbol-graph-mnas-string.gv.png                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 6.29kB/s    | 0:00:00 |     |       116 |      100% | 6.29kB/s    | 0:00:00 | (xfr#35, | to-chk=20/56)   |
-| system-graph-mnas-string-db.gv                       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         163 |  100% | 8.84kB/s    | 0:00:00 |     |       163 |      100% | 8.84kB/s    | 0:00:00 | (xfr#36, | to-chk=19/56)   |
-| system-graph-mnas-string-db.gv.png                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      22.98K |  100% | 1.15MB/s    | 0:00:00 |     |    22.98K |      100% | 1.15MB/s    | 0:00:00 | (xfr#37, | to-chk=18/56)   |
-| system-graph-mnas-string-parse.gv                    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         203 |  100% | 10.43kB/s   | 0:00:00 |     |       203 |      100% | 10.43kB/s   | 0:00:00 | (xfr#38, | to-chk=17/56)   |
-| system-graph-mnas-string-parse.gv.png                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      32.77K |   92% | 1.64MB/s    | 0:00:00 |     |    35.55K |      100% | 1.78MB/s    | 0:00:00 | (xfr#39, | to-chk=16/56)   |
-| system-graph-mnas-string-print.gv                    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.26kB/s    | 0:00:00 |     |        44 |      100% | 2.26kB/s    | 0:00:00 | (xfr#40, | to-chk=15/56)   |
-| system-graph-mnas-string-print.gv.png                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.96kB/s    | 0:00:00 |     |       116 |      100% | 5.96kB/s    | 0:00:00 | (xfr#41, | to-chk=14/56)   |
-| system-graph-mnas-string-translit.gv                 |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.26kB/s    | 0:00:00 |     |        44 |      100% | 2.26kB/s    | 0:00:00 | (xfr#42, | to-chk=13/56)   |
-| system-graph-mnas-string-translit.gv.png             |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.96kB/s    | 0:00:00 |     |       116 |      100% | 5.96kB/s    | 0:00:00 | (xfr#43, | to-chk=12/56)   |
-| system-graph-mnas-string.gv                          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         500 |  100% | 25.70kB/s   | 0:00:00 |     |       500 |      100% | 25.70kB/s   | 0:00:00 | (xfr#44, | to-chk=11/56)   |
-| system-graph-mnas-string.gv.png                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      32.77K |   23% | 1.64MB/s    | 0:00:00 |     |   140.98K |      100% | 6.40MB/s    | 0:00:00 | (xfr#45, | to-chk=10/56)   |
-| графы-mnas-string-db.html                            |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.56K |  100% | 158.11kB/s  | 0:00:00 |     |     3.56K |      100% | 158.11kB/s  | 0:00:00 | (xfr#46, | to-chk=9/56)    |
-| графы-mnas-string-parse.html                         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.49K |  100% | 155.05kB/s  | 0:00:00 |     |     3.49K |      100% | 155.05kB/s  | 0:00:00 | (xfr#47, | to-chk=8/56)    |
-| графы-mnas-string-print.html                         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.53K |  100% | 156.65kB/s  | 0:00:00 |     |     3.53K |      100% | 156.65kB/s  | 0:00:00 | (xfr#48, | to-chk=7/56)    |
-| графы-mnas-string-translit.html                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.60K |  100% | 159.58kB/s  | 0:00:00 |     |     3.60K |      100% | 159.58kB/s  | 0:00:00 | (xfr#49, | to-chk=6/56)    |
-| графы-mnas-string.html                               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.43K |  100% | 152.12kB/s  | 0:00:00 |     |     3.43K |      100% | 152.12kB/s  | 0:00:00 | (xfr#50, | to-chk=5/56)    |
-| обзор.html                                           |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.97K |  100% | 176.18kB/s  | 0:00:00 |     |     3.97K |      100% | 176.18kB/s  | 0:00:00 | (xfr#51, | to-chk=4/56)    |
-| static/                                              |             |       |             |         |       |           |           |             |         |          |                 |
-| static/highlight.css                                 |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       1.57K |  100% | 69.74kB/s   | 0:00:00 |     |     1.57K |      100% | 69.74kB/s   | 0:00:00 | (xfr#52, | to-chk=2/56)    |
-| static/highlight.js                                  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |      22.99K |  100% | 1020.46kB/s | 0:00:00 |     |    22.99K |      100% | 1020.46kB/s | 0:00:00 | (xfr#53, | to-chk=1/56)    |
-| static/style.css                                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       4.32K |  100% | 191.67kB/s  | 0:00:00 |     |     4.32K |      100% | 191.67kB/s  | 0:00:00 | (xfr#54, | to-chk=0/56)    |
-| mnasoft-00                                           |             |       |             |         |       |           |           |             |         |          |                 |
-| sending                                              | incremental |  file | list        |         |       |           |           |             |         |          |                 |
-| mnas-string/                                         |             |       |             |         |       |           |           |             |         |          |                 |
-| mnas-string/call-graph-mnas-string-db.gv             |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          63 |  100% | 0.00kB/s    | 0:00:00 |     |        63 |      100% | 0.00kB/s    | 0:00:00 | (xfr#1,  | to-chk=213/652) |
-| mnas-string/call-graph-mnas-string-db.gv.png         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    8% | 683.59kB/s  | 0:00:00 |     |     8.63K |      100% | 8.23MB/s    | 0:00:00 | (xfr#2,  | to-chk=212/652) |
-| mnas-string/call-graph-mnas-string-parse.gv          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          73 |  100% | 71.29kB/s   | 0:00:00 |     |        73 |      100% | 71.29kB/s   | 0:00:00 | (xfr#3,  | to-chk=211/652) |
-| mnas-string/call-graph-mnas-string-parse.gv.png      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    4% | 683.59kB/s  | 0:00:00 |     |    15.66K |      100% | 4.98MB/s    | 0:00:00 | (xfr#4,  | to-chk=210/652) |
-| mnas-string/call-graph-mnas-string-print.gv          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         108 |  100% | 35.16kB/s   | 0:00:00 |     |       108 |      100% | 35.16kB/s   | 0:00:00 | (xfr#5,  | to-chk=209/652) |
-| mnas-string/call-graph-mnas-string-print.gv.png      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    2% | 227.86kB/s  | 0:00:00 |     |    30.32K |      100% | 5.78MB/s    | 0:00:00 | (xfr#6,  | to-chk=208/652) |
-| mnas-string/call-graph-mnas-string-translit.gv       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          97 |  100% | 18.95kB/s   | 0:00:00 |     |        97 |      100% | 18.95kB/s   | 0:00:00 | (xfr#7,  | to-chk=207/652) |
-| mnas-string/call-graph-mnas-string-translit.gv.png   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    3% | 136.72kB/s  | 0:00:00 |     |    21.98K |      100% | 3.49MB/s    | 0:00:00 | (xfr#8,  | to-chk=206/652) |
-| mnas-string/call-graph-mnas-string.gv                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         638 |  100% | 103.84kB/s  | 0:00:00 |     |       638 |      100% | 103.84kB/s  | 0:00:00 | (xfr#9,  | to-chk=205/652) |
-| mnas-string/call-graph-mnas-string.gv.png            |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    0% | 113.93kB/s  | 0:00:01 |     |   186.65K |      100% | 9.37MB/s    | 0:00:00 | (xfr#10, | to-chk=204/652) |
-| mnas-string/class-graph-mnas-string-db.gv            |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.26kB/s    | 0:00:00 |     |        44 |      100% | 2.26kB/s    | 0:00:00 | (xfr#11, | to-chk=203/652) |
-| mnas-string/class-graph-mnas-string-db.gv.png        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.66kB/s    | 0:00:00 |     |       116 |      100% | 5.66kB/s    | 0:00:00 | (xfr#12, | to-chk=202/652) |
-| mnas-string/class-graph-mnas-string-parse.gv         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.15kB/s    | 0:00:00 |     |        44 |      100% | 2.15kB/s    | 0:00:00 | (xfr#13, | to-chk=201/652) |
-| mnas-string/class-graph-mnas-string-parse.gv.png     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.66kB/s    | 0:00:00 |     |       116 |      100% | 5.66kB/s    | 0:00:00 | (xfr#14, | to-chk=200/652) |
-| mnas-string/class-graph-mnas-string-print.gv         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.15kB/s    | 0:00:00 |     |        44 |      100% | 2.15kB/s    | 0:00:00 | (xfr#15, | to-chk=199/652) |
-| mnas-string/class-graph-mnas-string-print.gv.png     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.66kB/s    | 0:00:00 |     |       116 |      100% | 5.66kB/s    | 0:00:00 | (xfr#16, | to-chk=198/652) |
-| mnas-string/class-graph-mnas-string-translit.gv      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.15kB/s    | 0:00:00 |     |        44 |      100% | 2.15kB/s    | 0:00:00 | (xfr#17, | to-chk=197/652) |
-| mnas-string/class-graph-mnas-string-translit.gv.png  |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.66kB/s    | 0:00:00 |     |       116 |      100% | 5.66kB/s    | 0:00:00 | (xfr#18, | to-chk=196/652) |
-| mnas-string/class-graph-mnas-string.gv               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.15kB/s    | 0:00:00 |     |        44 |      100% | 2.15kB/s    | 0:00:00 | (xfr#19, | to-chk=195/652) |
-| mnas-string/class-graph-mnas-string.gv.png           |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.66kB/s    | 0:00:00 |     |       116 |      100% | 5.66kB/s    | 0:00:00 | (xfr#20, | to-chk=194/652) |
-| mnas-string/mnas-string-db.html                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   15% | 34.18kB/s   | 0:00:00 |     |     4.55K |      100% | 222.31kB/s  | 0:00:00 | (xfr#21, | to-chk=193/652) |
-| mnas-string/mnas-string-parse.html                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       5.10K |  100% | 249.02kB/s  | 0:00:00 |     |     5.10K |      100% | 249.02kB/s  | 0:00:00 | (xfr#22, | to-chk=192/652) |
-| mnas-string/mnas-string-print.html                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    6% | 34.18kB/s   | 0:00:00 |     |    10.57K |      100% | 516.31kB/s  | 0:00:00 | (xfr#23, | to-chk=191/652) |
-| mnas-string/mnas-string-translit.html                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    9% | 34.18kB/s   | 0:00:00 |     |     7.13K |      100% | 331.71kB/s  | 0:00:00 | (xfr#24, | to-chk=190/652) |
-| mnas-string/mnas-string.html                         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    6% | 32.55kB/s   | 0:00:00 |     |    10.25K |      100% | 476.66kB/s  | 0:00:00 | (xfr#25, | to-chk=189/652) |
-| mnas-string/symbol-graph-mnas-string-db.gv           |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.05kB/s    | 0:00:00 |     |        44 |      100% | 2.05kB/s    | 0:00:00 | (xfr#26, | to-chk=188/652) |
-| mnas-string/symbol-graph-mnas-string-db.gv.png       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.39kB/s    | 0:00:00 |     |       116 |      100% | 5.39kB/s    | 0:00:00 | (xfr#27, | to-chk=187/652) |
-| mnas-string/symbol-graph-mnas-string-parse.gv        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 2.05kB/s    | 0:00:00 |     |        44 |      100% | 2.05kB/s    | 0:00:00 | (xfr#28, | to-chk=186/652) |
-| mnas-string/symbol-graph-mnas-string-parse.gv.png    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 5.39kB/s    | 0:00:00 |     |       116 |      100% | 5.39kB/s    | 0:00:00 | (xfr#29, | to-chk=185/652) |
-| mnas-string/symbol-graph-mnas-string-print.gv        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         254 |  100% | 11.81kB/s   | 0:00:00 |     |       254 |      100% | 11.81kB/s   | 0:00:00 | (xfr#30, | to-chk=184/652) |
-| mnas-string/symbol-graph-mnas-string-print.gv.png    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    1% | 32.55kB/s   | 0:00:01 |     |    48.09K |      100% | 1.91MB/s    | 0:00:00 | (xfr#31, | to-chk=183/652) |
-| mnas-string/symbol-graph-mnas-string-translit.gv     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   46% | 27.34kB/s   | 0:00:00 |     |     1.50K |      100% | 58.59kB/s   | 0:00:00 | (xfr#32, | to-chk=182/652) |
-| mnas-string/symbol-graph-mnas-string-translit.gv.png |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    0% | 27.34kB/s   | 0:00:12 |     |   351.46K |      100% | 6.45MB/s    | 0:00:00 | (xfr#33, | to-chk=181/652) |
-| mnas-string/symbol-graph-mnas-string.gv              |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 0.83kB/s    | 0:00:00 |     |        44 |      100% | 0.83kB/s    | 0:00:00 | (xfr#34, | to-chk=180/652) |
-| mnas-string/symbol-graph-mnas-string.gv.png          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 2.18kB/s    | 0:00:00 |     |       116 |      100% | 2.18kB/s    | 0:00:00 | (xfr#35, | to-chk=179/652) |
-| mnas-string/system-graph-mnas-string-db.gv           |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         163 |  100% | 3.06kB/s    | 0:00:00 |     |       163 |      100% | 3.06kB/s    | 0:00:00 | (xfr#36, | to-chk=178/652) |
-| mnas-string/system-graph-mnas-string-db.gv.png       |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    3% | 13.15kB/s   | 0:00:01 |     |    22.98K |      100% | 423.35kB/s  | 0:00:00 | (xfr#37, | to-chk=177/652) |
-| mnas-string/system-graph-mnas-string-parse.gv        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         203 |  100% | 3.74kB/s    | 0:00:00 |     |       203 |      100% | 3.74kB/s    | 0:00:00 | (xfr#38, | to-chk=176/652) |
-| mnas-string/system-graph-mnas-string-parse.gv.png    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    1% | 12.90kB/s   | 0:00:02 |     |    35.55K |      100% | 619.98kB/s  | 0:00:00 | (xfr#39, | to-chk=175/652) |
-| mnas-string/system-graph-mnas-string-print.gv        |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 0.77kB/s    | 0:00:00 |     |        44 |      100% | 0.77kB/s    | 0:00:00 | (xfr#40, | to-chk=174/652) |
-| mnas-string/system-graph-mnas-string-print.gv.png    |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 2.02kB/s    | 0:00:00 |     |       116 |      100% | 2.02kB/s    | 0:00:00 | (xfr#41, | to-chk=173/652) |
-| mnas-string/system-graph-mnas-string-translit.gv     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |          44 |  100% | 0.77kB/s    | 0:00:00 |     |        44 |      100% | 0.77kB/s    | 0:00:00 | (xfr#42, | to-chk=172/652) |
-| mnas-string/system-graph-mnas-string-translit.gv.png |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         116 |  100% | 2.02kB/s    | 0:00:00 |     |       116 |      100% | 2.02kB/s    | 0:00:00 | (xfr#43, | to-chk=171/652) |
-| mnas-string/system-graph-mnas-string.gv              |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         500 |  100% | 8.72kB/s    | 0:00:00 |     |       500 |      100% | 8.72kB/s    | 0:00:00 | (xfr#44, | to-chk=170/652) |
-| mnas-string/system-graph-mnas-string.gv.png          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    0% | 12.21kB/s   | 0:00:11 |     |   140.98K |      100% | 2.04MB/s    | 0:00:00 | (xfr#45, | to-chk=169/652) |
-| mnas-string/графы-mnas-string-db.html                |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   19% | 10.36kB/s   | 0:00:00 |     |     3.56K |      100% | 52.70kB/s   | 0:00:00 | (xfr#46, | to-chk=168/652) |
-| mnas-string/графы-mnas-string-parse.html             |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |       3.49K |  100% | 51.68kB/s   | 0:00:00 |     |     3.49K |      100% | 51.68kB/s   | 0:00:00 | (xfr#47, | to-chk=167/652) |
-| mnas-string/графы-mnas-string-print.html             |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   19% | 10.36kB/s   | 0:00:00 |     |     3.53K |      100% | 52.22kB/s   | 0:00:00 | (xfr#48, | to-chk=166/652) |
-| mnas-string/графы-mnas-string-translit.html          |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   19% | 10.36kB/s   | 0:00:00 |     |     3.60K |      100% | 53.19kB/s   | 0:00:00 | (xfr#49, | to-chk=165/652) |
-| mnas-string/графы-mnas-string.html                   |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   20% | 10.20kB/s   | 0:00:00 |     |     3.43K |      100% | 49.95kB/s   | 0:00:00 | (xfr#50, | to-chk=164/652) |
-| mnas-string/обзор.html                               |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   17% | 10.20kB/s   | 0:00:00 |     |     3.97K |      100% | 57.85kB/s   | 0:00:00 | (xfr#51, | to-chk=163/652) |
-| mnas-string/static/                                  |             |       |             |         |       |           |           |             |         |          |                 |
-| mnas-string/static/highlight.css                     |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   44% | 10.20kB/s   | 0:00:00 |     |     1.57K |      100% | 22.90kB/s   | 0:00:00 | (xfr#52, | to-chk=161/652) |
-| mnas-string/static/highlight.js                      |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |    3% | 10.20kB/s   | 0:00:02 |     |    22.99K |      100% | 330.15kB/s  | 0:00:00 | (xfr#53, | to-chk=160/652) |
-| mnas-string/static/style.css                         |             |       |             |         |       |           |           |             |         |          |                 |
-|                                                    |         700 |   16% | 10.05kB/s   | 0:00:00 |     |     4.32K |      100% | 62.01kB/s   | 0:00:00 | (xfr#54, | to-chk=159/652) |
-|                                                      |             |       |             |         |       |           |           |             |         |          |                 |
-| sent                                                 |      33.83K | bytes | received    |   9.39K | bytes |    17.29K | bytes/sec |             |         |          |                 |
-| total                                                |        size |    is | 1.22G       | speedup | is    | 28,164.54 |           |             |         |          |                 |
+| sending                                              | incremental |  file | list       |         |       |           |           |            |         |          |                 |
+| ./                                                   |             |       |            |         |       |           |           |            |         |          |                 |
+| call-graph-mnas-string-db.gv                         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          63 |  100% | 0.00kB/s   | 0:00:00 |     |        63 |      100% | 0.00kB/s   | 0:00:00 | (xfr#1,  | to-chk=64/66)   |
+| call-graph-mnas-string-db.gv.png                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       8.63K |  100% | 8.23MB/s   | 0:00:00 |     |     8.63K |      100% | 8.23MB/s   | 0:00:00 | (xfr#2,  | to-chk=63/66)   |
+| call-graph-mnas-string-docs.gv                       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         143 |  100% | 139.65kB/s | 0:00:00 |     |       143 |      100% | 139.65kB/s | 0:00:00 | (xfr#3,  | to-chk=62/66)   |
+| call-graph-mnas-string-docs.gv.png                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      29.26K |  100% | 27.90MB/s  | 0:00:00 |     |    29.26K |      100% | 27.90MB/s  | 0:00:00 | (xfr#4,  | to-chk=61/66)   |
+| call-graph-mnas-string-parse.gv                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          73 |  100% | 71.29kB/s  | 0:00:00 |     |        73 |      100% | 71.29kB/s  | 0:00:00 | (xfr#5,  | to-chk=60/66)   |
+| call-graph-mnas-string-parse.gv.png                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      15.66K |  100% | 14.94MB/s  | 0:00:00 |     |    15.66K |      100% | 14.94MB/s  | 0:00:00 | (xfr#6,  | to-chk=59/66)   |
+| call-graph-mnas-string-print.gv                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         108 |  100% | 105.47kB/s | 0:00:00 |     |       108 |      100% | 105.47kB/s | 0:00:00 | (xfr#7,  | to-chk=58/66)   |
+| call-graph-mnas-string-print.gv.png                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      30.32K |  100% | 28.91MB/s  | 0:00:00 |     |    30.32K |      100% | 28.91MB/s  | 0:00:00 | (xfr#8,  | to-chk=57/66)   |
+| call-graph-mnas-string-translit.gv                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          97 |  100% | 94.73kB/s  | 0:00:00 |     |        97 |      100% | 94.73kB/s  | 0:00:00 | (xfr#9,  | to-chk=56/66)   |
+| call-graph-mnas-string-translit.gv.png               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      21.98K |  100% | 20.97MB/s  | 0:00:00 |     |    21.98K |      100% | 20.97MB/s  | 0:00:00 | (xfr#10, | to-chk=55/66)   |
+| call-graph-mnas-string.gv                            |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         638 |  100% | 623.05kB/s | 0:00:00 |     |       638 |      100% | 623.05kB/s | 0:00:00 | (xfr#11, | to-chk=54/66)   |
+| call-graph-mnas-string.gv.png                        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |   17% | 31.25MB/s  | 0:00:00 |     |   186.65K |      100% | 44.50MB/s  | 0:00:00 | (xfr#12, | to-chk=53/66)   |
+| class-graph-mnas-string-db.gv                        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 10.74kB/s  | 0:00:00 |     |        44 |      100% | 10.74kB/s  | 0:00:00 | (xfr#13, | to-chk=52/66)   |
+| class-graph-mnas-string-db.gv.png                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 28.32kB/s  | 0:00:00 |     |       116 |      100% | 28.32kB/s  | 0:00:00 | (xfr#14, | to-chk=51/66)   |
+| class-graph-mnas-string-docs.gv                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 10.74kB/s  | 0:00:00 |     |        44 |      100% | 10.74kB/s  | 0:00:00 | (xfr#15, | to-chk=50/66)   |
+| class-graph-mnas-string-docs.gv.png                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 28.32kB/s  | 0:00:00 |     |       116 |      100% | 28.32kB/s  | 0:00:00 | (xfr#16, | to-chk=49/66)   |
+| class-graph-mnas-string-parse.gv                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 10.74kB/s  | 0:00:00 |     |        44 |      100% | 10.74kB/s  | 0:00:00 | (xfr#17, | to-chk=48/66)   |
+| class-graph-mnas-string-parse.gv.png                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 28.32kB/s  | 0:00:00 |     |       116 |      100% | 28.32kB/s  | 0:00:00 | (xfr#18, | to-chk=47/66)   |
+| class-graph-mnas-string-print.gv                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 10.74kB/s  | 0:00:00 |     |        44 |      100% | 10.74kB/s  | 0:00:00 | (xfr#19, | to-chk=46/66)   |
+| class-graph-mnas-string-print.gv.png                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 28.32kB/s  | 0:00:00 |     |       116 |      100% | 28.32kB/s  | 0:00:00 | (xfr#20, | to-chk=45/66)   |
+| class-graph-mnas-string-translit.gv                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 8.59kB/s   | 0:00:00 |     |        44 |      100% | 8.59kB/s   | 0:00:00 | (xfr#21, | to-chk=44/66)   |
+| class-graph-mnas-string-translit.gv.png              |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 22.66kB/s  | 0:00:00 |     |       116 |      100% | 22.66kB/s  | 0:00:00 | (xfr#22, | to-chk=43/66)   |
+| class-graph-mnas-string.gv                           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 8.59kB/s   | 0:00:00 |     |        44 |      100% | 8.59kB/s   | 0:00:00 | (xfr#23, | to-chk=42/66)   |
+| class-graph-mnas-string.gv.png                       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 22.66kB/s  | 0:00:00 |     |       116 |      100% | 22.66kB/s  | 0:00:00 | (xfr#24, | to-chk=41/66)   |
+| mnas-string-db.html                                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       4.86K |  100% | 949.80kB/s | 0:00:00 |     |     4.86K |      100% | 949.80kB/s | 0:00:00 | (xfr#25, | to-chk=40/66)   |
+| mnas-string-docs.html                                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       4.33K |  100% | 846.29kB/s | 0:00:00 |     |     4.33K |      100% | 846.29kB/s | 0:00:00 | (xfr#26, | to-chk=39/66)   |
+| mnas-string-parse.html                               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       5.41K |  100% | 1.03MB/s   | 0:00:00 |     |     5.41K |      100% | 1.03MB/s   | 0:00:00 | (xfr#27, | to-chk=38/66)   |
+| mnas-string-print.html                               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      10.88K |  100% | 2.08MB/s   | 0:00:00 |     |    10.88K |      100% | 2.08MB/s   | 0:00:00 | (xfr#28, | to-chk=37/66)   |
+| mnas-string-translit.html                            |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       7.44K |  100% | 1.42MB/s   | 0:00:00 |     |     7.44K |      100% | 1.42MB/s   | 0:00:00 | (xfr#29, | to-chk=36/66)   |
+| mnas-string.html                                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      10.56K |  100% | 2.01MB/s   | 0:00:00 |     |    10.56K |      100% | 2.01MB/s   | 0:00:00 | (xfr#30, | to-chk=35/66)   |
+| symbol-graph-mnas-string-db.gv                       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 8.59kB/s   | 0:00:00 |     |        44 |      100% | 8.59kB/s   | 0:00:00 | (xfr#31, | to-chk=34/66)   |
+| symbol-graph-mnas-string-db.gv.png                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 22.66kB/s  | 0:00:00 |     |       116 |      100% | 22.66kB/s  | 0:00:00 | (xfr#32, | to-chk=33/66)   |
+| symbol-graph-mnas-string-docs.gv                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 8.59kB/s   | 0:00:00 |     |        44 |      100% | 8.59kB/s   | 0:00:00 | (xfr#33, | to-chk=32/66)   |
+| symbol-graph-mnas-string-docs.gv.png                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 22.66kB/s  | 0:00:00 |     |       116 |      100% | 22.66kB/s  | 0:00:00 | (xfr#34, | to-chk=31/66)   |
+| symbol-graph-mnas-string-parse.gv                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 8.59kB/s   | 0:00:00 |     |        44 |      100% | 8.59kB/s   | 0:00:00 | (xfr#35, | to-chk=30/66)   |
+| symbol-graph-mnas-string-parse.gv.png                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 22.66kB/s  | 0:00:00 |     |       116 |      100% | 22.66kB/s  | 0:00:00 | (xfr#36, | to-chk=29/66)   |
+| symbol-graph-mnas-string-print.gv                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         254 |  100% | 49.61kB/s  | 0:00:00 |     |       254 |      100% | 49.61kB/s  | 0:00:00 | (xfr#37, | to-chk=28/66)   |
+| symbol-graph-mnas-string-print.gv.png                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |   68% | 6.25MB/s   | 0:00:00 |     |    48.09K |      100% | 7.64MB/s   | 0:00:00 | (xfr#38, | to-chk=27/66)   |
+| symbol-graph-mnas-string-translit.gv                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       1.50K |  100% | 244.14kB/s | 0:00:00 |     |     1.50K |      100% | 244.14kB/s | 0:00:00 | (xfr#39, | to-chk=26/66)   |
+| symbol-graph-mnas-string-translit.gv.png             |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |    9% | 5.21MB/s   | 0:00:00 |     |   351.46K |      100% | 22.35MB/s  | 0:00:00 | (xfr#40, | to-chk=25/66)   |
+| symbol-graph-mnas-string.gv                          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 2.86kB/s   | 0:00:00 |     |        44 |      100% | 2.86kB/s   | 0:00:00 | (xfr#41, | to-chk=24/66)   |
+| symbol-graph-mnas-string.gv.png                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 7.55kB/s   | 0:00:00 |     |       116 |      100% | 7.55kB/s   | 0:00:00 | (xfr#42, | to-chk=23/66)   |
+| system-graph-mnas-string-db.gv                       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         163 |  100% | 10.61kB/s  | 0:00:00 |     |       163 |      100% | 10.61kB/s  | 0:00:00 | (xfr#43, | to-chk=22/66)   |
+| system-graph-mnas-string-db.gv.png                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      22.98K |  100% | 1.37MB/s   | 0:00:00 |     |    22.98K |      100% | 1.37MB/s   | 0:00:00 | (xfr#44, | to-chk=21/66)   |
+| system-graph-mnas-string-docs.gv                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       6.97K |  100% | 425.60kB/s | 0:00:00 |     |     6.97K |      100% | 425.60kB/s | 0:00:00 | (xfr#45, | to-chk=20/66)   |
+| system-graph-mnas-string-docs.gv.png                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |    0% | 1.95MB/s   | 0:00:03 |     |     6.30M |      100% | 67.49MB/s  | 0:00:00 | (xfr#46, | to-chk=19/66)   |
+| system-graph-mnas-string-parse.gv                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         203 |  100% | 2.23kB/s   | 0:00:00 |     |       203 |      100% | 2.23kB/s   | 0:00:00 | (xfr#47, | to-chk=18/66)   |
+| system-graph-mnas-string-parse.gv.png                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |   92% | 359.55kB/s | 0:00:00 |     |    35.55K |      100% | 390.10kB/s | 0:00:00 | (xfr#48, | to-chk=17/66)   |
+| system-graph-mnas-string-print.gv                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.48kB/s   | 0:00:00 |     |        44 |      100% | 0.48kB/s   | 0:00:00 | (xfr#49, | to-chk=16/66)   |
+| system-graph-mnas-string-print.gv.png                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 1.27kB/s   | 0:00:00 |     |       116 |      100% | 1.27kB/s   | 0:00:00 | (xfr#50, | to-chk=15/66)   |
+| system-graph-mnas-string-translit.gv                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.48kB/s   | 0:00:00 |     |        44 |      100% | 0.48kB/s   | 0:00:00 | (xfr#51, | to-chk=14/66)   |
+| system-graph-mnas-string-translit.gv.png             |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 1.27kB/s   | 0:00:00 |     |       116 |      100% | 1.27kB/s   | 0:00:00 | (xfr#52, | to-chk=13/66)   |
+| system-graph-mnas-string.gv                          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         500 |  100% | 5.49kB/s   | 0:00:00 |     |       500 |      100% | 5.49kB/s   | 0:00:00 | (xfr#53, | to-chk=12/66)   |
+| system-graph-mnas-string.gv.png                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      32.77K |   23% | 359.55kB/s | 0:00:00 |     |   140.98K |      100% | 1.48MB/s   | 0:00:00 | (xfr#54, | to-chk=11/66)   |
+| графы-mnas-string-db.html                            |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.87K |  100% | 28.22kB/s  | 0:00:00 |     |     3.87K |      100% | 28.22kB/s  | 0:00:00 | (xfr#55, | to-chk=10/66)   |
+| графы-mnas-string-docs.html                          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.90K |  100% | 28.46kB/s  | 0:00:00 |     |     3.90K |      100% | 28.46kB/s  | 0:00:00 | (xfr#56, | to-chk=9/66)    |
+| графы-mnas-string-parse.html                         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.80K |  100% | 27.72kB/s  | 0:00:00 |     |     3.80K |      100% | 27.72kB/s  | 0:00:00 | (xfr#57, | to-chk=8/66)    |
+| графы-mnas-string-print.html                         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.84K |  100% | 27.98kB/s  | 0:00:00 |     |     3.84K |      100% | 27.98kB/s  | 0:00:00 | (xfr#58, | to-chk=7/66)    |
+| графы-mnas-string-translit.html                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.90K |  100% | 28.46kB/s  | 0:00:00 |     |     3.90K |      100% | 28.46kB/s  | 0:00:00 | (xfr#59, | to-chk=6/66)    |
+| графы-mnas-string.html                               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       3.74K |  100% | 27.23kB/s  | 0:00:00 |     |     3.74K |      100% | 27.23kB/s  | 0:00:00 | (xfr#60, | to-chk=5/66)    |
+| обзор.html                                           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       4.28K |  100% | 31.18kB/s  | 0:00:00 |     |     4.28K |      100% | 31.18kB/s  | 0:00:00 | (xfr#61, | to-chk=4/66)    |
+| static/                                              |             |       |            |         |       |           |           |            |         |          |                 |
+| static/highlight.css                                 |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       1.57K |  100% | 11.45kB/s  | 0:00:00 |     |     1.57K |      100% | 11.45kB/s  | 0:00:00 | (xfr#62, | to-chk=2/66)    |
+| static/highlight.js                                  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |      22.99K |  100% | 167.54kB/s | 0:00:00 |     |    22.99K |      100% | 167.54kB/s | 0:00:00 | (xfr#63, | to-chk=1/66)    |
+| static/style.css                                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       4.32K |  100% | 31.47kB/s  | 0:00:00 |     |     4.32K |      100% | 31.47kB/s  | 0:00:00 | (xfr#64, | to-chk=0/66)    |
+| mnasoft-00                                           |             |       |            |         |       |           |           |            |         |          |                 |
+| sending                                              | incremental |  file | list       |         |       |           |           |            |         |          |                 |
+| mnas-string/                                         |             |       |            |         |       |           |           |            |         |          |                 |
+| mnas-string/call-graph-mnas-string-db.gv             |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          63 |  100% | 0.00kB/s   | 0:00:00 |     |        63 |      100% | 0.00kB/s   | 0:00:00 | (xfr#1,  | to-chk=223/662) |
+| mnas-string/call-graph-mnas-string-db.gv.png         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    8% | 683.59kB/s | 0:00:00 |     |     8.63K |      100% | 8.23MB/s   | 0:00:00 | (xfr#2,  | to-chk=222/662) |
+| mnas-string/call-graph-mnas-string-docs.gv           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         143 |  100% | 139.65kB/s | 0:00:00 |     |       143 |      100% | 139.65kB/s | 0:00:00 | (xfr#3,  | to-chk=221/662) |
+| mnas-string/call-graph-mnas-string-docs.gv.png       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    2% | 683.59kB/s | 0:00:00 |     |    29.26K |      100% | 4.65MB/s   | 0:00:00 | (xfr#4,  | to-chk=220/662) |
+| mnas-string/call-graph-mnas-string-parse.gv          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          73 |  100% | 11.88kB/s  | 0:00:00 |     |        73 |      100% | 11.88kB/s  | 0:00:00 | (xfr#5,  | to-chk=219/662) |
+| mnas-string/call-graph-mnas-string-parse.gv.png      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    4% | 113.93kB/s | 0:00:00 |     |    15.66K |      100% | 1.87MB/s   | 0:00:00 | (xfr#6,  | to-chk=218/662) |
+| mnas-string/call-graph-mnas-string-print.gv          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         108 |  100% | 13.18kB/s  | 0:00:00 |     |       108 |      100% | 13.18kB/s  | 0:00:00 | (xfr#7,  | to-chk=217/662) |
+| mnas-string/call-graph-mnas-string-print.gv.png      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    2% | 85.45kB/s  | 0:00:00 |     |    30.32K |      100% | 2.22MB/s   | 0:00:00 | (xfr#8,  | to-chk=216/662) |
+| mnas-string/call-graph-mnas-string-translit.gv       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          97 |  100% | 7.29kB/s   | 0:00:00 |     |        97 |      100% | 7.29kB/s   | 0:00:00 | (xfr#9,  | to-chk=215/662) |
+| mnas-string/call-graph-mnas-string-translit.gv.png   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    3% | 52.58kB/s  | 0:00:00 |     |    21.98K |      100% | 1.31MB/s   | 0:00:00 | (xfr#10, | to-chk=214/662) |
+| mnas-string/call-graph-mnas-string.gv                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         638 |  100% | 38.94kB/s  | 0:00:00 |     |       638 |      100% | 38.94kB/s  | 0:00:00 | (xfr#11, | to-chk=213/662) |
+| mnas-string/call-graph-mnas-string.gv.png            |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    0% | 42.72kB/s  | 0:00:04 |     |   186.65K |      100% | 3.71MB/s   | 0:00:00 | (xfr#12, | to-chk=212/662) |
+| mnas-string/class-graph-mnas-string-db.gv            |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.90kB/s   | 0:00:00 |     |        44 |      100% | 0.90kB/s   | 0:00:00 | (xfr#13, | to-chk=211/662) |
+| mnas-string/class-graph-mnas-string-db.gv.png        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.36kB/s   | 0:00:00 |     |       116 |      100% | 2.36kB/s   | 0:00:00 | (xfr#14, | to-chk=210/662) |
+| mnas-string/class-graph-mnas-string-docs.gv          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.90kB/s   | 0:00:00 |     |        44 |      100% | 0.90kB/s   | 0:00:00 | (xfr#15, | to-chk=209/662) |
+| mnas-string/class-graph-mnas-string-docs.gv.png      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.36kB/s   | 0:00:00 |     |       116 |      100% | 2.36kB/s   | 0:00:00 | (xfr#16, | to-chk=208/662) |
+| mnas-string/class-graph-mnas-string-parse.gv         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.90kB/s   | 0:00:00 |     |        44 |      100% | 0.90kB/s   | 0:00:00 | (xfr#17, | to-chk=207/662) |
+| mnas-string/class-graph-mnas-string-parse.gv.png     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.36kB/s   | 0:00:00 |     |       116 |      100% | 2.36kB/s   | 0:00:00 | (xfr#18, | to-chk=206/662) |
+| mnas-string/class-graph-mnas-string-print.gv         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.88kB/s   | 0:00:00 |     |        44 |      100% | 0.88kB/s   | 0:00:00 | (xfr#19, | to-chk=205/662) |
+| mnas-string/class-graph-mnas-string-print.gv.png     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.31kB/s   | 0:00:00 |     |       116 |      100% | 2.31kB/s   | 0:00:00 | (xfr#20, | to-chk=204/662) |
+| mnas-string/class-graph-mnas-string-translit.gv      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.88kB/s   | 0:00:00 |     |        44 |      100% | 0.88kB/s   | 0:00:00 | (xfr#21, | to-chk=203/662) |
+| mnas-string/class-graph-mnas-string-translit.gv.png  |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.31kB/s   | 0:00:00 |     |       116 |      100% | 2.31kB/s   | 0:00:00 | (xfr#22, | to-chk=202/662) |
+| mnas-string/class-graph-mnas-string.gv               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.88kB/s   | 0:00:00 |     |        44 |      100% | 0.88kB/s   | 0:00:00 | (xfr#23, | to-chk=201/662) |
+| mnas-string/class-graph-mnas-string.gv.png           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.31kB/s   | 0:00:00 |     |       116 |      100% | 2.31kB/s   | 0:00:00 | (xfr#24, | to-chk=200/662) |
+| mnas-string/mnas-string-db.html                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   14% | 13.95kB/s  | 0:00:00 |     |     4.86K |      100% | 96.92kB/s  | 0:00:00 | (xfr#25, | to-chk=199/662) |
+| mnas-string/mnas-string-docs.html                    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   16% | 13.95kB/s  | 0:00:00 |     |     4.33K |      100% | 84.63kB/s  | 0:00:00 | (xfr#26, | to-chk=198/662) |
+| mnas-string/mnas-string-parse.html                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   12% | 13.67kB/s  | 0:00:00 |     |     5.41K |      100% | 105.66kB/s | 0:00:00 | (xfr#27, | to-chk=197/662) |
+| mnas-string/mnas-string-print.html                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    6% | 13.67kB/s  | 0:00:00 |     |    10.88K |      100% | 208.41kB/s | 0:00:00 | (xfr#28, | to-chk=196/662) |
+| mnas-string/mnas-string-translit.html                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    9% | 13.40kB/s  | 0:00:00 |     |     7.44K |      100% | 142.52kB/s | 0:00:00 | (xfr#29, | to-chk=195/662) |
+| mnas-string/mnas-string.html                         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    6% | 13.40kB/s  | 0:00:00 |     |    10.56K |      100% | 198.32kB/s | 0:00:00 | (xfr#30, | to-chk=194/662) |
+| mnas-string/symbol-graph-mnas-string-db.gv           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.83kB/s   | 0:00:00 |     |        44 |      100% | 0.83kB/s   | 0:00:00 | (xfr#31, | to-chk=193/662) |
+| mnas-string/symbol-graph-mnas-string-db.gv.png       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.18kB/s   | 0:00:00 |     |       116 |      100% | 2.18kB/s   | 0:00:00 | (xfr#32, | to-chk=192/662) |
+| mnas-string/symbol-graph-mnas-string-docs.gv         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.83kB/s   | 0:00:00 |     |        44 |      100% | 0.83kB/s   | 0:00:00 | (xfr#33, | to-chk=191/662) |
+| mnas-string/symbol-graph-mnas-string-docs.gv.png     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.18kB/s   | 0:00:00 |     |       116 |      100% | 2.18kB/s   | 0:00:00 | (xfr#34, | to-chk=190/662) |
+| mnas-string/symbol-graph-mnas-string-parse.gv        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.83kB/s   | 0:00:00 |     |        44 |      100% | 0.83kB/s   | 0:00:00 | (xfr#35, | to-chk=189/662) |
+| mnas-string/symbol-graph-mnas-string-parse.gv.png    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 2.14kB/s   | 0:00:00 |     |       116 |      100% | 2.14kB/s   | 0:00:00 | (xfr#36, | to-chk=188/662) |
+| mnas-string/symbol-graph-mnas-string-print.gv        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         254 |  100% | 4.68kB/s   | 0:00:00 |     |       254 |      100% | 4.68kB/s   | 0:00:00 | (xfr#37, | to-chk=187/662) |
+| mnas-string/symbol-graph-mnas-string-print.gv.png    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    1% | 12.90kB/s  | 0:00:03 |     |    48.09K |      100% | 796.03kB/s | 0:00:00 | (xfr#38, | to-chk=186/662) |
+| mnas-string/symbol-graph-mnas-string-translit.gv     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   46% | 11.59kB/s  | 0:00:00 |     |     1.50K |      100% | 24.83kB/s  | 0:00:00 | (xfr#39, | to-chk=185/662) |
+| mnas-string/symbol-graph-mnas-string-translit.gv.png |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    0% | 11.59kB/s  | 0:00:30 |     |   351.46K |      100% | 3.42MB/s   | 0:00:00 | (xfr#40, | to-chk=184/662) |
+| mnas-string/symbol-graph-mnas-string.gv              |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.44kB/s   | 0:00:00 |     |        44 |      100% | 0.44kB/s   | 0:00:00 | (xfr#41, | to-chk=183/662) |
+| mnas-string/symbol-graph-mnas-string.gv.png          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 1.16kB/s   | 0:00:00 |     |       116 |      100% | 1.16kB/s   | 0:00:00 | (xfr#42, | to-chk=182/662) |
+| mnas-string/system-graph-mnas-string-db.gv           |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         163 |  100% | 1.62kB/s   | 0:00:00 |     |       163 |      100% | 1.62kB/s   | 0:00:00 | (xfr#43, | to-chk=181/662) |
+| mnas-string/system-graph-mnas-string-db.gv.png       |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    3% | 6.98kB/s   | 0:00:03 |     |    22.98K |      100% | 224.38kB/s | 0:00:00 | (xfr#44, | to-chk=180/662) |
+| mnas-string/system-graph-mnas-string-docs.gv         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   10% | 6.84kB/s   | 0:00:00 |     |     6.97K |      100% | 68.10kB/s  | 0:00:00 | (xfr#45, | to-chk=179/662) |
+| mnas-string/system-graph-mnas-string-docs.gv.png     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |       2.50K |    0% | 24.21kB/s  | 0:04:20 |     |     6.30M |      100% | 14.30MB/s  | 0:00:00 | (xfr#46, | to-chk=178/662) |
+| mnas-string/system-graph-mnas-string-parse.gv        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         203 |  100% | 0.47kB/s   | 0:00:00 |     |       203 |      100% | 0.47kB/s   | 0:00:00 | (xfr#47, | to-chk=177/662) |
+| mnas-string/system-graph-mnas-string-parse.gv.png    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    1% | 1.63kB/s   | 0:00:21 |     |    35.55K |      100% | 82.08kB/s  | 0:00:00 | (xfr#48, | to-chk=176/662) |
+| mnas-string/system-graph-mnas-string-print.gv        |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.10kB/s   | 0:00:00 |     |        44 |      100% | 0.10kB/s   | 0:00:00 | (xfr#49, | to-chk=175/662) |
+| mnas-string/system-graph-mnas-string-print.gv.png    |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 0.27kB/s   | 0:00:00 |     |       116 |      100% | 0.27kB/s   | 0:00:00 | (xfr#50, | to-chk=174/662) |
+| mnas-string/system-graph-mnas-string-translit.gv     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |          44 |  100% | 0.10kB/s   | 0:00:00 |     |        44 |      100% | 0.10kB/s   | 0:00:00 | (xfr#51, | to-chk=173/662) |
+| mnas-string/system-graph-mnas-string-translit.gv.png |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         116 |  100% | 0.27kB/s   | 0:00:00 |     |       116 |      100% | 0.27kB/s   | 0:00:00 | (xfr#52, | to-chk=172/662) |
+| mnas-string/system-graph-mnas-string.gv              |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         500 |  100% | 1.15kB/s   | 0:00:00 |     |       500 |      100% | 1.15kB/s   | 0:00:00 | (xfr#53, | to-chk=171/662) |
+| mnas-string/system-graph-mnas-string.gv.png          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    0% | 1.62kB/s   | 0:01:26 |     |   140.98K |      100% | 317.95kB/s | 0:00:00 | (xfr#54, | to-chk=170/662) |
+| mnas-string/графы-mnas-string-db.html                |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   18% | 1.58kB/s   | 0:00:02 |     |     3.87K |      100% | 8.73kB/s   | 0:00:00 | (xfr#55, | to-chk=169/662) |
+| mnas-string/графы-mnas-string-docs.html              |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   17% | 1.58kB/s   | 0:00:02 |     |     3.90K |      100% | 8.81kB/s   | 0:00:00 | (xfr#56, | to-chk=168/662) |
+| mnas-string/графы-mnas-string-parse.html             |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   18% | 1.58kB/s   | 0:00:01 |     |     3.80K |      100% | 8.58kB/s   | 0:00:00 | (xfr#57, | to-chk=167/662) |
+| mnas-string/графы-mnas-string-print.html             |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   18% | 1.58kB/s   | 0:00:01 |     |     3.84K |      100% | 8.64kB/s   | 0:00:00 | (xfr#58, | to-chk=166/662) |
+| mnas-string/графы-mnas-string-translit.html          |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   17% | 1.58kB/s   | 0:00:02 |     |     3.90K |      100% | 8.79kB/s   | 0:00:00 | (xfr#59, | to-chk=165/662) |
+| mnas-string/графы-mnas-string.html                   |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   18% | 1.58kB/s   | 0:00:01 |     |     3.74K |      100% | 8.41kB/s   | 0:00:00 | (xfr#60, | to-chk=164/662) |
+| mnas-string/обзор.html                               |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   16% | 1.58kB/s   | 0:00:02 |     |     4.28K |      100% | 9.63kB/s   | 0:00:00 | (xfr#61, | to-chk=163/662) |
+| mnas-string/static/                                  |             |       |            |         |       |           |           |            |         |          |                 |
+| mnas-string/static/highlight.css                     |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   44% | 1.58kB/s   | 0:00:00 |     |     1.57K |      100% | 3.53kB/s   | 0:00:00 | (xfr#62, | to-chk=161/662) |
+| mnas-string/static/highlight.js                      |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |    3% | 1.58kB/s   | 0:00:14 |     |    22.99K |      100% | 51.61kB/s  | 0:00:00 | (xfr#63, | to-chk=160/662) |
+| mnas-string/static/style.css                         |             |       |            |         |       |           |           |            |         |          |                 |
+|                                                    |         700 |   16% | 1.57kB/s   | 0:00:02 |     |     4.32K |      100% | 9.69kB/s   | 0:00:00 | (xfr#64, | to-chk=159/662) |
+|                                                      |             |       |            |         |       |           |           |            |         |          |                 |
+| sent                                                 |      29.00K | bytes | received   |  25.23K | bytes |    21.69K | bytes/sec |            |         |          |                 |
+| total                                                |        size |    is | 1.22G      | speedup | is    | 22,566.51 |           |            |         |          |                 |
 
 
