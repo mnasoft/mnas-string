@@ -1,0 +1,16 @@
+@begin(section) @title(MNAS-STRING/PARSE)
+
+Пакет @b(mnas-string) содержит в своем составе
+ следующие основные функции:
+ @begin(list) 
+  @item(@b(read-number) - парсинг вещественного числа при
+        помощи считывателя Common Lisp;)
+  @item(@b(parse-number) - парсинг вещественного числа;)
+ @end(list)
+@begin(section)
+ @title(Функции)
+ @cl:with-package[name="MNAS-STRING/PARSE"](
+  @cl:doc(function parse-number)
+  @cl:doc(function read-number))
+@end(section)
+@end(section)

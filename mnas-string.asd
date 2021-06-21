@@ -101,6 +101,7 @@
 		:serial nil
                 :components ((:file "docs")))))
 
+
 (defsystem "mnas-string/tests"
   :description "Тестирование систем, входящих  в проект mnas-package"
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
