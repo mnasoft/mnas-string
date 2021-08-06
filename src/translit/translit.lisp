@@ -6,6 +6,7 @@
            )
   (:export *cir-gr->en*
            *space-cir-gr->en*
+           *cfx->en*
            )
   (:documentation
    "Пакет @b(mnas-string/translit) экспортирует следующие функции:
@@ -19,13 +20,16 @@
 
  Пакет @b(mnas-string/translit) экспортирует следующие хеш-таблицы
 преобразования:
+
 @begin(list)
- @item(*cir-gr->en* - преобразование кириллических и греческих символов
-                      в латинские;)
+ @item(*cir-gr->en* - преобразование кириллических и греческих
+   символов в латинские;)
  @item(*space-cir-gr->en* - преобразование кириллических и греческих
-                            символов в латинские, такое что результат
-                            мог использоваться в качестве символа
-                            Common Lisp.)
+   символов в латинские, такое что результат мог использоваться в
+   качестве символа Common Lisp.)  
+ @item(*cfx->en* - преобразование кириллических и греческих и
+   символов, запрещенных в пакете ANSYS CFX, в английские символы
+   разрешенніе в пакете CFX.)
 @end(list)
 "))
 
@@ -54,6 +58,14 @@
 
 (defparameter *cyrillic->english-small-letter*   '("io" "a" "b"  "v" "g" "d" "e"  "zh" "z" "i" "iy" "k" "l" "m" "n" "o" "p" "r" "s" "t" "u" "f" "h" "ts" "ch" "sh" "shch" "_" "y" "-" "e" "yu" "ya"))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defparameter *forbidden-cfx-letter*            ".-+_:,")
+
+(defparameter *forbidden-cfx->english-letter* '("i" "m" "p" " " " " " "))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defparameter *cir-gr->en* (make-hash-table)
   "@b(Описание:) хеш-таблица @b(*cir-gr->en*) служит для
                  преобразования кириллических и греческих символов в
@@ -63,6 +75,15 @@
     "@b(Описание:) хеш-таблица @b(*space-cir-gr->en*) служит для
  преобразования кириллических и греческих символов в английские
  символы.
+
+ При преобразовании с использованием функции @b(translit) пробельные и
+специальные символы заменяются такими, что преобразованная строка
+может использоваться в качестве имени (символа).")
+
+(defparameter *cfx->en* (make-hash-table)
+  "@b(Описание:) хеш-таблица @b(*cfx->en*) служит для преобразования
+ кириллических, греческих и символов запрещенных в пакете ANSYS CFX в
+ английские символы.
 
  При преобразовании с использованием функции @b(translit) пробельные и
 специальные символы заменяются такими, что преобразованная строка
@@ -88,9 +109,27 @@
       (mapc #'add-to-ht
 	    (concatenate 'list *greek-capital-letter* *greek-small-letter*)
 	    (concatenate 'list *greek->english-capital-letter*  *greek->english-small-letter*))
-      (mapc #'add-to-ht (concatenate 'list *forbidden-characters*) (concatenate 'list *allowed-characters*)))))
+      (mapc #'add-to-ht
+            (concatenate 'list *forbidden-characters*)
+            (concatenate 'list *allowed-characters*)))))
 
-(progn (init-cir-gr->en) (init-space-cir-gr->en))
+(defun init-cfx ()
+  (let ((ht *cfx->en*))
+    (flet ((add-to-ht (key val) (setf (gethash key ht) val)))  
+      (mapc #'add-to-ht
+	    (concatenate 'list *cyrillic-capital-letter*  *cyrillic-small-letter* )
+	    (concatenate 'list *cyrillic->english-capital-letter* *cyrillic->english-small-letter*))
+      (mapc #'add-to-ht
+	    (concatenate 'list *greek-capital-letter* *greek-small-letter*)
+	    (concatenate 'list *greek->english-capital-letter*  *greek->english-small-letter*))
+      (mapc #'add-to-ht
+            (concatenate 'list *forbidden-characters*)
+            (concatenate 'list *allowed-characters*))
+      (mapc #'add-to-ht
+            (concatenate 'list *forbidden-cfx-letter*)
+            (concatenate 'list *forbidden-cfx->english-letter*)))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (defun translit (str &key (ht *cir-gr->en*))
   "@b(Описание:) функция @b(translit) возвращает транслитерированную
@@ -125,3 +164,7 @@
 	       (push el rez))))
      (coerce str 'list))
     (concatenate 'string (nreverse rez))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(progn (init-cir-gr->en) (init-space-cir-gr->en) (init-cfx))
