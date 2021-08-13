@@ -31,7 +31,12 @@
       )
     :do (mnas-package:make-codex-graphs i i)))
 
-(defun make-all ()
+(defun make-all (&aux
+                   (of (if (find (uiop:hostname)
+                                 mnas-package:*intranet-hosts*
+                                 :test #'string=)
+                           '(:type :multi-html :template :gamma)
+                           '(:type :multi-html :template :minima))))
   "@b(Описание:) функция @b(make-all) служит для создания документации.
 
  Пакет документации формируется в каталоге
@@ -43,8 +48,11 @@
    '(:mnas-string :mnas-string/docs)
    "Mnas-String"
    '("Nick Matvyeyev")
-   (mnas-package:find-sources "mnas-string"))
+   (mnas-package:find-sources "mnas-string")
+   :output-format of)
   (codex:document :mnas-string)
-  (make-graphs))
+  (make-graphs)
+  (mnas-package:copy-doc->public-html "mnas-string")
+  (mnas-package:rsync-doc "mnas-string"))
 
 ;;;; (make-all)
