@@ -1,6 +1,0 @@
-  @begin(section) @title(Графы mnas-string-translit)
-  @begin(list)
-   @item(call-graph   @image[src=./call-graph-mnas-string-translit.gv.png]())
-   @item(symbol-graph @image[src=./symbol-graph-mnas-string-translit.gv.png]())
-  @end(list)
- @end(section)
