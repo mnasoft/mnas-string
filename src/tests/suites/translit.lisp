@@ -1,4 +1,4 @@
-;;;; ./src/tests/translit.lisp
+;;;; ./src/tests/suites/translit.lisp
 
 (in-package :mnas-string/tests)
 

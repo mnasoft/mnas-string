@@ -1,4 +1,4 @@
-;;;; ./src/tests/run.lisp
+;;;; ./src/tests/run/run.lisp
 
 (in-package :mnas-string/tests)
 

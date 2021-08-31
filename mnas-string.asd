@@ -103,7 +103,7 @@
 
 
 (defsystem "mnas-string/tests"
-  :description "Тестирование систем, входящих  в проект mnas-package"
+  :description "Тестирование систем, входящих  в проект mnas-string"
   :author "Nick Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :depends-on ("mnas-string" "fiveam" "sb-posix")
@@ -111,12 +111,17 @@
 		    (uiop:symbol-call :mnas-string/tests :run-tests))
   :components ((:module "src/tests"
 		:serial nil
-                :components ((:file "package")
-                             (:file "all"      :depends-on ("package"))
-                             (:file "core"     :depends-on ("all"))
-                             (:file "parse"    :depends-on ("all"))
-                             (:file "translit" :depends-on ("all"))
-                             (:file "db"       :depends-on ("all"))
-                             (:file "print"    :depends-on ("all"))
-                             (:file "run"      :depends-on ("core" "parse" "db" "translit"  "print"))
-                             ))))
+                :components ((:file "tests")))
+               (:module "src/tests/suites"
+                :depends-on ("src/tests")
+		:serial nil
+                :components ((:file "core"     )
+                             (:file "parse"    )
+                             (:file "translit" )
+                             (:file "db"       )
+                             (:file "print"    )))
+               (:module "src/tests/run"
+                :depends-on ("src/tests/suites")
+		:serial nil
+                :components ((:file "run")))))
+

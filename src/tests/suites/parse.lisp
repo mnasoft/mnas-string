@@ -1,4 +1,4 @@
-;;;; tests/main.lisp
+;;;; ./src/tests/suites/parse.lisp
 
 (in-package :mnas-string/tests)
 

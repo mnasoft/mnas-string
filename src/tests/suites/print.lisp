@@ -1,4 +1,4 @@
-;;;; ./src/tests/print.lisp
+;;;; ./src/tests/suites/print.lisp
 
 (in-package :mnas-string/tests)
 

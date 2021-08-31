@@ -1,4 +1,4 @@
-;;;; tests/main.lisp
+;;;; ./src/tests/suites/db.lisp
 
 (in-package :mnas-string/tests)
 
