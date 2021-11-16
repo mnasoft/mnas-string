@@ -1,3 +1,5 @@
+;;;; ./src/docs/docs.lisp
+
 (defpackage #:mnas-string/docs
   (:use #:cl ) 
   (:nicknames "MSTR/DOCS")
