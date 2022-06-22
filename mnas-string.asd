@@ -13,7 +13,7 @@
  @item(траслитерации строки.)
 @end(list) 
 "
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/tests")))
@@ -30,7 +30,7 @@
  @item(обрамления строки префиксом и постфиксом.)
 @end(list)
 "
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/core/tests")))
@@ -44,7 +44,7 @@
 @begin(list) 
  @item(парсинга вещественного числа.)
 @end(list)"
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/core/tests")))
@@ -60,7 +60,7 @@
  @item(подготовки строки в качестве аргумента для like запроса SQL;)
 @end(list)
 "
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :depends-on ("mnas-string/core")
@@ -72,7 +72,7 @@
 (defsystem "mnas-string/print"
   :description "Система @b(mnas-string/print) содержит в
  своем составе функции вывода представления даты и времени в поток."
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/print/tests")))
@@ -84,7 +84,7 @@
 (defsystem "mnas-string/translit"
   :description "Система @b(mnas-string/translit) cодержит функции
   траслитерации строки."
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/translit/tests")))
@@ -94,7 +94,7 @@
 
 (defsystem "mnas-string/docs"
   :description "Зависимости для сборки документации"
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :depends-on ("mnas-string" "codex" "mnas-package")
   :components ((:module "src/docs"
@@ -104,7 +104,7 @@
 
 (defsystem "mnas-string/tests"
   :description "Тестирование систем, входящих  в проект mnas-string"
-  :author "Nick Matvyeyev <mnasoft@gmail.com>"
+  :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :depends-on ("mnas-string" "fiveam" "sb-posix")
   :perform (test-op (o s)

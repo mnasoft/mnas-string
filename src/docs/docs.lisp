@@ -50,7 +50,7 @@
   (mnas-package:make-mainfest-lisp
    '(:mnas-string :mnas-string/docs)
    "Mnas-String"
-   '("Nick Matvyeyev")
+   '("Mykola Matvyeyev")
    (mnas-package:find-sources "mnas-string")
    :output-format of)
   (codex:document :mnas-string)
