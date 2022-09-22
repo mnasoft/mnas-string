@@ -11,6 +11,7 @@
 
 (defun make-document ()
   (loop
+    :for j :from 1
     :for i :in
     '((:mnas-string          :mnas-string)
       (:mnas-string/parse    nil)
@@ -19,10 +20,14 @@
       (:mnas-string/db       nil)
 ;;;;      (:mnas-string/docs     nil)
       )
-    :do (apply #'mnas-package:document i)))
+    :do
+       (progn
+         (apply #'mnas-package:document i)
+         (format t "~A ~A~%" j i))))
 
 (defun make-graphs ()
   (loop
+    :for j :from 1
     :for i :in
     '(:mnas-string
       :mnas-string/parse
@@ -31,7 +36,9 @@
       :mnas-string/db
 ;;;;      :mnas-string/docs 
       )
-    :do (mnas-package:make-codex-graphs i i)))
+    :do (progn
+          (mnas-package:make-codex-graphs i i)
+                   (format t "~A ~A~%" j i))))
 
 (defun make-all (&aux
                    (of (if (find (uiop:hostname)
