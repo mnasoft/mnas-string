@@ -4,7 +4,8 @@
   (:use #:cl)
   (:export translit
            )
-  (:export *cir-gr->en*
+  (:export *empty*
+           *cir-gr->en*
            *space-cir-gr->en*
            *cfx->en*
            )
@@ -65,6 +66,11 @@
 (defparameter *forbidden-cfx->english-letter* '("i" "m" "p" " " " " " "))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defparameter *empty* (make-hash-table)
+  "@b(Описание:) хеш-таблица @b(*empty*) является пустой и каждый символ
+                 поступающий на преобразоваие с ее помощью
+                 представляется самим собой.")
 
 (defparameter *cir-gr->en* (make-hash-table)
   "@b(Описание:) хеш-таблица @b(*cir-gr->en*) служит для
