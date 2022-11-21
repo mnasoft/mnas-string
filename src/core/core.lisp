@@ -4,6 +4,7 @@
   (:use #:cl) 
   (:export split           
 	   replace-all
+           replace-all-words
            mpattern-to-spattern
            pre-post)
   (:export trd-rename
@@ -45,6 +46,14 @@
 			   :end (or pos (length string)))
           when pos do (write-string replacement out)
             while pos)))
+
+(defun replace-all-words (string part-replacement-list &key (test #'char=))
+  (let ((rez (concatenate 'string string)))
+    (loop :for (part replacement) :in part-replacement-list
+          :do
+             (setf rez
+                   (replace-all rez part replacement :test test)))
+    rez))
 
 (defun mpattern-to-spattern (pattern str)
   "@b(Описание:) @b(mpattern-to-spattern) возвращает строку, у которой
