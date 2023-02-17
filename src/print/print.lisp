@@ -6,10 +6,11 @@
            date-time
            date-time-fname
            day-time)
-  (:export  *mon-ru*
-            *mon-ua*
-            *mon-en*)
+  (:export *mon-ru*
+           *mon-ua*
+           *mon-en*)
   (:export *default-month-language*)
+  (:export number-to-string)
   (:documentation
    "Пакет @b(mnas-string/print) экспортирует следующие функции:
 @begin(list)
@@ -200,3 +201,33 @@
       ((and (null year) ss) (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d:~2,'0d"              date-month date-day time-hour time-minute time-second))
       ((and year (null ss)) (format stream "~d-~2,'0d-~2,'0d_~2,'0d:~2,'0d"        date-year date-month date-day time-hour time-minute))
       (t                    (format stream "~2,'0d-~2,'0d_~2,'0d:~2,'0d"                     date-month date-day time-hour time-minute)))))
+
+(defun number-to-string (val &key (fmt "~,2@F"))
+  "@b(Описание:) функция @b(number-to-string) возвращает строку,
+  которая представляет вещественое число в формате пригодном для
+  вставки в CCL файл системы ANSYS CFX в качестве имени.
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ (number-to-string  90.5645) => \"p90i56\"
+ (number-to-string -90.5645) => \"m90i56\"
+@end(code)
+"
+  (mnas-string/translit:translit
+   (string-trim " " (format nil fmt val))
+   :ht mnas-string/translit:*cfx->en*))
+
+(defun number-to-string-1 (val &key (fmt "~,2@F"))
+  "@b(Описание:) функция @b(number-to-string) возвращает строку,
+  которая представляет вещественое число в формате пригодном для
+  вставки в CCL файл системы ANSYS CFX в качестве имени.
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ (number-to-string  90.5645) => \"p90i56\"
+ (number-to-string -90.5645) => \"m90i56\"
+@end(code)
+"
+  (mnas-string/translit:translit
+   (string-trim " " (format nil fmt val))
+   :ht mnas-string/translit:*cfx->en*))

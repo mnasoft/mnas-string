@@ -76,7 +76,7 @@
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
   :in-order-to ((test-op (test-op "mnas-string/print/tests")))
-;;;;  :depends-on ()
+  :depends-on ("mnas-string/translit")
   :components ((:module "src/print"
 		:serial nil
                 :components ((:file "print")))))
