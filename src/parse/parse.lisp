@@ -1,6 +1,6 @@
 ;;;; ./src/parse/parse.lisp
 
-(defpackage #:mnas-string/parse
+(defpackage :mnas-string/parse
   (:use #:cl) 
   (:export read-number
            parse-number)
@@ -14,7 +14,7 @@
  @end(list)
 "))
 
-(in-package #:mnas-string/parse)
+(in-package :mnas-string/parse)
 
 (defun read-number (str &optional (default 0.0))
   "@b(Описание:) функция @b(read-number) возвращает число

@@ -1,6 +1,6 @@
 ;;;; ./src/db/db.lisp
 
-(defpackage #:mnas-string/db
+(defpackage :mnas-string/db
   (:use #:cl) 
   (:export prepare-to-query)
   (:documentation
@@ -10,7 +10,7 @@
  @end(list)
 "))
 
-(in-package #:mnas-string/db)
+(in-package :mnas-string/db)
 
 (defun prepare-to-query (str)
   " @b(Описание:) функция @b(prepare-to-query) возвращает строку

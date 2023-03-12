@@ -1,6 +1,6 @@
 ;;;; ./src/print/print.lisp
 
-(defpackage #:mnas-string/print
+(defpackage :mnas-string/print
   (:use #:cl)
   (:export date
            date-time
@@ -49,7 +49,7 @@
 @end(list)
 "))
 
-(in-package #:mnas-string/print)
+(in-package :mnas-string/print)
 
 (defparameter  *mon-ru* (make-hash-table)
   "@b(Описание:) хеш-таблица @b(*mon-ru*) содержит названия месяцев на

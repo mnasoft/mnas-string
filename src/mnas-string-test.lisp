@@ -1,6 +1,6 @@
 ;;;; mnas-string-test.lisp
 
-(in-package #:mnas-string)
+(in-package :mnas-string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (progn

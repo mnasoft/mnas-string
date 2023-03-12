@@ -1,6 +1,6 @@
 ;;;; ./src/translit/translit.lisp
 
-(defpackage #:mnas-string/translit
+(defpackage :mnas-string/translit
   (:use #:cl)
   (:export translit
            )
@@ -34,7 +34,7 @@
 @end(list)
 "))
 
-(in-package #:mnas-string/translit)
+(in-package :mnas-string/translit)
 
 (defparameter *forbidden-characters* " .()"
   "Символы, запрещенные для использования в имени символа Common Lisp.")

@@ -1,6 +1,6 @@
 ;;;; ./src/docs/docs.lisp
 
-(defpackage #:mnas-string/docs
+(defpackage :mnas-string/docs
   (:use #:cl ) 
   (:nicknames "MSTR/DOCS")
   (:export make-all)

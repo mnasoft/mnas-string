@@ -1,6 +1,6 @@
 ;;;; ./src/core/core.lisp
 
-(defpackage #:mnas-string
+(defpackage :mnas-string
   (:use #:cl) 
   (:export split           
 	   replace-all
@@ -23,7 +23,7 @@
  @end(list)
 "))
 
-(in-package #:mnas-string)
+(in-package :mnas-string)
 
 (defun replace-all (string part replacement &key (test #'char=))
   "@b(Описание:) функция @b(replace-all) возвращает строку, в которой

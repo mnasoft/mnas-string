@@ -1,6 +1,6 @@
 ;;;; temp.lisp
 
-(in-package #:mnas-string)
+(in-package :mnas-string)
 
 (require :mnas-graph)
 (require :mnas-package)
