@@ -33,6 +33,7 @@
 @begin[lang=lisp](code)
   (replace-all \"Paris, Paris? Paris!\" \"Pa\" \"Bo\")
    => \"Boris, Boris? Boris!\"
+  (ppcre:regex-replace-all \"Pa\" \"Paris, Paris? Paris!\"  \"Bo\")
 @end(code)
 "
   (with-output-to-string (out)
