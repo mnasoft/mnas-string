@@ -37,7 +37,11 @@
   :depends-on ("cl-ppcre")
   :components ((:module "src/core"
 		:serial nil
-                :components ((:file "core")))))
+                :components ((:file "core"))))
+  :components ((:module "src/app-numbering"
+		:serial nil
+                :components ((:file "app-numbering")))))
+
 
 (defsystem "mnas-string/parse"
   :description "Система @b(mnas-string/parse) содержит функции:

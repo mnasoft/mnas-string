@@ -12,6 +12,8 @@
   (:export make-populated-hash-table
            map-to-list
            )
+  (:export application-name
+           )
   (:documentation
    "Пакет @b(mnas-string) содержит в своем составе
  следующие основные функции:
