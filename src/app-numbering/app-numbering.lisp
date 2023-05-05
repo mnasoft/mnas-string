@@ -29,10 +29,10 @@
               *abc-en*)))
 
 (defun application-name (index
-                 &key (start-index 0)
-                   (abc *abc-app*)
-                 &aux (ind (+ index start-index))
-                   (len-abc (length abc)))
+                         &key (start-index 0)
+                           (abc *abc-app*)
+                         &aux (ind (+ index start-index))
+                           (len-abc (length abc)))
   "@b(Описание:) функция @b(app-name) возвращает строку, представляющую
    номер приложения (см. п.4.3.8 ГОСТ 2.105-95).
 

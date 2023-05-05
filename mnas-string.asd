@@ -37,8 +37,8 @@
   :depends-on ("cl-ppcre")
   :components ((:module "src/core"
 		:serial nil
-                :components ((:file "core"))))
-  :components ((:module "src/app-numbering"
+                :components ((:file "core")))
+               (:module "src/app-numbering"
 		:serial nil
                 :components ((:file "app-numbering")))))
 
