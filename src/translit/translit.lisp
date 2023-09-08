@@ -9,6 +9,10 @@
            *space-cir-gr->en*
            *cfx->en*
            )
+  (:export make-transliter
+           add-transliter
+           print-transliter
+           )
   (:documentation
    "Пакет @b(mnas-string/translit) экспортирует следующие функции:
 @begin(list)
@@ -121,19 +125,29 @@
 
 (defun init-cfx ()
   (let ((ht *cfx->en*))
-    (flet ((add-to-ht (key val) (setf (gethash key ht) val)))  
-      (mapc #'add-to-ht
-	    (concatenate 'list *cyrillic-capital-letter*  *cyrillic-small-letter* )
-	    (concatenate 'list *cyrillic->english-capital-letter* *cyrillic->english-small-letter*))
-      (mapc #'add-to-ht
-	    (concatenate 'list *greek-capital-letter* *greek-small-letter*)
-	    (concatenate 'list *greek->english-capital-letter*  *greek->english-small-letter*))
-      (mapc #'add-to-ht
-            (concatenate 'list *forbidden-characters*)
-            (concatenate 'list *allowed-characters*))
-      (mapc #'add-to-ht
-            (concatenate 'list *forbidden-cfx-letter*)
-            (concatenate 'list *forbidden-cfx->english-letter*)))))
+    (add-transliter *cyrillic-capital-letter* *cyrillic->english-capital-letter* ht)
+    (add-transliter *cyrillic-small-letter*   *cyrillic->english-small-letter*   ht)
+    (add-transliter *greek-capital-letter*    *greek->english-capital-letter*    ht)
+    (add-transliter *greek-small-letter*      *greek->english-small-letter*      ht)
+    (add-transliter *forbidden-characters*    *allowed-characters*               ht)
+    (add-transliter *forbidden-cfx-letter*    *forbidden-cfx->english-letter*    ht)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun add-transliter (string-from list-string-to ht)
+  (flet ((add-to-ht (key val) (setf (gethash key ht) val)))
+    (map 'nil #'add-to-ht
+	 (coerce string-from 'list)
+	 (coerce list-string-to 'list))
+    ht))
+
+(defun make-transliter (string-from list-string-to)
+  (let ((ht (make-hash-table)))
+    (add-transliter string-from list-string-to ht)))
+
+(defun print-transliter (ht)
+  (format t "~{~{\"~A\" -> ~S~}~^~%~}~3%"
+          (mnas-hash-table:to-list ht)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
