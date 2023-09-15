@@ -91,6 +91,7 @@
   :author "Mykola Matvyeyev <mnasoft@gmail.com>"
   :license "GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007 or later"  
   :serial nil
+  :depends-on ("mnas-hash-table")
   :in-order-to ((test-op (test-op "mnas-string/translit/tests")))
   :components ((:module "src/translit"
 		:serial nil
