@@ -15,6 +15,7 @@
   (:export application-name
            )
   (:export select
+           ;;;; match
            )
   (:documentation
    "Пакет @b(mnas-string) содержит в своем составе
