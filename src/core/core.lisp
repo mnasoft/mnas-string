@@ -14,6 +14,8 @@
            )
   (:export application-name
            )
+  (:export select
+           )
   (:documentation
    "Пакет @b(mnas-string) содержит в своем составе
  следующие основные функции:
@@ -232,3 +234,30 @@
  основанную на @b(string) с добавлением перед и после нее префикса
  @b(prefix) и постфикса @b(postfix) pre-post-string"
   (concatenate 'string prefix string postfix))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun mk-pred (regexp)
+  (let ((rgx (ppcre:create-scanner regexp)))
+    #'(lambda (el)
+        (ppcre:scan rgx el))))
+               
+(defun select (regexp sequence &key key)
+  "@b(Описание:) функция @b(select) возвращает последовательность,
+состоящую из эментов из последовательности @b(sequence), ключевые
+элементы которой, удовлетворяют регулярному выражению @b(regexp).
+
+ @b(Пример использования:)
+@begin[lang=lisp](code)
+ ;; Отбирает элементы, где есть две идущие последовательно цифры.
+ (select \"[0-9]{2}\"
+        '((\"12ab\" \"0\") (\"a12b\" \"1\") (\"a1b2\" \"2\") (\"ab12\" \"3\") (\"1ab2\" \"4\"))
+        :key #'first)
+@end(code) "
+  (remove-if
+   (complement (mk-pred regexp))
+   sequence
+   :key key))
+
+
+
