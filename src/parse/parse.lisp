@@ -4,6 +4,7 @@
   (:use #:cl) 
   (:export read-number
            parse-number)
+  (:export read-integer-alt)
   (:documentation
    "Пакет @b(mnas-string) содержит в своем составе
  следующие основные функции:
@@ -11,6 +12,7 @@
   @item(@b(read-number) - парсинг вещественного числа при
         помощи считывателя Common Lisp;)
   @item(@b(parse-number) - парсинг вещественного числа;)
+  @item(@b(read-integer-alt) - выбор одного из целых чисел;)
  @end(list)
 "))
 
@@ -47,4 +49,11 @@
     (cond
       ((stringp val) (read-from-string (mnas-string:replace-all val "," "."))) 
       (t default))))
+
+(defun read-integer-alt (lst &optional (prompt "Enter one of the alternatives:"))
+  (loop
+    (format t "~&~A ~S : " prompt lst)
+    (let* ((*read-eval* nil)
+           (number (read)))
+      (when (member number lst) (return-from read-integer-alt number)))))
 
