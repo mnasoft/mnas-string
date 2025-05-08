@@ -15,6 +15,7 @@
   (:export application-name
            )
   (:export select
+           common-prefix
            ;;;; match
            )
   (:documentation
@@ -260,5 +261,21 @@
    sequence
    :key key))
 
-
+(defun common-prefix (strings)
+  "@b(Описание:) функция @b(common-prefix) возвращает общий префикс для
+двух строк."
+  (if (null strings)
+      ""
+      (let ((first (car strings))
+            (rest  (cdr strings)))
+        (loop :for i :from 0 :below (length first)
+              :for char = (char first i)
+              :do
+              (unless (every
+                       #'(lambda (s)
+                           (and (< i (length s))
+                                (char= char (char s i))))
+                       rest)
+                (return (subseq first 0 i)))
+              :finally (return (subseq first 0 i))))))
 
